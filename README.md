@@ -10,7 +10,7 @@ Five volumes on how the world economy works — systems, history, countries, wor
 
 The Economy Hub is a static reading site organized as five volumes. Each chapter poses a single question and answers it by walking through the mechanism and the evidence, then leaves the verdict to the reader. Big popular claims get put on trial: each carries a ruling, a stated confidence level, and sourced citations.
 
-Volume I (Frameworks) is live with its first eight chapters; the remaining volumes are in preparation.
+Volume I (Frameworks) is live with all ten chapters; the remaining volumes are in preparation.
 
 ---
 
@@ -38,6 +38,8 @@ Volume I (Frameworks) is live with its first eight chapters; the remaining volum
 | 6 | Why does the middleman often capture more value than the maker? |
 | 7 | Why do healthcare and education keep getting more expensive while electronics get cheaper? |
 | 8 | Why do subsidies outlive the industries they were built to protect? |
+| 9 | Worker co-operatives survive as well as conventional firms, so why are there so few? |
+| 10 | Which economic futures are actually plausible? |
 
 `books/frameworks/index.html` is the volume cover and table of contents.
 
