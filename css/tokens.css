@@ -1,0 +1,72 @@
+/* ==========================================================================
+   The Economy Hub — design tokens
+   Tokens only. No selectors beyond :root, no component rules.
+
+   Contrast audit (WCAG 2.1, on paper #F6F1E7 unless noted):
+     ink        13.60:1   ink-soft   7.07:1   green      6.97:1
+     brass       2.80:1   <- FAILS AA; decorative strokes and art only
+     brass-deep  5.55:1   (also 5.08:1 on paper-deep)
+     oxide       6.58:1   paper-on-green 6.97:1   paper-on-oxide 6.58:1
+   Full table in SKELETON.md. Cover art mirrors these values as literal
+   hexes in tools/make_covers.py — keep the two in sync by hand.
+   ========================================================================== */
+
+:root {
+  /* ---- palette ---- */
+  --color-paper: #F6F1E7;        /* page background */
+  --color-paper-deep: #EFE7D4;   /* panels, ledger callouts, table heads */
+  --color-paper-field: #F3ECDC;  /* cover fields; mirrored in make_covers.py */
+  --color-paper-shade: #E9E0CA;  /* engraved numeral fill */
+  --color-ink: #20262A;          /* body text */
+  --color-ink-soft: #4A5258;     /* secondary text, captions */
+  --color-green: #1F5C45;        /* Ledger Green: links, primary strokes */
+  --color-brass: #B8892B;        /* Brass: DECORATIVE ONLY (2.80:1) */
+  --color-brass-deep: #7E5A12;   /* text-safe brass: kickers, focus ring */
+  --color-oxide: #8F3B2E;        /* muted oxide red: negative states ONLY */
+  --color-rule: #D9CFBA;         /* hairlines */
+  --color-rule-strong: #B9AC8F;  /* emphasized rules, shelf edge */
+
+  /* ---- type families ---- */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", Consolas, "Courier New", monospace;
+
+  /* ---- type scale ---- */
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-caption: 0.9375rem;
+  --text-body: 1.1875rem;        /* 19px base for long-form reading */
+  --text-lg: 1.375rem;
+  --text-h3: 1.375rem;
+  --text-h2: 1.75rem;
+  --text-h1: clamp(2.25rem, 5vw, 3.25rem);
+  --text-hero: clamp(2.75rem, 7vw, 4.5rem);
+  --leading-body: 1.68;
+  --leading-tight: 1.15;
+  --tracking-caps: 0.14em;       /* letterspaced small caps / mono kickers */
+
+  /* ---- space ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+
+  /* ---- structure ---- */
+  --measure-prose: 70ch;         /* reading column */
+  --container-max: 72rem;
+  --sidebar-width: 15rem;        /* chapter TOC column */
+  --rule-hairline: 1px solid var(--color-rule);
+  --rule-emphatic: 3px double var(--color-rule-strong); /* ledger closing rule */
+  --radius-chip: 2px;
+
+  /* ---- effects ---- */
+  --shadow-cover: 0 1px 2px rgba(32, 38, 42, 0.14),
+                  0 14px 28px -14px rgba(32, 38, 42, 0.3);
+  --shadow-cover-lift: 0 2px 4px rgba(32, 38, 42, 0.14),
+                       0 22px 36px -16px rgba(32, 38, 42, 0.34);
+  --focus-ring: 2px solid var(--color-brass-deep);
+}

@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Component library — The Economy Hub</title>
+<meta name="description" content="Kitchen-sink demonstration of The Economy Hub component library: callouts, verdict blocks, timeline, figures, tables, and the design tokens behind them.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://jasonhchronicles.com/the-economy-hub/components.html">
+<meta name="theme-color" content="#F6F1E7">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Economy Hub">
+<meta property="og:title" content="Component library — The Economy Hub">
+<meta property="og:description" content="Kitchen-sink demonstration of the site's components and design tokens.">
+<meta property="og:url" content="https://jasonhchronicles.com/the-economy-hub/components.html">
+<meta property="og:image" content="https://jasonhchronicles.com/the-economy-hub/assets/og/og-hub.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Component library — The Economy Hub">
+<meta name="twitter:description" content="Kitchen-sink demonstration of the site's components and design tokens.">
+<meta name="twitter:image" content="https://jasonhchronicles.com/the-economy-hub/assets/og/og-hub.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="fonts/source-serif-4-var-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/fraunces-var-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/print.css" media="print">
+</head>
+<body class="page-demo">
+<a class="skip-link" href="#main">Skip to content</a>
+<div data-include="site-header"></div>
+<noscript><p class="container"><a href="index.html">The Economy Hub — all volumes</a></p></noscript>
+
+<main id="main">
+  <div class="container">
+
+    <aside class="demo-banner" role="note">Demonstration page. Everything
+    below uses three throwaway sample concepts and stays out of the canon.
+    Component schemas are documented in SKELETON.md.</aside>
+
+    <header class="chapter-opener">
+      <p class="chapter-opener__eyebrow">Demonstration</p>
+      <h1>Component library</h1>
+      <p class="chapter-dek">Every reusable piece of the site on one page:
+      tokens, type, callouts, verdicts, timeline, figures, and tables.</p>
+    </header>
+
+    <!-- ================= palette ================= -->
+    <section class="demo-section" aria-labelledby="demo-palette">
+      <h2 id="demo-palette">Palette</h2>
+      <p class="demo-section__note">Brass fails AA against paper
+      (<span class="num">2.80:1</span>) and is restricted to decorative
+      strokes and cover art; text set in brass uses the deep variant. Oxide
+      appears only on negative verdict and chart states. The full contrast
+      audit lives in SKELETON.md.</p>
+      <ul class="demo-swatches">
+        <li><figure class="demo-swatch"><div class="demo-swatch__well" data-well="paper"></div><figcaption>paper F6F1E7</figcaption></figure></li>
+        <li><figure class="demo-swatch"><div class="demo-swatch__well" data-well="paper-deep"></div><figcaption>paper-deep EFE7D4</figcaption></figure></li>
+        <li><figure class="demo-swatch"><div class="demo-swatch__well" data-well="ink"></div><figcaption>ink 20262A</figcaption></figure></li>
+        <li><figure class="demo-swatch"><div class="demo-swatch__well" data-well="ink-soft"></div><figcaption>ink-soft 4A5258</figcaption></figure></li>
+        <li><figure class="demo-swatch"><div class="demo-swatch__well" data-well="green"></div><figcaption>green 1F5C45</figcaption></figure></li>
+        <li><figure class="demo-swatch"><div class="demo-swatch__well" data-well="brass"></div><figcaption>brass B8892B</figcaption></figure></li>
+        <li><figure class="demo-swatch"><div class="demo-swatch__well" data-well="brass-deep"></div><figcaption>brass-deep 7E5A12</figcaption></figure></li>
+        <li><figure class="demo-swatch"><div class="demo-swatch__well" data-well="oxide"></div><figcaption>oxide 8F3B2E</figcaption></figure></li>
+        <li><figure class="demo-swatch"><div class="demo-swatch__well" data-well="rule"></div><figcaption>rule D9CFBA</figcaption></figure></li>
+      </ul>
+    </section>
+
+    <!-- ================= type ================= -->
+    <section class="demo-section" aria-labelledby="demo-type">
+      <h2 id="demo-type">Type</h2>
+      <p class="demo-section__note">Fraunces for display, Source Serif 4 for
+      body, IBM Plex Mono for numerals and data. Inline figures in prose wrap
+      in <code>.num</code>.</p>
+      <h3>How can a country with full granaries suffer famine?</h3>
+      <p>Body text runs at <span class="num">19px</span> on a
+      <span class="num">70ch</span> measure. In 1943 Bengal, rice prices
+      roughly quadrupled while agricultural wages moved a few percent; the
+      <a href="#demo-figures">exchange rate between labor and food</a>
+      collapsed with grain in store.</p>
+      <p class="kicker">Kicker: mono, letterspaced, brass-deep in components</p>
+    </section>
+
+    <!-- ================= callouts ================= -->
+    <section class="demo-section" aria-labelledby="demo-callouts">
+      <h2 id="demo-callouts">Callouts</h2>
+      <p class="demo-section__note">Three registers. Ledger carries the
+      record, Model carries the theory, Voice carries a quotation.</p>
+
+      <aside class="callout callout--ledger" aria-labelledby="dl-1">
+        <p class="callout__kicker">Ledger</p>
+        <h3 class="callout__title" id="dl-1">Bengal, 1943, by the numbers</h3>
+        <div class="callout__body">
+          <p>Rice availability in 1943 ran about <span class="num">5%</span>
+          below the 1941 figure, a normal fluctuation. The price of coarse
+          rice in Calcutta rose from roughly <span class="num">Rs 14</span> to
+          over <span class="num">Rs 50</span> per maund within the year while
+          rural wages stayed nearly flat.</p>
+        </div>
+        <p class="callout__source">Illustrative figures after Sen (1981). Demo content.</p>
+      </aside>
+
+      <aside class="callout callout--model" aria-labelledby="dm-1">
+        <p class="callout__kicker">Model</p>
+        <h3 class="callout__title" id="dm-1">The cost-disease mechanism</h3>
+        <div class="callout__body">
+          <p>Let one sector double its output per hour each generation while
+          another, by its nature, holds output per hour fixed. Wages are set
+          economy-wide, so the stagnant sector&rsquo;s costs rise with the
+          productive sector&rsquo;s wages. A string quartet takes the same
+          <span class="num">4</span> player-hours it took in 1826; the wage
+          those hours must pay has grown a hundredfold.</p>
+        </div>
+        <p class="callout__source">After Baumol &amp; Bowen (1966). Demo content.</p>
+      </aside>
+
+      <aside class="callout callout--voice" aria-labelledby="dv-1">
+        <p class="callout__kicker">Voice</p>
+        <h3 class="callout__title visually-hidden" id="dv-1">Adam Smith on exchange</h3>
+        <blockquote>
+          <p>This division of labour &hellip; is the necessary, though very slow
+          and gradual consequence of a certain propensity in human nature
+          &hellip; to truck, barter, and exchange one thing for another.</p>
+        </blockquote>
+        <p class="callout__source">Adam Smith, The Wealth of Nations, Book I (1776)</p>
+      </aside>
+    </section>
+
+    <!-- ================= verdicts ================= -->
+    <section class="demo-section" aria-labelledby="demo-verdicts">
+      <h2 id="demo-verdicts">Verdict block</h2>
+      <p class="demo-section__note">Four levels (Confirmed, Oversimplified,
+      False, Backwards), three confidence tiers (high, moderate, low), and an
+      expandable source footer. Backwards keeps oxide but inverts the chip so
+      the two negative levels read apart.</p>
+
+      <section class="verdict" data-verdict="confirmed" data-confidence="high"
+               aria-label="Verdict: confirmed">
+        <header class="verdict__head">
+          <p class="verdict__claim">Services get pricier while manufactured
+          goods get cheaper, across rich countries and decades.</p>
+          <p class="verdict__ruling">
+            <span class="verdict__badge">Confirmed</span>
+            <span class="verdict__confidence">High confidence</span>
+          </p>
+        </header>
+        <div class="verdict__body">
+          <p>The relative-price drift shows up in every long consumer price
+          series: education, healthcare, and live performance rise against
+          the basket while electronics, apparel, and appliances fall. The
+          pattern survives changes of country, currency, and index method.</p>
+        </div>
+        <details class="verdict__sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>BLS CPI detailed expenditure series, 1980&ndash;2025 — demo citation</li>
+            <li>Baumol &amp; Bowen, Performing Arts: The Economic Dilemma (1966) — demo citation</li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="verdict" data-verdict="oversimplified" data-confidence="moderate"
+               aria-label="Verdict: oversimplified">
+        <header class="verdict__head">
+          <p class="verdict__claim">Healthcare is expensive because of
+          administrative waste.</p>
+          <p class="verdict__ruling">
+            <span class="verdict__badge">Oversimplified</span>
+            <span class="verdict__confidence">Moderate confidence</span>
+          </p>
+        </header>
+        <div class="verdict__body">
+          <p>Administration adds real cost, and the American share is
+          unusually large. But the underlying drift appears in countries with
+          lean single-payer administration and in sectors with no insurers at
+          all, which points at the labor-cost mechanism rather than paperwork
+          alone.</p>
+        </div>
+        <details class="verdict__sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Cross-country hospital cost decompositions — demo citation</li>
+            <li>OECD relative service price panels — demo citation</li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="verdict" data-verdict="false" data-confidence="high"
+               aria-label="Verdict: false">
+        <header class="verdict__head">
+          <p class="verdict__claim">Famines happen only when there is not
+          enough food to go around.</p>
+          <p class="verdict__ruling">
+            <span class="verdict__badge">False</span>
+            <span class="verdict__confidence">High confidence</span>
+          </p>
+        </header>
+        <div class="verdict__body">
+          <p>Bengal in 1943 held near-normal rice stocks while some three
+          million people died. What collapsed was the exchange rate between a
+          laborer&rsquo;s wage and grain, a failure of entitlement rather
+          than of supply. Several major famines since fit the same pattern.</p>
+        </div>
+        <details class="verdict__sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Sen, Poverty and Famines (1981) — demo citation</li>
+            <li>Famine Inquiry Commission report (1945) — demo citation</li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="verdict" data-verdict="backwards" data-confidence="low"
+               aria-label="Verdict: backwards">
+        <header class="verdict__head">
+          <p class="verdict__claim">Service prices rise because service
+          workers keep getting less productive.</p>
+          <p class="verdict__ruling">
+            <span class="verdict__badge">Backwards</span>
+            <span class="verdict__confidence">Low confidence</span>
+          </p>
+        </header>
+        <div class="verdict__body">
+          <p>The causality runs the other way around. Service productivity
+          mostly stands still; what moves is productivity elsewhere, which
+          bids up the economy-wide wage that service hours must pay. The
+          barber is no slower than in 1950. The factory next door got fast.</p>
+        </div>
+        <details class="verdict__sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Sectoral productivity growth accounting — demo citation</li>
+          </ul>
+        </details>
+      </section>
+    </section>
+
+    <!-- ================= timeline ================= -->
+    <section class="demo-section" aria-labelledby="demo-timeline">
+      <h2 id="demo-timeline">Timeline strip</h2>
+      <p class="demo-section__note">Horizontal on wide screens, vertical
+      below <span class="num">46rem</span>. Dates set in mono.</p>
+      <figure class="timeline" aria-label="Timeline of money, demo content">
+        <ol class="timeline__track">
+          <li class="timeline__event">
+            <span class="timeline__date">c. 3000 BCE</span>
+            <span class="timeline__label">Shekel serves as a unit of account in Mesopotamian ledgers</span>
+          </li>
+          <li class="timeline__event">
+            <span class="timeline__date">c. 640 BCE</span>
+            <span class="timeline__label">Lydia strikes electrum coins under state seal</span>
+          </li>
+          <li class="timeline__event">
+            <span class="timeline__date">1024 CE</span>
+            <span class="timeline__label">Song dynasty issues jiaozi, the first state paper money</span>
+          </li>
+          <li class="timeline__event">
+            <span class="timeline__date">1694</span>
+            <span class="timeline__label">Bank of England notes circulate against sovereign debt</span>
+          </li>
+          <li class="timeline__event">
+            <span class="timeline__date">1971</span>
+            <span class="timeline__label">The gold window closes; major currencies float</span>
+          </li>
+        </ol>
+      </figure>
+    </section>
+
+    <!-- ================= figures ================= -->
+    <section class="demo-section" aria-labelledby="demo-figures" id="demo-figures">
+      <h2>Figures</h2>
+      <p class="demo-section__note">Exemplars of the figure style law: inline
+      SVG, monoline duotone from the palette, consistent stroke weight, mono
+      labels, no stock art. The law itself is documented in SKELETON.md.</p>
+
+      <figure class="figure figure--plate" id="fig-d-1">
+        <div class="figure__frame">
+          <svg viewBox="0 0 720 330" xmlns="http://www.w3.org/2000/svg" role="img"
+               aria-label="Two diagrams. Left: five traders joined by ten crossing barter lines. Right: the same five traders each linked only to a central token, five lines in all.">
+            <defs>
+              <marker id="fd1-arrow" viewBox="0 0 8 8" refX="7" refY="4"
+                      markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M0,0.5 L7,4 L0,7.5" fill="none" stroke="#1F5C45" stroke-width="1.4"/>
+              </marker>
+            </defs>
+            <text x="180" y="28" text-anchor="middle" class="fig-label--brass fig-label">BARTER</text>
+            <text x="540" y="28" text-anchor="middle" class="fig-label--brass fig-label">A COMMON MEDIUM</text>
+            <g stroke="#20262A" stroke-width="1.25" fill="none" opacity="0.85">
+              <path d="M180,78 L267.4,141.5 M180,78 L234,244.3 M180,78 L126,244.3 M180,78 L92.6,141.5"/>
+              <path d="M267.4,141.5 L234,244.3 M267.4,141.5 L126,244.3 M267.4,141.5 L92.6,141.5"/>
+              <path d="M234,244.3 L126,244.3 M234,244.3 L92.6,141.5"/>
+              <path d="M126,244.3 L92.6,141.5"/>
+            </g>
+            <g fill="#F6F1E7" stroke="#20262A" stroke-width="2">
+              <circle cx="180" cy="78" r="20"/>
+              <circle cx="267.4" cy="141.5" r="20"/>
+              <circle cx="234" cy="244.3" r="20"/>
+              <circle cx="126" cy="244.3" r="20"/>
+              <circle cx="92.6" cy="141.5" r="20"/>
+            </g>
+            <g class="fig-label" text-anchor="middle">
+              <text x="180" y="83">A</text>
+              <text x="267.4" y="146.5">B</text>
+              <text x="234" y="249.3">C</text>
+              <text x="126" y="249.3">D</text>
+              <text x="92.6" y="146.5">E</text>
+            </g>
+            <text x="180" y="300" text-anchor="middle" class="fig-num">10 exchange ratios</text>
+            <g stroke="#1F5C45" stroke-width="1.5" fill="none"
+               marker-start="url(#fd1-arrow)" marker-end="url(#fd1-arrow)">
+              <path d="M540,104 L540,132"/>
+              <path d="M615.4,158.4 L567,175"/>
+              <path d="M586.6,238.9 L556,196"/>
+              <path d="M493.4,238.9 L524,196"/>
+              <path d="M464.6,158.4 L513,175"/>
+            </g>
+            <g fill="#F6F1E7" stroke="#20262A" stroke-width="2">
+              <circle cx="540" cy="84" r="20"/>
+              <circle cx="627.4" cy="147.5" r="20"/>
+              <circle cx="594" cy="250.3" r="20"/>
+              <circle cx="486" cy="250.3" r="20"/>
+              <circle cx="452.6" cy="147.5" r="20"/>
+            </g>
+            <circle cx="540" cy="166" r="26" fill="#F6F1E7" stroke="#B8892B" stroke-width="2.5"/>
+            <circle cx="540" cy="166" r="19" fill="none" stroke="#B8892B" stroke-width="1"/>
+            <text x="540" y="172" text-anchor="middle" class="fig-label--brass fig-label">&#164;</text>
+            <g class="fig-label" text-anchor="middle">
+              <text x="540" y="89">A</text>
+              <text x="627.4" y="152.5">B</text>
+              <text x="594" y="255.3">C</text>
+              <text x="486" y="255.3">D</text>
+              <text x="452.6" y="152.5">E</text>
+            </g>
+            <text x="540" y="300" text-anchor="middle" class="fig-num">5 prices</text>
+          </svg>
+        </div>
+        <figcaption>
+          <span class="figure__number">Figure D.1</span>
+          Five traders, five goods. Barter prices every pair against every
+          other pair; a common medium prices each good once.
+          <span class="figure__source">Schematic. Demo content.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="figure" id="fig-d-2">
+        <div class="figure__frame">
+          <svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img"
+               aria-label="Line chart, 1980 to 2025. A green line labeled services climbs from an index of 100 to about 220. An ink line labeled manufactured goods falls from 100 to about 41. Both lines are read against the same axis, indexed to 100 in 1980.">
+            <!-- grid -->
+            <g stroke="#D9CFBA" stroke-width="1">
+              <line x1="48" y1="78.7" x2="570" y2="78.7"/>
+              <line x1="48" y1="147" x2="570" y2="147"/>
+              <line x1="48" y1="283.7" x2="570" y2="283.7"/>
+            </g>
+            <line x1="48" y1="215.3" x2="570" y2="215.3" stroke="#B9AC8F"
+                  stroke-width="1" stroke-dasharray="5 4"/>
+            <line x1="48" y1="352" x2="570" y2="352" stroke="#B9AC8F" stroke-width="1.25"/>
+            <!-- y labels -->
+            <g class="fig-num" text-anchor="end">
+              <text x="40" y="356">0</text>
+              <text x="40" y="287.7">50</text>
+              <text x="40" y="219.3">100</text>
+              <text x="40" y="151">150</text>
+              <text x="40" y="82.7">200</text>
+            </g>
+            <text x="186" y="206" class="fig-num">1980 = 100</text>
+            <!-- x labels -->
+            <g class="fig-num" text-anchor="middle">
+              <text x="48" y="376">1980</text>
+              <text x="164" y="376">1990</text>
+              <text x="280" y="376">2000</text>
+              <text x="396" y="376">2010</text>
+              <text x="512" y="376">2020</text>
+            </g>
+            <!-- series -->
+            <path d="M48,215.3 L106,204.4 L164,190.7 L222,174.3 L280,157.9 L338,138.8 L396,116.9 L454,93.7 L512,71.8 L570,51.3"
+                  fill="none" stroke="#1F5C45" stroke-width="2"
+                  stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M48,215.3 L106,220.8 L164,229 L222,237.2 L280,248.2 L338,259.1 L396,270 L454,281 L512,289.2 L570,296"
+                  fill="none" stroke="#20262A" stroke-width="2"
+                  stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="570" cy="51.3" r="3.5" fill="#1F5C45"/>
+            <circle cx="570" cy="296" r="3.5" fill="#20262A"/>
+            <!-- direct labels -->
+            <g class="fig-label">
+              <text x="580" y="56">Services</text>
+              <text x="580" y="292">Manufactured</text>
+              <text x="580" y="307">goods</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption>
+          <span class="figure__number">Figure D.2</span>
+          Relative consumer prices, indexed to 100 in 1980. Service prices
+          climb against the basket while manufactured goods fall; the gap is
+          the cost-disease signature.
+          <span class="figure__source">Illustrative series. Demo content.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="figure figure--plate" id="fig-d-3">
+        <div class="figure__frame">
+          <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img"
+               aria-label="Two small panels sharing a one-year horizontal axis. Left panel: grain in store holds nearly level. Right panel: the grain a day's wage buys falls through a dashed subsistence threshold partway through the year.">
+            <text x="195" y="28" text-anchor="middle" class="fig-label--brass fig-label">GRAIN IN STORE</text>
+            <text x="555" y="28" text-anchor="middle" class="fig-label--brass fig-label">GRAIN A DAY&rsquo;S WAGE BUYS</text>
+            <!-- baselines -->
+            <line x1="60" y1="240" x2="330" y2="240" stroke="#B9AC8F" stroke-width="1.25"/>
+            <line x1="420" y1="240" x2="690" y2="240" stroke="#B9AC8F" stroke-width="1.25"/>
+            <!-- panel A: stock stays high -->
+            <path d="M60,118 L114,115 L168,112 L222,110 L276,108 L330,104"
+                  fill="none" stroke="#1F5C45" stroke-width="2"
+                  stroke-linejoin="round" stroke-linecap="round"/>
+            <text x="195" y="92" text-anchor="middle" class="fig-num">stock holds</text>
+            <!-- panel B: entitlement collapses -->
+            <line x1="420" y1="170" x2="690" y2="170" stroke="#8F3B2E"
+                  stroke-width="1.25" stroke-dasharray="5 4"/>
+            <text x="688" y="162" text-anchor="end" class="fig-num" fill="#8F3B2E">subsistence</text>
+            <path d="M420,90 L474,100 L528,120 L582,150 L636,195 L690,225"
+                  fill="none" stroke="#20262A" stroke-width="2"
+                  stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="606" cy="170" r="5" fill="none" stroke="#8F3B2E" stroke-width="2"/>
+            <!-- shared x annotation -->
+            <text x="195" y="268" text-anchor="middle" class="fig-num">one famine year</text>
+            <text x="555" y="268" text-anchor="middle" class="fig-num">one famine year</text>
+          </svg>
+        </div>
+        <figcaption>
+          <span class="figure__number">Figure D.3</span>
+          A famine can arrive with grain in store. When grain prices outrun
+          wages, the exchange rate between labor and food crosses
+          subsistence; the ring marks the crossing.
+          <span class="figure__source">Schematic after Sen (1981). Demo content.</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ================= table ================= -->
+    <section class="demo-section" aria-labelledby="demo-table">
+      <h2 id="demo-table">Ledger table</h2>
+      <p class="demo-section__note">Numerals right-aligned in tabular mono;
+      oxide marks values in a negative state. The closing double rule is the
+      ledger signature.</p>
+      <div class="table-wrap">
+        <table class="table-ledger">
+          <caption>Labor priced in grain, illustrative famine year</caption>
+          <thead>
+            <tr>
+              <th scope="col">Quarter</th>
+              <th scope="col" class="num">Grain price, index</th>
+              <th scope="col" class="num">Daily wage, index</th>
+              <th scope="col" class="num">Grain a wage buys, kg</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>First</td>
+              <td class="num">100</td>
+              <td class="num">100</td>
+              <td class="num">3.8</td>
+            </tr>
+            <tr>
+              <td>Second</td>
+              <td class="num">148</td>
+              <td class="num">103</td>
+              <td class="num">2.6</td>
+            </tr>
+            <tr>
+              <td>Third</td>
+              <td class="num">245</td>
+              <td class="num">105</td>
+              <td class="num num--down">1.6</td>
+            </tr>
+            <tr>
+              <td>Fourth</td>
+              <td class="num">310</td>
+              <td class="num">106</td>
+              <td class="num num--down">1.3</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================= furniture ================= -->
+    <section class="demo-section" aria-labelledby="demo-furniture">
+      <h2 id="demo-furniture">Furniture</h2>
+      <p class="demo-section__note">Status chips and the chapter pager.</p>
+      <p>
+        <span class="chip chip--shipped">Available</span>
+        <span class="chip chip--forthcoming">Forthcoming</span>
+      </p>
+      <nav class="pager" aria-label="Pager demonstration">
+        <div class="pager__prev">
+          <span class="pager__eyebrow">Previous</span>
+          <a href="books/frameworks/index.html">Frameworks: contents</a>
+        </div>
+        <div class="pager__next">
+          <span class="pager__eyebrow">Next</span>
+          <span class="pager__inert">Chapter 2</span>
+          <span class="pager__note">in preparation</span>
+        </div>
+      </nav>
+    </section>
+
+  </div>
+</main>
+
+<div data-include="site-footer"></div>
+<script src="js/include.js"></script>
+<script src="js/verdict.js"></script>
+</body>
+</html>

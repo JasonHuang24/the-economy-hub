@@ -1,0 +1,88 @@
+/* ==========================================================================
+   The Economy Hub — print
+   Chapters should print like a textbook: ink on white, no chrome, figures
+   and verdicts intact. Loaded with media="print".
+   ========================================================================== */
+
+@page {
+  margin: 2cm;
+}
+
+html,
+body {
+  background: #fff;
+}
+
+body {
+  color: #000;
+  font-size: 11pt;
+  line-height: 1.55;
+}
+
+/* No chrome on paper */
+.site-header,
+.site-footer,
+.skip-link,
+.chapter-toc,
+.chapter-pager,
+.pager,
+.demo-banner,
+.shelf__open {
+  display: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.chapter-layout,
+.book-hero {
+  display: block;
+}
+
+.chapter-body {
+  max-width: none;
+}
+
+/* The engraved numeral becomes an outline; letterpress needs paper. */
+.chapter-numeral {
+  color: transparent;
+  -webkit-text-stroke: 1px #777;
+  text-shadow: none;
+}
+
+/* Keep the record intact */
+.figure,
+.verdict,
+.callout,
+.timeline,
+.table-wrap {
+  break-inside: avoid;
+}
+
+h1,
+h2,
+h3 {
+  break-after: avoid;
+}
+
+.figure--plate .figure__frame,
+.callout--ledger {
+  background: #fff;
+}
+
+/* Verdict sources: verdict.js opens every <details> on beforeprint; the
+   summary control itself is noise on paper. */
+.verdict__sources summary {
+  display: none;
+}
+
+.verdict__sources ul {
+  padding-top: 0.5rem;
+}
+
+.cover {
+  box-shadow: none;
+  border: 1px solid #999;
+}
