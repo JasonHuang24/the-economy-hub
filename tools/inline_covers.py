@@ -23,6 +23,7 @@ COVERS = ROOT / "assets" / "covers"
 PAGES = [
     ROOT / "index.html",
     ROOT / "books" / "frameworks" / "index.html",
+    ROOT / "books" / "history" / "index.html",
 ]
 
 pattern = re.compile(
