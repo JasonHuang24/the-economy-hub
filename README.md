@@ -10,7 +10,7 @@ Five volumes on how the world economy works — systems, history, countries, wor
 
 The Economy Hub is a static reading site organized as five volumes. Each chapter poses a single question and answers it by walking through the mechanism and the evidence, then leaves the verdict to the reader. Big popular claims get put on trial: each carries a ruling, a stated confidence level, and sourced citations.
 
-Volume I (Frameworks) is live with its first three chapters; the remaining volumes are in preparation.
+Volume I (Frameworks) is live with its first five chapters; the remaining volumes are in preparation.
 
 ---
 
@@ -33,6 +33,8 @@ Volume I (Frameworks) is live with its first three chapters; the remaining volum
 | 1 | Is the economy zero-sum? |
 | 2 | What actually separates capitalism, socialism, and communism? |
 | 3 | How have the rival systems performed in practice? |
+| 4 | Why did the planned economies fall behind, and was it inevitable? |
+| 5 | Why do monopolies persist in markets that are supposed to be competitive? |
 
 `books/frameworks/index.html` is the volume cover and table of contents.
 
