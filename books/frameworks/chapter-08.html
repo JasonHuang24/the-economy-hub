@@ -82,8 +82,7 @@
       farmers, agriculture was a genuine national emergency: farm prices
       had collapsed, rural banks were failing with the harvests, and
       farming was not a niche but a fifth of the workforce, recently a
-      third. A democracy responding to distress on that scale was doing
-      what democracies are for. The instructive part is what happened
+      third. The instructive part is what happened
       after the emergency. The farm share of the workforce collapsed
       across the century, from <span class="num">41%</span> in
       <span class="num">1900</span> and <span class="num">21.5%</span>
@@ -113,8 +112,8 @@
                   United States for 1900-1970 and Census of Population for 2000);
                   panel B: USDA ERS, Farm Income and Wealth Statistics, February 5,
                   2026 release (CSV data file), US series "Value of government
-                  payments, total," annual, 1933-2025, nominal $1,000s, deflated
-                  with the file's own chain-type GDP deflator column
+                  payments, total," annual, 1933-2024 (estimates), nominal $1,000s,
+                  deflated with the file's own chain-type GDP deflator column
           series: panel A: farm share of US workforce, five anchor years;
                   panel B: federal direct government payments to farms, billions of
                   2025 dollars, annual
@@ -133,10 +132,10 @@
                   2002:21.1 2003:27.6 2004:21.1 2005:38.5 2006:24.1 2007:17.7
                   2008:17.9 2009:17.7 2010:17.8 2011:14.7 2012:14.7 2013:14.9
                   2014:13.0 2015:14.3 2016:17.0 2017:14.8 2018:17.2 2019:27.8
-                  2020:55.6 2021:30.3 2022:17.0 2023:12.9 2024:10.3 2025:30.5
+                  2020:55.6 2021:30.3 2022:17.0 2023:12.9 2024:10.3
           units: panel A percent of workforce; panel B billions of 2025 US dollars
-                  (nominal payments x deflator(2025)/deflator(year); 2026 forecast
-                  year excluded)
+                  (nominal payments x deflator(2025)/deflator(year); the release's
+                  2025 and 2026 forecast years excluded)
           transformations: shared x = 60 + (year - 1900) * 4.8 (1900 -> 60, 1925 ->
                   180, 1950 -> 300, 1975 -> 420, 2000 -> 540, 2025 -> 660; 1933 ->
                   218.4); panel A y = 180 - share * (140/45) (0 -> 180, 20 -> 117.8,
@@ -147,7 +146,7 @@
         -->
         <div class="figure__frame">
           <svg viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img"
-               aria-label="Two panels sharing a time axis from 1900 to 2025. The top panel shows the farm share of the US workforce falling from 41 percent in 1900 to 21.5 in 1930, 16 in 1945, 4 in 1970, and 1.9 percent in 2000. The bottom panel shows federal direct payments to farms in 2025 dollars: nothing before 1933, then a jagged series that spikes near 40 billion in 1987, 41 billion in 2000, and peaks at 55.6 billion in 2020. Support rises and plateaus while the sector shrinks twenty-fold.">
+               aria-label="Two panels sharing a time axis from 1900 to 2025. The top panel shows the farm share of the US workforce falling from 41 percent in 1900 to 21.5 in 1930, 16 in 1945, 4 in 1970, and 1.9 percent in 2000. The bottom panel shows federal direct payments to farms in 2025 dollars: nothing before 1933, then a jagged series that spikes near 40 billion in 1987, 41 billion in 2000, and peaks at 55.6 billion in 2020. The payments keep returning to ever-higher peaks while the sector shrinks twenty-fold.">
             <text x="60" y="30" class="fig-label--brass fig-label">FARM SHARE OF THE US WORKFORCE</text>
             <!-- panel A grid -->
             <g stroke="#D9CFBA" stroke-width="1">
@@ -195,7 +194,7 @@
             <!-- pre-program era -->
             <text x="139" y="376" text-anchor="middle" class="fig-num fig-label--soft">no federal payment programs</text>
             <!-- panel B series -->
-            <path d="M218.4,383.1 L223.2,367.6 L228.0,362.0 L232.8,376.7 L237.6,374.3 L242.4,368.7 L247.2,353.2 L252.0,355.3 L256.8,365.5 L261.6,363.1 L266.4,364.4 L271.2,360.1 L276.0,362.0 L280.8,364.1 L285.6,380.7 L290.4,382.8 L295.2,384.7 L300.0,382.0 L304.8,382.5 L309.6,382.8 L314.4,384.7 L319.2,383.6 L324.0,384.4 L328.8,376.7 L333.6,366.3 L338.4,365.2 L343.2,374.8 L348.0,374.5 L352.8,357.2 L357.6,352.1 L362.4,353.7 L367.2,344.1 L372.0,339.1 L376.8,324.1 L381.6,329.7 L386.4,324.9 L391.2,322.3 L396.0,326.8 L400.8,339.1 L405.6,328.7 L410.4,351.6 L415.2,382.8 L420.0,380.1 L424.8,381.5 L429.6,370.0 L434.4,358.8 L439.2,376.9 L444.0,378.8 L448.8,374.5 L453.6,363.9 L458.4,323.1 L463.2,331.3 L468.0,338.0 L472.8,311.9 L477.6,282.0 L482.4,299.6 L487.2,324.7 L492.0,336.1 L496.8,344.1 L501.6,339.9 L506.4,318.3 L511.2,348.7 L516.0,352.7 L520.8,353.2 L525.6,352.9 L530.4,329.5 L535.2,286.3 L540.0,280.4 L544.8,286.5 L549.6,333.7 L554.4,316.4 L559.2,333.7 L564.0,287.3 L568.8,325.7 L573.6,342.8 L578.4,342.3 L583.2,342.8 L588.0,342.5 L592.8,350.8 L597.6,350.8 L602.4,350.3 L607.2,355.3 L612.0,351.9 L616.8,344.7 L621.6,350.5 L626.4,344.1 L631.2,315.9 L636.0,241.7 L640.8,309.2 L645.6,344.7 L650.4,355.6 L655.2,362.5 L660.0,308.7"
+            <path d="M218.4,383.1 L223.2,367.6 L228.0,362.0 L232.8,376.7 L237.6,374.3 L242.4,368.7 L247.2,353.2 L252.0,355.3 L256.8,365.5 L261.6,363.1 L266.4,364.4 L271.2,360.1 L276.0,362.0 L280.8,364.1 L285.6,380.7 L290.4,382.8 L295.2,384.7 L300.0,382.0 L304.8,382.5 L309.6,382.8 L314.4,384.7 L319.2,383.6 L324.0,384.4 L328.8,376.7 L333.6,366.3 L338.4,365.2 L343.2,374.8 L348.0,374.5 L352.8,357.2 L357.6,352.1 L362.4,353.7 L367.2,344.1 L372.0,339.1 L376.8,324.1 L381.6,329.7 L386.4,324.9 L391.2,322.3 L396.0,326.8 L400.8,339.1 L405.6,328.7 L410.4,351.6 L415.2,382.8 L420.0,380.1 L424.8,381.5 L429.6,370.0 L434.4,358.8 L439.2,376.9 L444.0,378.8 L448.8,374.5 L453.6,363.9 L458.4,323.1 L463.2,331.3 L468.0,338.0 L472.8,311.9 L477.6,282.0 L482.4,299.6 L487.2,324.7 L492.0,336.1 L496.8,344.1 L501.6,339.9 L506.4,318.3 L511.2,348.7 L516.0,352.7 L520.8,353.2 L525.6,352.9 L530.4,329.5 L535.2,286.3 L540.0,280.4 L544.8,286.5 L549.6,333.7 L554.4,316.4 L559.2,333.7 L564.0,287.3 L568.8,325.7 L573.6,342.8 L578.4,342.3 L583.2,342.8 L588.0,342.5 L592.8,350.8 L597.6,350.8 L602.4,350.3 L607.2,355.3 L612.0,351.9 L616.8,344.7 L621.6,350.5 L626.4,344.1 L631.2,315.9 L636.0,241.7 L640.8,309.2 L645.6,344.7 L650.4,355.6 L655.2,362.5"
                   fill="none" stroke="#1F5C45" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round"/>
             <!-- annotations -->
             <line x1="218.4" y1="390" x2="218.4" y2="248" stroke="#B9AC8F" stroke-width="1" stroke-dasharray="4 4"/>
@@ -220,9 +219,11 @@
           under <span class="num">2%</span> across the century (top),
           while direct federal payments, expressed in
           <span class="num">2025</span> dollars, arrived with the New
-          Deal and then kept arriving, spiking with each farm crisis
-          and peaking at <span class="num">$55.6</span> billion in
-          <span class="num">2020</span> (bottom). Payments are shown
+          Deal and then kept arriving, a jagged series that keeps
+          returning to ever-higher peaks: near <span class="num">$40</span>
+          billion in <span class="num">1987</span> and again in
+          <span class="num">2000</span>, then <span class="num">$55.6</span>
+          billion in <span class="num">2020</span> (bottom). Payments are shown
           real; the two panels share the time axis and nothing else,
           because their units do not mix.
           <span class="figure__source">USDA ERS: EIB-3 (2005), p. 2,
@@ -243,12 +244,30 @@
       it today, six decades after the emergency it answered, for a
       sector that is now a small sliver of European employment
       (European Parliament budget fact sheets). Japan guards rice,
-      Switzerland its dairy, and every case has local color; what no
-      rich democracy has is the opposite case, a major farm-support
-      program that wound down when its founding emergency did. A
-      pattern that survives that many differences in culture and
-      constitution is not made of culture or constitution. It is made
-      of arithmetic.</p>
+      Switzerland its dairy, and every case has local color. One rich
+      democracy supplies the great exception, and the exception is
+      worth reading closely for what dismantling took. In
+      <span class="num">1984</span> New Zealand&rsquo;s newly elected
+      Labour government, facing a fiscal crisis, began deregulating
+      the whole economy at once, and farm support went into the same
+      fire as everything else: the supplementary minimum prices that
+      had paid farmers NZ$<span class="num">346</span> million in
+      <span class="num">1984</span> hit zero by
+      <span class="num">1987</span>, and the measured rate of
+      assistance to agriculture fell from <span class="num">52%</span>
+      to <span class="num">3%</span> by <span class="num">1993</span>
+      (Te Ara, the government&rsquo;s encyclopedia of New Zealand, and
+      the Purdue agricultural-economics account of the reforms carry
+      the record). The support wound down not because farming&rsquo;s
+      founding emergency had finally passed but because a crisis put
+      every sector&rsquo;s subsidies on the table at once, leaving
+      farm organizations no separate deal to defend, and on
+      Olson&rsquo;s arithmetic that is exactly the kind of shock it
+      should take, since a repeal aimed at farmers alone meets the
+      organized few head-on. A pattern that survives that many
+      differences in culture and constitution, and yields only to a
+      shock of that size, is not made of culture or constitution. It
+      is made of arithmetic.</p>
 
       <h2>The arithmetic of showing up</h2>
       <p>The arithmetic was formalized in <span class="num">1965</span>
@@ -349,15 +368,17 @@
       <span class="num">1998</span>, of which about a billion dollars
       reached the growers and processors of two crops, with roughly
       <span class="num">70%</span> of that going to the beet sector.
-      Spread the cost over the country and it came to about seven
-      dollars a head that year, a sum no consumer will ever organize
-      to recover, priced invisibly into groceries. Concentrate the
-      benefit on a small industry and it becomes payrolls, land
-      values, and mortgages, a matter of existence to people who can
-      find the hearing room blindfolded. Seven dollars against a
-      livelihood is not a fair fight, and Olson&rsquo;s point is that
-      it never will be, under any flag: the imbalance is built into
-      the shape of the stakes, not the morals of the players.</p>
+      Spread the cost over the country and it came to at most about
+      seven dollars a head that year, and under three on GAO&rsquo;s
+      more cautious reading of how much of it reached the checkout, a
+      sum no consumer will ever organize to recover, priced invisibly
+      into groceries. Concentrate the benefit on a small industry and
+      it becomes payrolls, land values, and mortgages, a matter of
+      existence to people who can find the hearing room blindfolded.
+      Seven dollars against a livelihood is not a contest, and
+      Olson&rsquo;s point is that it never will be, under any flag:
+      the imbalance is built into the shape of the stakes, not the
+      morals of the players.</p>
 
       <h2>The mohair rule</h2>
       <p>If the mechanism is right, a subsidy&rsquo;s survival should
@@ -373,10 +394,14 @@
       thirty-three years. When Congress finally voted it down in
       <span class="num">1993</span>, the program was projected to cost
       <span class="num">$923</span> million over the following five
-      years; supports ended with the <span class="num">1995</span>
-      clip, and in <span class="num">2002</span>, with almost nobody
-      watching, the farm bill quietly restored wool and mohair support
-      in a new form, where it remains. The founding rationale was dead
+      years, and supports ended with the <span class="num">1995</span>
+      clip. Even the lapse did not hold: emergency farm legislation
+      slipped payments back to wool and mohair growers for the
+      <span class="num">1999</span> and <span class="num">2000</span>
+      clips (Congressional Research Service, RS20896), and in
+      <span class="num">2002</span>, with almost nobody watching, the
+      farm bill quietly restored wool and mohair support in a new
+      form, where it remains. The founding rationale was dead
       for sixty years of payments and counting. Nothing about the
       case is exceptional except its legibility; it is the mechanism
       running in laboratory conditions.</p>
@@ -426,14 +451,14 @@
       subsidy repeal produces genuine hardship stories rather than
       exposed fat cats, why the hardship stories are politically
       unanswerable, and why the cheapest legislative move is always
-      renewal. The program&rsquo;s original sin was forgiven long ago;
-      what remains is a liability nobody can afford to recognize,
-      rolled forward one farm bill at a time.</p>
+      renewal. The program&rsquo;s founding windfall was cashed out
+      long ago; what remains is a liability nobody can afford to
+      recognize, rolled forward one farm bill at a time.</p>
       <p>Add the last ingredient, the asymmetry of blame. A legislator
       who votes to end a subsidy creates identifiable, photographable
       losers in a named district within the year; the beneficiaries of
       repeal are everyone, slightly, eventually, and no journalist
-      will ever interview a family whose groceries came to seven
+      will ever interview a family whose groceries came to a few
       dollars less. Costs that are concentrated and immediate beat
       benefits that are diffuse and deferred in every legislature on
       earth, which is why the graveyard of expired subsidies is so
@@ -462,16 +487,17 @@
           <span class="num">2%</span> of the American workforce by
           <span class="num">2000</span>, and support per farmer rose
           precisely as the farm vote collapsed, here and across the
-          rich world. The causation runs the other way. Shrinking made
-          the group easier to organize and raised each member&rsquo;s
-          per-head stake, while the paying majority&rsquo;s per-head
-          cost stayed beneath notice; a genuinely huge farm bloc, like
-          the one that existed in <span class="num">1900</span>, would
-          have been too diffuse to hold together. The programs are not
-          the tribute majorities pay to a mighty voting bloc; they are
+          rich world. Olson&rsquo;s mechanism reads that arithmetic
+          the other way: shrinking raised each member&rsquo;s per-head
+          stake and made the group easier to organize, while the
+          paying majority&rsquo;s per-head cost stayed beneath notice,
+          and the record is consistent with that reading; a genuinely
+          huge farm bloc, like the one that existed in
+          <span class="num">1900</span>, would have been too diffuse
+          to hold together. On Olson&rsquo;s logic the programs are
           what small, organized minorities extract from inattentive
-          majorities, and their durability grows as the minority
-          shrinks.</p>
+          majorities rather than tribute paid to a mighty voting bloc,
+          and their durability grows as the minority shrinks.</p>
         </div>
         <details class="verdict__sources">
           <summary>Sources</summary>
@@ -479,7 +505,7 @@
             <li>USDA ERS EIB-3 (2005) and Farm Income and Wealth
             Statistics (February 2026 release) &mdash; the two series
             in Figure 8.1: employment share falling twenty-fold while
-            real payments rose and plateaued.</li>
+            real payments kept returning to new peaks.</li>
             <li>Olson, <em>The Logic of Collective Action</em> (1965)
             &mdash; small groups with concentrated stakes organize;
             large groups with diffuse stakes free-ride.</li>
