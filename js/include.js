@@ -18,8 +18,8 @@
   var VOLUMES = [
     { num: "I", title: "Frameworks", slug: "frameworks", shipped: true,
       desc: "Economic systems, in theory and in practice." },
-    { num: "II", title: "History", slug: "history", shipped: false,
-      desc: "Exchange and its institutions, from barter to boom and bust." },
+    { num: "II", title: "History", slug: "history", shipped: true,
+      desc: "Exchange and its institutions, from barter to the attention market." },
     { num: "III", title: "Countries", slug: "countries", shipped: false,
       desc: "Why national outcomes diverge." },
     { num: "IV", title: "Work", slug: "work", shipped: false,

@@ -38,7 +38,7 @@ VOLUMES = [
     ("frameworks",  "I",   "VOLUME ONE",   "Frameworks",
      ["Economic systems, in theory", "and in practice."], 5, 130),
     ("history",     "II",  "VOLUME TWO",   "History",
-     ["Exchange and its institutions,", "from barter to boom and bust."], 6, 112),
+     ["Exchange and its institutions,", "from barter to the attention market."], 6, 112),
     ("countries",   "III", "VOLUME THREE", "Countries",
      ["Why national outcomes diverge."], 7, 94),
     ("work",        "IV",  "VOLUME FOUR",  "Work",

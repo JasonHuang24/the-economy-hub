@@ -19,7 +19,7 @@ Volume I (Frameworks) is live with all ten chapters; the remaining volumes are i
 | Vol | Title | Scope | Status |
 |---|---|---|---|
 | I | Frameworks | Economic systems, in theory and in practice | **Available** |
-| II | History | Exchange and its institutions, from barter to boom and bust | Forthcoming |
+| II | History | Exchange and its institutions, from barter to the attention market | Forthcoming |
 | III | Countries | Why national outcomes diverge | Forthcoming |
 | IV | Work | Labor, hours, wages, and the purpose of a job | Forthcoming |
 | V | Pathologies | Failure modes, and how economists know what they know | Forthcoming |
