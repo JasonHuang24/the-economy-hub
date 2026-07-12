@@ -103,7 +103,7 @@
       space in <em>The Sun</em>, and the cheaper the paper and the wider it spread,
       the more that space was worth. The reader bought news; the advertiser bought
       the reader&rsquo;s eyes; and the paper lived on the second sale, not the
-      first. This is the mechanism that every free app now runs on, and it is worth
+      first. This is the mechanism that ad-supported free apps now run on, and it is worth
       being exact about the roles, because a popular slogan blurs them. It is often
       said that when a service is free, you are the product. The phrase is a modern
       one, from the age of television and the internet rather than of Day, and as a
@@ -170,7 +170,8 @@
       hundred years, dipping in recessions and during the Second World War, when
       output surged and advertising was constrained, but showing no lasting upward or
       downward march. The attention market, measured as a share of everything the
-      country produces, is about as big now as it was in the age of the newspaper.</p>
+      country produces, was about as big at the close of the twentieth century as it
+      had been in the age of the newspaper.</p>
       <p>The second fact is that within that stable total, the money moved
       relentlessly from one medium to the next. Advertising began the century
       overwhelmingly in print, in the newspapers and magazines that were then the
@@ -195,18 +196,23 @@
             1938 : 1.2 / 0.2 / 0.9   (total 2.2)
             1952 : 1.0 / 0.3 / 0.7   (total 2.0)
             1998 : 0.7 / 0.7 / 0.9   (total 2.4)
-          CONSTRUCT / SCOPE NOTE (D11, D10 law 5): a fully separated four-medium series
-            (newspapers / radio / television / internet) as a share of GDP across the whole
-            century is not available from an open primary; the per-medium annual dollars sit
-            inside the proprietary Coen (CS Ad) dataset. This plate therefore plots the
-            three-band split the open Galbi source does report, and ENDS the plotted series at
-            1998 (its last benchmark), single-vintage, per the Fig 8.1 / Fig 4.2 precedent. The
-            digital era after 1998 is described in prose and the caption with its own sourced
-            figures, not plotted onto this GDP axis (US "measured media" totals after 2007 are
-            on a narrower definition than the Coen total and would not be comparable). The
+          CONSTRUCT / SCOPE NOTE (D11, D10 law 5): the CS Ad Dataset publishes advertising
+            dollars by individual medium (newspapers / magazines / radio / television /
+            internet, 1919-2007, as a downloadable Excel workbook), so a fully separated
+            four-medium share-of-GDP series IS buildable from an open source; it is a deferred
+            enhancement, scoped to the Vol II final pass. This plate deliberately plots the
+            coarser three-band Press / Broadcast / Other split that Galbi's Table 6 reports as
+            a share of GDP, because those three bands carry the chapter's point, the size
+            holding while the composition migrates, without the dataset's mid-century category
+            seams (television was split into broadcast and cable only in 1990, the
+            "Miscellaneous" bucket runs 13-20% across the century, and magazine coverage is
+            not consistent throughout). It ENDS the plotted series at 1998 (Table 6's last
+            benchmark), single-vintage, per the Fig 8.1 / Fig 4.2 precedent. The digital era
+            after 1998 is described in prose and the caption with its own sourced figures, not
+            plotted onto this GDP axis (US "measured media" totals after 2007 are on a
+            narrower definition than the Coen total and would not be comparable). The
             radio-to-television shift sits inside the single BROADCAST band and is described
-            in prose. Highest-value verification target for a cold pass: the four-medium %GDP
-            series, if the CS Ad dataset can be pulled.
+            in prose.
           coordinate mapping: x = 70 + (year-1920)*(600/100) [1920->70, 2020->670];
             y = 320 - pct*80 [0%->320, 3%->80]. y gridlines at 1/2/3%.
             x anchors: 1925->100.0, 1938->178.0, 1952->262.0, 1998->538.0.
@@ -325,9 +331,10 @@
           Structured Advertising Expenditure Dataset with US Census figures; three
           bands (press, radio and television, other) as a share of GDP. Component
           shares are rounded to <span class="num">0.1</span> of a percentage point and
-          need not sum exactly to the stated total. A fully separated four-medium
-          series is not available from an open source and would need the proprietary
-          Coen dataset. Digital-era figures: IAB / PwC Internet Advertising Revenue
+          need not sum exactly to the stated total. The three bands are an editorial
+          choice: the underlying Coen dataset is publicly available and does separate
+          individual media, so a finer four-medium split is possible and is left to a
+          later refinement. Digital-era figures: IAB / PwC Internet Advertising Revenue
           Report and eMarketer (crossovers); Pew, via the News Media Alliance
           (newspaper revenue). Points plotted; straight lines interpolate between
           benchmark years and claim nothing about the years between. Retrieved
@@ -343,14 +350,15 @@
       whole business a century earlier, collapsed: American newspaper ad revenue fell
       from a peak near <span class="num">$49</span> billion in
       <span class="num">2005</span> to under <span class="num">$10</span> billion by
-      <span class="num">2022</span>. By the middle of the
-      <span class="num">2020</span>s, close to four in every five advertising dollars
-      in the United States were spent online. The sums are large and, unlike the
-      share of GDP, they have grown in absolute terms with the economy: advertisers in
-      the United States alone now spend on the order of
-      <span class="num">$390</span> billion a year, and worldwide the figure passed
-      half a trillion dollars around <span class="num">2013</span> and reached about
-      <span class="num">$1</span> trillion in <span class="num">2024</span>. The
+      <span class="num">2022</span>. By the mid-<span class="num">2020</span>s, on
+      industry estimates, close to four in every five advertising dollars in the
+      United States were spent online. The sums are large and, unlike the share of
+      GDP, they have grown in absolute terms with the economy: advertisers in the
+      United States alone spend on the order of <span class="num">$390</span> billion
+      a year on estimates for <span class="num">2024</span>, and worldwide advertising
+      spending passed half a trillion dollars around <span class="num">2013</span> and,
+      by <span class="num">2024</span> estimates, reached about
+      <span class="num">$1</span> trillion. The
       market for your attention is not a curiosity at the edge of the economy. It is
       one of the largest single things the economy does.</p>
 
@@ -435,7 +443,7 @@
         </div>
         <figcaption>
           <span class="figure__number">Figure 9.2</span>
-          The two-sided platform behind a free app. The user, on the left, pays no
+          The two-sided platform behind an ad-supported free app. The user, on the left, pays no
           money; the platform gives the service away to assemble a large audience,
           and sells access to that audience&rsquo;s attention to the advertiser on
           the right, who is the paying customer. Money enters the system only from
@@ -474,7 +482,7 @@
       the attention itself.</p>
 
       <h2>A fair trade, or a rigged one</h2>
-      <p>Two readings of this bargain are worth stating plainly and at full strength,
+      <p>Two readings of this bargain are worth stating plainly,
       because they lead to very different judgments of it, and the evidence in this
       chapter does not settle the choice between them. On the first reading, the trade
       is a fair one, freely made. You are offered a genuinely valuable service, a map
@@ -522,13 +530,17 @@
           money&rdquo; to &ldquo;costing nothing,&rdquo; and the second is false. The
           service is given away to assemble an audience, and it is your attention, and
           the record of it, that is gathered and sold to the advertiser who is the
-          paying customer; the free version exists for that sale. You are paying, in a
+          paying customer; the ad-supported free version exists for that sale. You are paying, in a
           currency, attention and data, that you cannot feel leaving your account and
-          cannot earn more of. The claim is not a lie, which is why the confidence is
-          moderate rather than high, and why the verdict is Oversimplified rather than
-          Backwards: no money does change hands, and whether the attention you trade is
-          worth the service you get is a real question on which reasonable people
-          differ. What the word conceals is that there is a trade at all, and a price,
+          cannot earn more of. The claim is not a lie, which is why the verdict is
+          Oversimplified rather than Backwards: no money does change hands, and whether
+          the attention you trade is worth the service you get is a real question on
+          which reasonable people differ. The confidence is moderate rather than high
+          not for want of evidence, which is direct and plain, but because the claim
+          turns on the slippery word &ldquo;free,&rdquo; true of the price in money and
+          false of the real one; that gap between the word and the construct it names
+          is what holds the pip to moderate. What the word conceals is that there is a
+          trade at all, and a price,
           and a customer who is not you.</p>
         </div>
         <details class="verdict__sources">
@@ -550,8 +562,8 @@
             galbithink.org); IAB / PwC Internet Advertising Revenue Report; eMarketer;
             WARC &mdash; the scale of the advertising market, roughly
             <span class="num">2</span> per cent of US output for a century and about
-            <span class="num">$1</span> trillion worldwide by <span class="num">2024</span>,
-            which is the size of the business built on the trade.</li>
+            <span class="num">$1</span> trillion worldwide on <span class="num">2024</span>
+            estimates, which is the size of the business built on the trade.</li>
             <li>T. Wu, <em>The Attention Merchants</em> (Knopf, <span class="num">2016</span>)
             &mdash; the narrative history from Benjamin Day&rsquo;s penny <em>Sun</em> of
             <span class="num">1833</span> through radio and television to the feed, used
