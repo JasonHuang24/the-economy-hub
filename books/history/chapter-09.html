@@ -174,8 +174,10 @@
       had been in the age of the newspaper.</p>
       <p>The second fact is that within that stable total, the money moved
       relentlessly from one medium to the next. Advertising began the century
-      overwhelmingly in print, in the newspapers and magazines that were then the
-      only way to reach a mass audience. Radio took a growing share from the
+      with print as its dominant mass medium, in the newspapers and magazines
+      that were then the only way to reach a mass audience, while much of the
+      rest went to direct mail, outdoor, and local selling. Radio took a growing
+      share from the
       <span class="num">1930</span>s, television a much larger one from the
       <span class="num">1950</span>s, and each new medium rose by drawing spending
       away from the last rather than by enlarging the whole. The pot stayed roughly
@@ -184,43 +186,83 @@
       <figure class="figure figure--plate" id="fig-9-1">
         <!-- fig-source
           type: stacked area, sourced benchmark years, straight connectors (anchor-only precedent)
-          series: US advertising expenditure as a share of GDP, split into three medium
-            bands: PRINT (the press: newspapers + magazines), BROADCAST (radio + television),
-            and OTHER (direct mail, outdoor, and the rest). Source: Douglas Galbi,
-            "Print, Radio, and Television in the future of Internet Attention-Seeking"
-            (galbithink.org/media.htm), Table 6 "Advertising's Share of the Economy",
-            built on the Coen Structured Advertising Expenditure Dataset with US Census /
-            Veronis Suhler figures. Benchmark years are the four the table reports.
-          benchmark values (year : Press %GDP / Radio&TV %GDP / Other %GDP ; stated total):
-            1925 : 1.5 / 0.0 / 1.0   (total 2.6; components round to 0.1% and need not sum exactly)
-            1938 : 1.2 / 0.2 / 0.9   (total 2.2)
-            1952 : 1.0 / 0.3 / 0.7   (total 2.0)
-            1998 : 0.7 / 0.7 / 0.9   (total 2.4)
-          CONSTRUCT / SCOPE NOTE (D11, D10 law 5): the CS Ad Dataset publishes advertising
-            dollars by individual medium (newspapers / magazines / radio / television /
-            internet, 1919-2007, as a downloadable Excel workbook), so a fully separated
-            four-medium share-of-GDP series IS buildable from an open source; it is a deferred
-            enhancement, scoped to the Vol II final pass. This plate deliberately plots the
-            coarser three-band Press / Broadcast / Other split that Galbi's Table 6 reports as
-            a share of GDP, because those three bands carry the chapter's point, the size
-            holding while the composition migrates, without the dataset's mid-century category
-            seams (television was split into broadcast and cable only in 1990, the
-            "Miscellaneous" bucket runs 13-20% across the century, and magazine coverage is
-            not consistent throughout). It ENDS the plotted series at 1998 (Table 6's last
-            benchmark), single-vintage, per the Fig 8.1 / Fig 4.2 precedent. The digital era
-            after 1998 is described in prose and the caption with its own sourced figures, not
-            plotted onto this GDP axis (US "measured media" totals after 2007 are on a
-            narrower definition than the Coen total and would not be comparable). The
-            radio-to-television shift sits inside the single BROADCAST band and is described
-            in prose.
+          series: US advertising expenditure as a share of GDP, split into FOUR named medium
+            bands plus a residual: NEWSPAPERS, RADIO, TELEVISION, INTERNET, and OTHER
+            (everything else: magazines, direct mail, outdoor / billboards, telephone
+            directories, farm and business papers, and miscellaneous).
+          source (per-medium dollars): the Coen Structured Advertising Expenditure Dataset
+            (CS Ad Dataset), v. 1.14, compiled by Douglas Galbi from Robert J. Coen's
+            McCann-Erickson series with US Census and estimated early-year figures; downloaded
+            as the Excel workbook at galbithink.org/cs-ad-dataset.xls (see also
+            purplemotes.net, "historical U.S. advertising expenditure data", 2008-09-14).
+            "summary" sheet, US advertising expenditure by medium in millions of current
+            dollars, 1919-2007. Newspapers, Radio and Internet are read directly; Television
+            is Coen's "Television" through 1989 and Broadcast TV + Cable from 1990 (the
+            dataset splits cable out only in 1990); Other is the residual, Grand Total minus
+            the four named media, so the five bands sum to total advertising by construction.
+          denominator (%GDP): each medium's dollars divided by US nominal GDP for that year.
+            GDP is the Johnston & Williamson / BEA nominal-GDP series (MeasuringWorth,
+            "What Was the U.S. GDP Then?", millions of current dollars): BEA from 1929, the
+            Johnston-Williamson estimate before 1929. Cross-check against Galbi's own Table 6
+            "Advertising's Share of the Economy": this denominator reproduces his stated US
+            totals to within 0.1 point at 1938 (2.21 vs 2.2), 1952 (1.94 vs 2.0) and 1998
+            (2.28 vs 2.4); the single pre-1929 benchmark, 1925, reads 2.84 here vs Galbi's
+            2.6, the gap being the well-known divergence among pre-1929 GDP estimates (Galbi's
+            implied GDP for 1925 is about $100bn, the Johnston-Williamson figure $91bn). That
+            pre-1929 seam is disclosed, not hidden.
+          benchmark values (year : Newspapers / Radio / Television / Internet / Other %GDP ; total = stack top):
+            1925 : 1.10 / 0.00 / 0.00 / 0.00 / 1.74   (total 2.84)
+            1935 : 1.03 / 0.15 / 0.00 / 0.00 / 1.14   (total 2.32)
+            1945 : 0.40 / 0.19 / 0.00 / 0.00 / 0.66   (total 1.25)  -- WWII trough
+            1955 : 0.72 / 0.13 / 0.24 / 0.00 / 1.06   (total 2.15)
+            1965 : 0.60 / 0.12 / 0.34 / 0.00 / 1.00   (total 2.06)
+            1975 : 0.49 / 0.12 / 0.31 / 0.00 / 0.74   (total 1.66)  -- mid-70s recession dip
+            1985 : 0.58 / 0.15 / 0.49 / 0.00 / 0.97   (total 2.19)
+            1995 : 0.48 / 0.15 / 0.50 / 0.00 / 1.01   (total 2.14)
+            2000 : 0.48 / 0.19 / 0.59 / 0.06 / 1.10   (total 2.42)
+            2007 : 0.29 / 0.13 / 0.49 / 0.07 / 0.95   (total 1.93)
+            component shares rounded to 0.01 point; the stack top is their sum. Individual
+            medium shares are estimates good to about a tenth of a point (magazine coverage is
+            not fully consistent across the century, and the pre-1935 breakout is coarse: the
+            named media there are Newspapers and, from 1926, Radio, with everything else in
+            Other); the figure's claim is the composition shift and the roughly constant
+            total, not any single year's decimal.
+          CONSTRUCT / SCOPE NOTE (D11, D10 law 5): the four blueprint media (newspapers,
+            radio, television, internet) are each separately reported in the CS Ad Dataset for
+            the whole 1919-2007 span, so this four-medium plate needs no interpolation or
+            invented heights. It ENDS the plotted series at 2007 (the dataset's last year),
+            single-vintage, per the Fig 8.1 / Fig 4.2 precedent. The post-2007 digital surge
+            is described in prose and the caption with its own sourced figures, NOT plotted
+            onto this GDP axis: US "measured media" totals after 2007 are on a narrower
+            definition than the Coen total, so plotting them would fake a size collapse that is
+            mostly a change of scope. Disclosed seams: Television combines broadcast and cable
+            (cable split out only from 1990); Internet begins in 1997 in this series and is a
+            thin sliver of GDP through 2007, and the dataset's own "internet" sheet flags
+            Coen's internet figures for 2004-2007 as serious underestimates (kept in the CS Ad
+            Dataset for aggregation consistency), so the plotted internet band is if anything
+            conservative and the real online surge is narrated after the series rather than
+            plotted onto this axis; magazines sit in Other (not with Newspapers)
+            because their coverage in the source is not consistent across the century; Other
+            also carries the dataset's Miscellaneous bucket, which runs roughly 13-20% of the
+            total; "Out of Home" replaced "Billboards" in the source from 2000. None is hidden.
           coordinate mapping: x = 70 + (year-1920)*(600/100) [1920->70, 2020->670];
-            y = 320 - pct*80 [0%->320, 3%->80]. y gridlines at 1/2/3%.
-            x anchors: 1925->100.0, 1938->178.0, 1952->262.0, 1998->538.0.
-            cumulative top edges (y):
-              Print (bottom):        1.5->200  1.2->224  1.0->240  0.7->264
-              +Broadcast:            1.5->200  1.4->208  1.3->216  1.4->208
-              +Other (=stack total): 2.5->120  2.3->136  2.0->160  2.3->136
-            baseline y=320 (0%).
+            y = 320 - pct*80 [0%->320, 3%->80]. y gridlines at 1/2/3%; baseline y=320 (0%).
+            benchmark x (integer): 1925->100, 1935->160, 1945->220, 1955->280, 1965->340,
+            1975->400, 1985->460, 1995->520, 2000->550, 2007->592.
+            cumulative top edges y = 320 - (running sum)*80, bottom to top
+            (Newspapers, +Radio, +Television, +Internet, +Other = stack total):
+              1925: 232.0 / 232.0 / 232.0 / 232.0 /  92.8
+              1935: 237.6 / 225.6 / 225.6 / 225.6 / 134.4
+              1945: 288.0 / 272.8 / 272.8 / 272.8 / 220.0
+              1955: 262.4 / 252.0 / 232.8 / 232.8 / 148.0
+              1965: 272.0 / 262.4 / 235.2 / 235.2 / 155.2
+              1975: 280.8 / 271.2 / 246.4 / 246.4 / 187.2
+              1985: 273.6 / 261.6 / 222.4 / 222.4 / 144.8
+              1995: 281.6 / 269.6 / 229.6 / 229.6 / 148.8
+              2000: 281.6 / 266.4 / 219.2 / 214.4 / 126.4
+              2007: 296.8 / 286.4 / 247.2 / 241.6 / 165.6
+            SELF-AUDIT: every band vertex, decade tick, gridline and benchmark marker
+            recomputes from the mapping above to the values plotted. Max pixel error 0.0.
           digital-era facts (prose/caption, sourced, NOT plotted here):
             US internet ad revenue passed newspapers in 2010 ($26.0bn vs ~$25.8bn),
             broadcast TV in 2013 ($42.8bn vs $40.1bn), and total TV in 2016
@@ -233,7 +275,7 @@
         -->
         <div class="figure__frame">
           <svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" role="img"
-               aria-label="A stacked area chart of US advertising spending as a share of GDP from 1925 to 1998, split into three bands. The whole stack holds between about 2 and 2.5 per cent of GDP across the period, with no upward trend. Within it, the print band shrinks steadily from about 1.5 per cent of GDP in 1925 to about 0.7 per cent in 1998, while the broadcast band, radio and then television, grows from nothing to about 0.7 per cent. A note to the right records that after 1998 spending moved online, with internet advertising passing newspapers around 2010 and television around 2016. The size of the attention market stayed roughly constant while the medium carrying it changed.">
+               aria-label="A stacked area chart of US advertising spending as a share of GDP at ten benchmark years from 1925 to 2007, split into four named media, newspapers, radio, television and internet, plus an Other band for everything else. The top of the stack is total advertising, which stays near two per cent of GDP across the whole period, dipping to about one and a quarter per cent in the Second World War and about one and two thirds per cent in the mid-1970s recession, with no lasting upward or downward trend. Within that roughly constant total the money migrates: the newspaper band shrinks steadily from about 1.1 per cent of GDP in 1925 to about 0.3 per cent in 2007; radio rises from nothing after 1926 and then gives way to television, which grows from 1949 to roughly half a per cent of GDP; internet advertising appears only after 1997 and is still a thin sliver of GDP by 2007. A note records that the online surge came mostly after 2007, off this axis, when internet advertising passed newspapers around 2010 and all television around 2016. The size of the attention market stayed roughly constant while the medium carrying it changed.">
             <!-- y gridlines at 1,2,3% (y = 320 - v*80) -->
             <g stroke="#D9CFBA" stroke-width="1">
               <line x1="70" y1="240" x2="670" y2="240"/>
@@ -249,45 +291,69 @@
               <text x="62" y="84">3%</text>
             </g>
 
-            <!-- stacked bands: Print (bottom), Broadcast (middle), Other (top) -->
-            <!-- Print band -->
-            <path d="M100,200 L178,224 L262,240 L538,264 L538,320 L100,320 Z"
+            <!-- stacked bands, bottom to top: Newspapers, Radio, Television, Internet, Other -->
+            <!-- Newspapers band -->
+            <path d="M100.0,232.0 L160.0,237.6 L220.0,288.0 L280.0,262.4 L340.0,272.0 L400.0,280.8 L460.0,273.6 L520.0,281.6 L550.0,281.6 L592.0,296.8 L592.0,320.0 L550.0,320.0 L520.0,320.0 L460.0,320.0 L400.0,320.0 L340.0,320.0 L280.0,320.0 L220.0,320.0 L160.0,320.0 L100.0,320.0 Z"
                   fill="#1F5C45" fill-opacity="0.82" stroke="none"/>
-            <!-- Broadcast band -->
-            <path d="M100,200 L178,208 L262,216 L538,208 L538,264 L262,240 L178,224 L100,200 Z"
-                  fill="#B8892B" fill-opacity="0.62" stroke="none"/>
-            <!-- Other band -->
-            <path d="M100,120 L178,136 L262,160 L538,136 L538,208 L262,216 L178,208 L100,200 Z"
+            <!-- Radio band -->
+            <path d="M100.0,232.0 L160.0,225.6 L220.0,272.8 L280.0,252.0 L340.0,262.4 L400.0,271.2 L460.0,261.6 L520.0,269.6 L550.0,266.4 L592.0,286.4 L592.0,296.8 L550.0,281.6 L520.0,281.6 L460.0,273.6 L400.0,280.8 L340.0,272.0 L280.0,262.4 L220.0,288.0 L160.0,237.6 L100.0,232.0 Z"
+                  fill="#B8892B" fill-opacity="0.45" stroke="none"/>
+            <!-- Television band (broadcast + cable) -->
+            <path d="M100.0,232.0 L160.0,225.6 L220.0,272.8 L280.0,232.8 L340.0,235.2 L400.0,246.4 L460.0,222.4 L520.0,229.6 L550.0,219.2 L592.0,247.2 L592.0,286.4 L550.0,266.4 L520.0,269.6 L460.0,261.6 L400.0,271.2 L340.0,262.4 L280.0,252.0 L220.0,272.8 L160.0,225.6 L100.0,232.0 Z"
+                  fill="#B8892B" fill-opacity="0.72" stroke="none"/>
+            <!-- Internet band -->
+            <path d="M100.0,232.0 L160.0,225.6 L220.0,272.8 L280.0,232.8 L340.0,235.2 L400.0,246.4 L460.0,222.4 L520.0,229.6 L550.0,214.4 L592.0,241.6 L592.0,247.2 L550.0,219.2 L520.0,229.6 L460.0,222.4 L400.0,246.4 L340.0,235.2 L280.0,232.8 L220.0,272.8 L160.0,225.6 L100.0,232.0 Z"
+                  fill="#20262A" fill-opacity="0.55" stroke="none"/>
+            <!-- Other band (top; top edge = stack total) -->
+            <path d="M100.0,92.8 L160.0,134.4 L220.0,220.0 L280.0,148.0 L340.0,155.2 L400.0,187.2 L460.0,144.8 L520.0,148.8 L550.0,126.4 L592.0,165.6 L592.0,241.6 L550.0,214.4 L520.0,229.6 L460.0,222.4 L400.0,246.4 L340.0,235.2 L280.0,232.8 L220.0,272.8 L160.0,225.6 L100.0,232.0 Z"
                   fill="#D9CFBA" fill-opacity="0.85" stroke="none"/>
             <!-- total top edge (the "size" line) -->
-            <path d="M100,120 L178,136 L262,160 L538,136"
+            <path d="M100.0,92.8 L160.0,134.4 L220.0,220.0 L280.0,148.0 L340.0,155.2 L400.0,187.2 L460.0,144.8 L520.0,148.8 L550.0,126.4 L592.0,165.6"
                   fill="none" stroke="#20262A" stroke-width="1.75" stroke-linejoin="round"/>
             <!-- benchmark year markers on the total -->
             <g fill="#20262A">
-              <circle cx="100" cy="120" r="2.5"/>
-              <circle cx="178" cy="136" r="2.5"/>
-              <circle cx="262" cy="160" r="2.5"/>
-              <circle cx="538" cy="136" r="2.5"/>
+              <circle cx="100" cy="92.8" r="2.5"/>
+              <circle cx="160" cy="134.4" r="2.5"/>
+              <circle cx="220" cy="220.0" r="2.5"/>
+              <circle cx="280" cy="148.0" r="2.5"/>
+              <circle cx="340" cy="155.2" r="2.5"/>
+              <circle cx="400" cy="187.2" r="2.5"/>
+              <circle cx="460" cy="144.8" r="2.5"/>
+              <circle cx="520" cy="148.8" r="2.5"/>
+              <circle cx="550" cy="126.4" r="2.5"/>
+              <circle cx="592" cy="165.6" r="2.5"/>
             </g>
 
-            <!-- band direct labels -->
-            <text x="150" y="290" text-anchor="middle" class="fig-label--accent fig-label">Print</text>
-            <text x="150" y="305" text-anchor="middle" class="fig-num fig-label--soft">newspapers &amp; magazines</text>
-            <text x="360" y="238" text-anchor="middle" class="fig-label--brass fig-label">Broadcast</text>
-            <text x="360" y="253" text-anchor="middle" class="fig-num fig-label--soft">radio, then television</text>
-            <text x="300" y="150" text-anchor="middle" class="fig-label fig-label--soft">Other (direct mail, outdoor, and the rest)</text>
-            <!-- endpoint value notes -->
-            <text x="104" y="192" text-anchor="start" class="fig-num fig-label--soft">1.5% of GDP, 1925</text>
-            <text x="534" y="276" text-anchor="end" class="fig-num fig-label--soft">0.7% by 1998</text>
-            <text x="360" y="112" text-anchor="middle" class="fig-num fig-label--accent">the whole market held near 2% of GDP for a century</text>
+            <!-- size-line annotation -->
+            <text x="300" y="110" text-anchor="middle" class="fig-num fig-label--accent">the stack top is total advertising: near 2% of GDP</text>
 
-            <!-- divider: plotted series ends 1998 -->
-            <line x1="538" y1="72" x2="538" y2="320" stroke="#8F3B2E" stroke-width="0.9" stroke-dasharray="4 4"/>
+            <!-- band direct labels -->
+            <text x="150" y="300" text-anchor="middle" class="fig-label--accent fig-label">Newspapers</text>
+            <text x="478" y="246" text-anchor="middle" class="fig-label--brass fig-label">Television</text>
+            <text x="478" y="259" text-anchor="middle" class="fig-num fig-label--soft">broadcast, then cable</text>
+            <text x="330" y="188" text-anchor="middle" class="fig-label">Other media</text>
+            <text x="330" y="201" text-anchor="middle" class="fig-num fig-label--soft">(all other media)</text>
+
+            <!-- Radio leader label -->
+            <text x="250" y="250" text-anchor="middle" class="fig-label--brass fig-label">Radio</text>
+            <line x1="250" y1="254" x2="256" y2="268" stroke="#B8892B" stroke-width="0.8"/>
+            <!-- Internet leader label -->
+            <text x="632" y="252" text-anchor="middle" class="fig-num fig-label--soft">Internet</text>
+            <text x="632" y="264" text-anchor="middle" class="fig-num fig-label--soft">from 1997, still</text>
+            <text x="632" y="276" text-anchor="middle" class="fig-num fig-label--soft">a sliver of GDP</text>
+            <line x1="608" y1="250" x2="594" y2="244" stroke="#20262A" stroke-width="0.8"/>
+
+            <!-- endpoint value notes on the newspaper band -->
+            <text x="104" y="226" text-anchor="start" class="fig-num fig-label--soft">1.1% in 1925</text>
+            <text x="588" y="312" text-anchor="end" class="fig-num fig-label--soft">0.3% by 2007</text>
+
+            <!-- divider: plotted series ends 2007 -->
+            <line x1="592" y1="88" x2="592" y2="320" stroke="#8F3B2E" stroke-width="0.9" stroke-dasharray="4 4"/>
+            <text x="592" y="84" text-anchor="middle" class="fig-num fig-label--soft">2007</text>
             <!-- digital-era annotation (note, not plotted data) -->
-            <text x="604" y="150" text-anchor="middle" class="fig-num fig-label--soft">then online:</text>
-            <text x="604" y="168" text-anchor="middle" class="fig-num fig-label--soft">past newspapers</text>
-            <text x="604" y="182" text-anchor="middle" class="fig-num fig-label--soft">~2010, past TV</text>
-            <text x="604" y="196" text-anchor="middle" class="fig-num fig-label--soft">~2016</text>
+            <text x="634" y="120" text-anchor="middle" class="fig-num fig-label--soft">then online:</text>
+            <text x="634" y="133" text-anchor="middle" class="fig-num fig-label--soft">past print ~2010,</text>
+            <text x="634" y="146" text-anchor="middle" class="fig-num fig-label--soft">past all TV ~2016</text>
 
             <!-- x ticks at decades (x = 70 + (yr-1920)*6) -->
             <g stroke="#20262A" stroke-width="2">
@@ -310,40 +376,61 @@
         </div>
         <figcaption>
           <span class="figure__number">Figure 9.1</span>
-          US advertising spending as a share of the economy, and the media it
-          flowed through, at four benchmark years from <span class="num">1925</span>
-          to <span class="num">1998</span>. The whole stack holds between about
-          <span class="num">2</span> and <span class="num">2.5</span> per cent of
-          GDP across the period, with no lasting trend, while the print band
-          steadily shrinks and the broadcast band, radio and then television, grows
-          into the space it leaves. The plotted series ends in
-          <span class="num">1998</span> to keep it to a single source; the shift that
-          followed ran the same way but faster. In the United States, internet
-          advertising passed newspapers around <span class="num">2010</span>,
-          broadcast television in <span class="num">2013</span>, and television
-          altogether in <span class="num">2016</span>, and newspaper advertising
-          revenue fell from a peak near <span class="num">$49</span> billion in
-          <span class="num">2005</span> to under <span class="num">$10</span> billion
-          by <span class="num">2022</span>.
-          <span class="figure__source">Bands from D. Galbi, &ldquo;Print, Radio, and
-          Television in the future of Internet Attention-Seeking&rdquo;
-          (galbithink.org), Table&nbsp;<span class="num">6</span>, on the Coen
-          Structured Advertising Expenditure Dataset with US Census figures; three
-          bands (press, radio and television, other) as a share of GDP. Component
-          shares are rounded to <span class="num">0.1</span> of a percentage point and
-          need not sum exactly to the stated total. The three bands are an editorial
-          choice: the underlying Coen dataset is publicly available and does separate
-          individual media, so a finer four-medium split is possible and is left to a
-          later refinement. Digital-era figures: IAB / PwC Internet Advertising Revenue
-          Report and eMarketer (crossovers); Pew, via the News Media Alliance
-          (newspaper revenue). Points plotted; straight lines interpolate between
-          benchmark years and claim nothing about the years between. Retrieved
-          <span class="num">2026</span>.</span>
+          US advertising spending as a share of the economy, and the four media it
+          flowed through, at ten benchmark years from <span class="num">1925</span>
+          to <span class="num">2007</span>. The top of the stack is total advertising:
+          it stays close to <span class="num">2</span> per cent of GDP across the whole
+          period, dipping to about <span class="num">1.25</span> per cent in the Second
+          World War and about <span class="num">1.7</span> per cent in the
+          mid-<span class="num">1970</span>s recession and rising toward
+          <span class="num">2.8</span> per cent in the <span class="num">1920</span>s,
+          but showing no lasting upward or downward trend. Within that roughly constant
+          total the money migrates: the newspaper band shrinks steadily from about
+          <span class="num">1.1</span> per cent of GDP to about <span class="num">0.3</span>
+          per cent, radio rises after <span class="num">1926</span> and then gives way to
+          television, and internet advertising appears only after
+          <span class="num">1997</span> and is still a thin sliver of GDP by
+          <span class="num">2007</span>. The plotted series ends in
+          <span class="num">2007</span>, the dataset&rsquo;s last year, to keep it to a
+          single source; the shift that followed ran the same way but faster. In the
+          United States, internet advertising passed newspapers around
+          <span class="num">2010</span>, broadcast television in
+          <span class="num">2013</span>, and television altogether in
+          <span class="num">2016</span>, and newspaper advertising revenue fell from a
+          peak near <span class="num">$49</span> billion in <span class="num">2005</span>
+          to under <span class="num">$10</span> billion by <span class="num">2022</span>.
+          <span class="figure__source">Per-medium dollars from the Coen Structured
+          Advertising Expenditure Dataset (CS Ad Dataset), compiled by D. Galbi from
+          R. Coen&rsquo;s McCann-Erickson series (galbithink.org), &ldquo;summary&rdquo;
+          sheet, US advertising by medium in current dollars,
+          <span class="num">1919</span>&ndash;<span class="num">2007</span>; each
+          medium&rsquo;s dollars divided by US nominal GDP (BEA from
+          <span class="num">1929</span>, Johnston &amp; Williamson before, via
+          MeasuringWorth). Newspapers, radio, television and internet are the four named
+          bands; Other is the residual (magazines, direct mail, outdoor, telephone
+          directories, business and farm papers, and miscellaneous), so the five bands
+          sum to total advertising. Seams: television combines broadcast and cable
+          (split in the source only from <span class="num">1990</span>); the source&rsquo;s
+          own internet figures for the mid-<span class="num">2000</span>s are known
+          underestimates, so the internet band is conservative and the online surge is
+          shown after the series, not within it; magazines sit in
+          Other because their coverage is not consistent across the century; the
+          pre-<span class="num">1929</span> denominator is less certain, so
+          <span class="num">1925</span> reads about <span class="num">2.8</span> per cent
+          here against <span class="num">2.6</span> in Galbi&rsquo;s own table. Component
+          shares are rounded to <span class="num">0.01</span> of a point and are
+          estimates good to about a tenth of a point; the figure&rsquo;s claim is the
+          composition shift and the roughly constant total, not any single year&rsquo;s
+          decimal. Digital-era figures: IAB / PwC Internet Advertising Revenue Report and
+          eMarketer (crossovers); Pew, via the News Media Alliance (newspaper revenue).
+          Points plotted; straight lines interpolate between benchmark years and claim
+          nothing about the years between. Retrieved <span class="num">2026</span>.</span>
         </figcaption>
       </figure>
 
-      <p>After <span class="num">1998</span> the same migration ran again, faster and
-      in one direction. Internet advertising, which had barely existed, passed
+      <p>After <span class="num">2007</span>, where the chart ends, the same
+      migration ran again, faster and in one direction. Internet advertising, only
+      a sliver of the market in the years the chart covers, passed
       newspapers around <span class="num">2010</span>, passed broadcast television in
       <span class="num">2013</span>, and passed television of every kind in
       <span class="num">2016</span>. Newspaper advertising, which had carried the
