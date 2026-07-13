@@ -20,7 +20,7 @@
       desc: "Economic systems, in theory and in practice." },
     { num: "II", title: "History", slug: "history", shipped: true,
       desc: "Exchange and its institutions, from barter to the attention market." },
-    { num: "III", title: "Countries", slug: "countries", shipped: false,
+    { num: "III", title: "Countries", slug: "countries", shipped: true,
       desc: "Why national outcomes diverge." },
     { num: "IV", title: "Work", slug: "work", shipped: false,
       desc: "Labor, hours, wages, and the purpose of a job." },
