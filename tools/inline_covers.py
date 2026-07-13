@@ -24,6 +24,7 @@ PAGES = [
     ROOT / "index.html",
     ROOT / "books" / "frameworks" / "index.html",
     ROOT / "books" / "history" / "index.html",
+    ROOT / "books" / "countries" / "index.html",
 ]
 
 pattern = re.compile(
