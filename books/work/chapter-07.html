@@ -57,7 +57,7 @@
 
       <p>The number arrives in a proxy statement, or a headline drawn from one, and it is built to
       stop you: the chief executive of a large company was paid two hundred and eighty-one times what the
-      typical worker at that company earned. Not twice, not ten times. Read it against your own pay and
+      typical worker in that company&rsquo;s industry earned. Not twice, not ten times. Read it against your own pay and
       the arithmetic turns personal and a little insulting, because the ratio invites a comparison of
       persons: is one human being worth two hundred and eighty-one of another. From there it is a short
       step to one of two slogans, and most people arrive at one or the other before the sentence is
@@ -116,7 +116,9 @@
             through Aug 2024. Ratios prior to 1992 constructed per Sabadish & Mishel, EPI Working Paper
             #298 (2013), on a DIFFERENT worker-denominator basis (all private-sector prod/nonsup workers,
             ratio-of-averages) than 1992+ (firm-industry-matched, average-of-ratios) -> plotted as
-            discrete points, not a continuous line.
+            discrete points, not a continuous line. Worker denominator 1992+ = average annual comp of
+            production/nonsupervisory workers in the KEY INDUSTRY of each firm (EPI Table 1 footnote),
+            not the firm's own payroll.
           CONSTRUCT NOTES honored: (1) realized != granted, never spliced, sign-changing gap (granted >
             realized at the 2000-2002 peak; realized > granted in most recent years). (2) pre-1992 = 5
             backcast points (1965/1968/1973/1978/1989), discrete. (3) 2024 = projection, dashed final
@@ -134,7 +136,7 @@
         -->
         <div class="figure__frame">
           <svg viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img"
-               aria-label="A line chart of the ratio of chief-executive pay to typical-worker pay at the top 350 US firms, from 1965 to 2024, drawn as two separate measures. Both begin low in the 1960s, near twenty to one for the realized measure and fifteen to one for the granted measure, shown as a handful of discrete backcast points on a different basis. From 1992 the two run as continuous lines and climb steeply through the 1990s, tracking closely together. After 2000 they separate: the realized line, in green, swings violently with the stock market, peaking near 380 to one in 2000, falling to about 166 in 2009, spiking to 409 in 2021, and settling near 281 in 2024. The granted line, in ink, is smoother and generally lower in the recent decade, but at the 2000 and 2001 peaks the granted line actually sits above the realized one, so the gap between the two measures changes sign. The final segment to the projected 2024 value is dashed. An annotation notes that the average package was about 68 percent stock-related in 2006 and 79 percent in 2024.">
+               aria-label="A line chart of the ratio of chief-executive pay to the pay of typical workers in the firms' industries, at the top 350 US firms, from 1965 to 2024, drawn as two separate measures. Both begin low in the 1960s, near twenty to one for the realized measure and fifteen to one for the granted measure, shown as a handful of discrete backcast points on a different basis. From 1992 the two run as continuous lines and climb steeply through the 1990s, tracking closely together. After 2000 they separate: the realized line, in green, swings violently with the stock market, peaking near 380 to one in 2000, falling to about 166 in 2009, spiking to 409 in 2021, and settling near 281 in 2024. The granted line, in ink, is smoother and generally lower in the recent decade, but at the 2000 and 2001 peaks the granted line actually sits above the realized one, so the gap between the two measures changes sign. The final segment to the projected 2024 value is dashed. An annotation notes that the average package was about 68 percent stock-related in 2006 and 79 percent in 2024.">
             <text x="360" y="24" text-anchor="middle" class="fig-label--brass fig-label">THE CLIMB, AND THE TWO WAYS TO COUNT IT</text>
             <text x="90" y="44" class="fig-num fig-label--soft">CEO-to-worker compensation ratio, top 350 US firms, selected years 1965&ndash;2024</text>
 
@@ -214,9 +216,10 @@
         </div>
         <figcaption>
           <span class="figure__number">Figure 7.1</span>
-          The same pay, counted two ways. The ratio of chief-executive pay to a typical worker&rsquo;s at the
-          largest US firms climbed from around twenty to one in the mid-<span class="num">1960</span>s to the
-          low hundreds today, but the &ldquo;how many times&rdquo; depends on which measure you use. The
+          The same pay, counted two ways. The ratio of chief-executive pay at the largest US firms to a
+          typical worker&rsquo;s in each firm&rsquo;s industry climbed from around twenty to one in the
+          mid-<span class="num">1960</span>s to roughly two to three hundred to one today, and the
+          &ldquo;how many times&rdquo; depends on which measure you use. The
           realized line, in green, values what executives actually cashed out and so swings with the stock
           market, peaking near <span class="num">380</span> to one in <span class="num">2000</span>, dropping
           hard after the financial crisis, spiking to <span class="num">409</span> in
@@ -245,7 +248,7 @@
       hundreds in the <span class="num">1990</span>s and has swung between about
       <span class="num">170</span> and <span class="num">410</span> to one since. Over the stretch from
       <span class="num">1978</span> to <span class="num">2024</span> executive pay by this measure grew
-      about eleven-fold, while the pay of the typical worker at these firms grew by roughly a quarter. That
+      nearly twelvefold, while the pay of the typical private-sector worker grew by roughly a quarter. That
       is the raw material both slogans are working with. The question is what drove the climb, and here the
       composition of the package is the first clue: the rise is overwhelmingly a rise in the value of
       stock. That fact does not by itself decide between the two stories, but it tells you what any account
@@ -266,8 +269,8 @@
       firm twice as large pays its chief executive roughly a quarter more, not twice as much. That is the
       cross-sectional pattern, and on its own it would make a three-hundred-fold pay gap hard to credit as
       a reward for three-hundred-fold personal productivity. The steeper relationship lives in time. When
-      all the large firms grow together, the size of the very largest firm, the reference point the market
-      prices against, pulls average pay up roughly one-for-one. By that time-series logic Gabaix and
+      all the large firms grow together, the average size of the biggest firms, the reference level the
+      market prices against, pulls pay up roughly one-for-one. By that time-series logic Gabaix and
       Landier attribute the sixfold rise in US executive pay from <span class="num">1980</span> to
       <span class="num">2003</span> to the sixfold rise in the market value of large firms over the same
       period. The two elasticities, the gentle one across firms and the steep one over time, are different
@@ -277,17 +280,19 @@
         <!-- fig-source
           purpose: show each theory's fingerprint. Panel A = the scale story: pay-size elasticities, with
             the cross-sectional (own-firm ~1/3) and time-series/equilibrium (~1) elasticities labelled as
-            DIFFERENT constructs. Panel B = the luck test: is a "lucky" dollar (a windfall beyond the
-            executive's control) paid like a general-performance dollar? Two point estimates with +/-1 SE
-            whiskers on the SHAREHOLDER-WEALTH pair only.
+            DIFFERENT constructs. Panel B = the luck test: is a windfall gain (beyond the executive's
+            control) paid like a general-performance gain? Both estimates are ln-ln ELASTICITIES (percent
+            pay per percent shareholder wealth), not dollar-for-dollar sensitivities. Two point estimates
+            with +/-1 SE whiskers on the SHAREHOLDER-WEALTH pair only.
           PANEL A SOURCE: Xavier Gabaix and Augustin Landier, "Why Has CEO Pay Increased So Much?",
             Quarterly Journal of Economics 123(1), Feb 2008, pp.49-100. Read this session from the published
             typeset PDF (mirror at gabriel-zucman.eu, pagination 49-100). Table II col (1) (ExecuComp TDC1,
             top-1000 firms, 1992-2004): elasticity of ln(total comp) to ln(own-firm market cap) = 0.37
             (SE 0.022 firm-cluster); to ln(market cap of the #250 reference firm) = 0.72 (SE 0.053).
             Roberts' law cross-sectional exponent kappa ~ 1/3 (Sec III eq.17, p.63). Table III (time series
-            1970-2003, n=34): elasticity of aggregate pay to reference-firm size gamma = 1.14
-            (Newey-West SE 0.28) on the Jensen-Murphy-Wruck index; 0.87 (SE 0.30) on the Frydman-Saks index.
+            1970-2003, n=34): elasticity of aggregate pay to the MEAN asset market value of the biggest
+            500 Compustat firms (the table's own size variable), gamma = 1.14 (Newey-West SE 0.28) on the
+            Jensen-Murphy-Wruck pay index; 0.87 (SE 0.30) on the Frydman-Saks pay index.
             CONSTRUCT PIN: cross-sectional own-firm ~1/3 vs time-series/equilibrium ~1 are DIFFERENT
             constructs (the paper's whole point); both are labelled. "Firm size" here = market value.
           PANEL B SOURCE: Marianne Bertrand and Sendhil Mullainathan, "Are CEOs Rewarded for Luck? The Ones
@@ -311,7 +316,7 @@
         -->
         <div class="figure__frame">
           <svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img"
-               aria-label="Two panels, each showing a fingerprint of one explanation for executive pay. The top panel shows how strongly pay tracks firm size, as elasticities. Across firms at one moment, pay rises with a firm's own market value with an elasticity of about 0.37, a gentle relationship; measured against the size of the single largest reference firm it is about 0.72; but over time, as all large firms grow together, aggregate pay rises with the size of the biggest firms roughly one-for-one, an elasticity near one, shown as a bar reaching to about 1.14 with a tick at 0.87 for an alternative index. The cross-sectional gentle elasticity and the time-series steep one are labelled as different quantities. The bottom panel shows the luck test among oil-company executives. A dollar of general performance is rewarded with an elasticity of pay of about 0.38, with a narrow error band; a dollar of luck, meaning gains traced to world oil prices that the executive did not cause, is rewarded with an elasticity of about 0.35, with a wide error band. The two point estimates sit almost on top of each other, so a lucky dollar is paid about like a general one, though the wide band on the luck estimate means the two cannot be sharply separated.">
+               aria-label="Two panels, each showing a fingerprint of one explanation for executive pay. The top panel shows how strongly pay tracks firm size, as elasticities. Across firms at one moment, pay rises with a firm's own market value with an elasticity of about 0.37, a gentle relationship; measured against the size of the market's reference firm, the 250th largest, it is about 0.72; but over time, as all large firms grow together, aggregate pay rises with the average size of the biggest firms roughly one-for-one, an elasticity near one, shown as a bar reaching to about 1.14 with a tick at 0.87 for an alternative index. The cross-sectional gentle elasticity and the time-series steep one are labelled as different quantities. The bottom panel shows the luck test among oil-company executives. A one percent gain in shareholder wealth from general performance is rewarded with about 0.38 percent more pay, with a narrow error band; the same gain from luck, meaning gains traced to world oil prices that the executive did not cause, is rewarded with about 0.35 percent, with a wide error band. The two point estimates sit almost on top of each other, so a lucky gain is paid about like a general one, though the wide band on the luck estimate means the two cannot be sharply separated.">
             <!-- PANEL A -->
             <text x="360" y="24" text-anchor="middle" class="fig-label--brass fig-label">PANEL A &middot; PAY TRACKS FIRM SIZE</text>
             <text x="150" y="44" class="fig-num fig-label--soft">elasticity of executive pay to firm size (Gabaix&ndash;Landier)</text>
@@ -346,7 +351,7 @@
 
             <!-- PANEL B -->
             <text x="360" y="286" text-anchor="middle" class="fig-label--brass fig-label">PANEL B &middot; THE LUCK TEST</text>
-            <text x="150" y="304" class="fig-num fig-label--soft">how much oil-CEO pay responds to a dollar of&hellip; (Bertrand&ndash;Mullainathan)</text>
+            <text x="150" y="304" class="fig-num fig-label--soft">how strongly oil-CEO pay tracks gains from&hellip; (Bertrand&ndash;Mullainathan)</text>
 
             <!-- axis B -->
             <g stroke="#D9CFBA" stroke-width="1">
@@ -389,10 +394,11 @@
           large firms swell together, aggregate pay rises with the size of the very largest firms roughly
           one-for-one. Those are different quantities, and the gap between the gentle cross-section and the
           steep time series is the mechanism the theory rests on. The bottom panel is the luck test. Among
-          oil-company executives, a dollar of ordinary performance and a dollar of pure luck, meaning gains
-          that trace to swings in the world oil price the executive did nothing to cause, are rewarded by
-          almost the same amount, about <span class="num">0.35</span> against
-          <span class="num">0.38</span>. The wide band on the luck estimate means the two cannot be told
+          oil-company executives, gains from ordinary performance and gains from pure luck, meaning gains
+          that trace to swings in the world oil price the executive did nothing to cause, are rewarded at
+          almost the same rate: elasticities of about <span class="num">0.35</span> against
+          <span class="num">0.38</span>, a fraction of a percent of pay per percent of shareholder
+          wealth. The wide band on the luck estimate means the two cannot be told
           apart sharply, and the study&rsquo;s own finding is two-sided: pay for luck is real and is not
           filtered out, but it is weaker at firms with tighter governance.
           <span class="figure__source">Panel A: X. Gabaix and A. Landier, Quarterly Journal of Economics
@@ -425,12 +431,12 @@
       windfalls, gains that arrive for reasons outside anyone&rsquo;s decisions. Oil companies offer a
       natural case, because a large part of an oil firm&rsquo;s fortunes rides on the world price of
       crude, which no single executive moves. The finding, drawn on the shareholder-wealth measure the
-      bottom panel of the figure plots, is that a dollar of luck is rewarded almost exactly as much as a
-      dollar of general performance, and that boards do not strip the windfall out before paying on it.
-      Pay for luck, in their phrase, is real: the statistical test decisively rejects the idea that boards
-      filter luck away.</p>
+      bottom panel of the figure plots, is that a windfall gain is rewarded about as much as an ordinary
+      one: a rise in shareholder wealth lifts pay by nearly the same fraction whether or not the executive
+      caused it, and boards do not strip the windfall out before paying on it. Pay for luck, in their
+      phrase, is real: the statistical test rejects the idea that boards filter luck away completely.</p>
       <p>The finding is two-sided, and both sides have to be kept in view. The
-      luck estimate carries a wide error band, so the claim is that a lucky dollar is paid <em>about</em>
+      luck estimate carries a wide error band, so the claim is that a lucky gain is paid <em>about</em>
       like a general one, and not that it is paid more; the same paper&rsquo;s other measure, which reads
       as if luck is rewarded several times over, rests on an estimate too imprecise to bear that weight,
       and its authors decline to draw it. The other half of the result is in the paper&rsquo;s
@@ -440,7 +446,7 @@
       the oil market; a world of pure capture would pay for it everywhere and equally. What the data show
       is neither: pay does respond to luck, which the talent story alone does not predict, and it responds
       less where the board is in a stronger position to say no, which is what the managerial-power story
-      predicts. The evidence leans, and it names where it leans, while the contest itself stays open.</p>
+      predicts. That is as far as the test itself speaks, and the contest stays open.</p>
 
       <h2>What the number does and does not settle</h2>
       <p>Put the pieces back together and the executive&rsquo;s package resolves into parts that answer to
@@ -515,7 +521,7 @@
             <li>The discriminating evidence: M. Bertrand and S. Mullainathan, &ldquo;Are CEOs Rewarded for
             Luck? The Ones Without Principals Are,&rdquo; Quarterly Journal of Economics
             <span class="num">116</span>(<span class="num">3</span>), <span class="num">2001</span>, Table
-            <span class="num">1</span> &mdash; among oil-company executives, a dollar of luck (gains
+            <span class="num">1</span> &mdash; among oil-company executives, luck (shareholder-wealth gains
             instrumented by the world oil price) is rewarded with an elasticity of about
             <span class="num">0.35</span>, close to the <span class="num">0.38</span> for general
             performance; complete filtering of luck is statistically rejected, and pay for luck is weaker
@@ -541,7 +547,7 @@
       shift-worker facing a wage floor, the two groups paid differently, the newcomer feared as cheap
       labour. The chief executive is the same lens turned all the way over. Here the worker is treated as
       close to irreplaceable, the bargaining runs almost entirely one way, and the board that is supposed
-      to sit across the table has reasons to sit alongside instead. That the pay is mostly stock is a fact
+      to sit across the table has, in Bebchuk and Fried&rsquo;s account, reasons to sit alongside instead. That the pay is mostly stock is a fact
       about leverage too: it ties the executive&rsquo;s fortune to the owners&rsquo;, which is the whole
       point of the arrangement, and it is also what lets the package ride the market up to numbers that
       strain any story about a single person&rsquo;s worth. The machinery that makes a company able to
