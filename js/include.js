@@ -22,7 +22,7 @@
       desc: "Exchange and its institutions, from barter to the attention market." },
     { num: "III", title: "Countries", slug: "countries", shipped: true,
       desc: "Why national outcomes diverge." },
-    { num: "IV", title: "Work", slug: "work", shipped: false,
+    { num: "IV", title: "Work", slug: "work", shipped: true,
       desc: "Labor, hours, wages, and the purpose of a job." },
     { num: "V", title: "Pathologies", slug: "pathologies", shipped: false,
       desc: "Failure modes, and how economists know what they know." }
