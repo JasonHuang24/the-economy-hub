@@ -24,7 +24,7 @@
       desc: "Why national outcomes diverge." },
     { num: "IV", title: "Work", slug: "work", shipped: true,
       desc: "Labor, hours, wages, and the purpose of a job." },
-    { num: "V", title: "Pathologies", slug: "pathologies", shipped: false,
+    { num: "V", title: "Pathologies", slug: "pathologies", shipped: true,
       desc: "Failure modes, and how economists know what they know." }
   ];
 
