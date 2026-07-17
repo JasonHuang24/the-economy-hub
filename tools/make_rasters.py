@@ -5,7 +5,7 @@ the local preview server (python -m http.server 8123 from the repo root) so
 the share cards can load the site fonts. Writes:
 
     assets/og/og-hub.png          1200x630 share card for the hub and demo
-    assets/og/og-frameworks.png   1200x630 share card for Volume I pages
+    assets/og/og-<volume>.png     1200x630 share card per volume, all five
     assets/favicon-32.png         browser tab icon
     assets/apple-touch-icon.png   180x180
     favicon.ico                   16/32/48 multi-size, served from root
@@ -81,7 +81,6 @@ def shoot(html: str, out: Path, width: int, height: int) -> None:
     print(f"{out.relative_to(ROOT)}  {out.stat().st_size:,} bytes")
 
 
-cover = (ROOT / "assets" / "covers" / "cover-frameworks.svg").read_text(encoding="utf-8")
 mark = (ROOT / "assets" / "favicon.svg").read_text(encoding="utf-8")
 
 # Fine-stroke variant of the rosette mark for the large card; the favicon
@@ -104,10 +103,13 @@ shoot(card_html("A shelf of five volumes", "The Economy Hub",
                 MARK_LARGE, art_class="art art--mark"),
       OG / "og-hub.png", 1200, 630)
 
-shoot(card_html("The Economy Hub · Volume I", "Frameworks",
-                "Economic systems, in theory and in practice.",
-                cover),
-      OG / "og-frameworks.png", 1200, 630)
+from make_covers import VOLUMES
+
+for slug, roman, _spoken, title, subtitle, _k, _nsize in VOLUMES:
+    cover = (ROOT / "assets" / "covers" / f"cover-{slug}.svg").read_text(encoding="utf-8")
+    shoot(card_html(f"The Economy Hub · Volume {roman}", title,
+                    " ".join(subtitle), cover),
+          OG / f"og-{slug}.png", 1200, 630)
 
 # Favicon rasters: render the mark large once, downsample with Lanczos.
 big = ROOT / "assets" / "favicon-512.png"
