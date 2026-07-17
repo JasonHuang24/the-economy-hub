@@ -61,7 +61,7 @@
       the price of the weekly shop would settle, that you did not need to change your plans. Then the
       plans needed changing. The shop cost more, and then more again, and the raise that was meant to be
       a raise turned out to be a way of standing still. Somewhere in there a suspicion hardened into a
-      question, and the question is a fair one. If the people whose job is to see this coming did not
+      question. If the people whose job is to see this coming did not
       see it coming, why listen to any of them? And since this is the last chapter of a site that has
       spent fifty-one chapters telling you what the evidence says, the question turns on the site too.
       Why believe this?</p>
@@ -74,8 +74,8 @@
 
       <h2>The record on the thing everyone wants</h2>
       <p>What everyone wants from an economist is a forecast: tell me what happens next, so I can act
-      before it does. On that, the record is close to spotless, in the wrong direction. The cleanest
-      public archive for testing it is American. Since <span class="num">1968</span> the Survey of
+      before it does. On that, the record is close to spotless, in the wrong direction. One American
+      archive lets anyone run the test. Since <span class="num">1968</span> the Survey of
       Professional Forecasters, run now by the Federal Reserve Bank of Philadelphia, has asked a panel
       of forecasters every quarter where they think output is going. The forecasts and the outcomes are
       both published, which means the survey can be marked against what actually happened. Figure
@@ -86,7 +86,9 @@
           purpose (DATA): the forecasting record, plainly. SPF median FOUR-QUARTER-AHEAD real GDP growth
             forecast, plotted against the growth that actually arrived over the same four quarters, at the
             target quarter, with NBER recessions shaded. The visual claim: the forecast line stays
-            positive almost always while the realized line falls below zero in every recession.
+            positive almost always while the realized line falls below zero in seven of the eight
+            recessions (the exception is 2001, whose realized four-quarter growth bottoms out at
+            +0.17%, target 2001Q4, above zero).
           ***THE THREE CONSTRUCTS ARE PINNED ON EVERY SURFACE (horizon / forecast vintage / realized
             vintage), per the segment brief's "vintage law squared":***
             1. HORIZON: four quarters ahead. Forecast fc4 = 100*(RGDP6/RGDP2 - 1) from medianlevel.xlsx
@@ -118,6 +120,8 @@
               1979Q4 (-0.49%) and 1980Q1 (-0.09%). Minimum forecast ever = -0.49%.
             - Of the 23 four-quarter windows whose realized growth came out negative, 22 carried a POSITIVE
               median forecast at the window's start (the sole exception is the 1979Q4 window).
+            - The 2001 recession is the one shaded span with NO negative four-quarter window: the realized
+              minimum there is +0.17% (target 2001Q4). Every below-zero surface says "seven of the eight".
             - Minimum realization = -7.40%, the four-quarter window ending 2020Q2. (Off-chart-top rebound:
               +12.39% window ending 2021Q2, the COVID bounce - real, kept, sets the y-axis top.)
           PLOTTED SERIES: the 221 target quarters for which BOTH the forecast and a latest-vintage realized
@@ -140,7 +144,7 @@
         -->
         <div class="figure__frame">
           <svg viewBox="0 0 760 400" xmlns="http://www.w3.org/2000/svg" role="img"
-               aria-label="A time chart from 1969 to 2026 of two lines: the median four-quarter-ahead real GDP growth forecast from the Survey of Professional Forecasters, and the growth that actually arrived over the same four quarters, measured in the latest data vintage, both plotted at the target quarter, in per cent. Eight periods are shaded, marking the eight NBER recessions in the span. The forecast line stays inside a positive band, mostly between about two and five per cent, for the whole record; it crosses below zero only twice, in the windows ending in 1980 and 1981, and even then only barely. The realized line is far more volatile and falls below zero in every one of the shaded recessions: to roughly minus two and a half per cent in the mid-1970s and early 1980s, minus four per cent in 2009, and a low of minus seven and four-tenths per cent in the window ending in the spring of 2020, before rebounding above twelve per cent a year later. At every recession the forecast line is well above zero while the realized line is well below it, so the forecast made a year in advance did not see any of these downturns coming.">
+               aria-label="A time chart from 1969 to 2026 of two lines: the median four-quarter-ahead real GDP growth forecast from the Survey of Professional Forecasters, and the growth that actually arrived over the same four quarters, measured in the latest data vintage, both plotted at the target quarter, in per cent. Eight periods are shaded, marking the eight NBER recessions in the span. The forecast line stays inside a positive band, mostly between about two and five per cent, for the whole record; it crosses below zero only twice, in the windows ending in 1980 and 1981, and even then only barely. The realized line is far more volatile and falls below zero in seven of the eight shaded recessions: to roughly minus two and a half per cent in the mid-1970s and early 1980s, minus four per cent in 2009, and a low of minus seven and four-tenths per cent in the window ending in the spring of 2020, before rebounding above twelve per cent a year later; in the 2001 recession it slows to just above zero without crossing. In every shaded recession the realized line falls well below the forecast line, which stays above zero throughout, so the forecast made a year in advance did not see any of these downturns coming.">
             <text x="40" y="26" class="fig-label--brass fig-label">WHAT THE FORECASTERS SAW COMING, AND WHAT ARRIVED</text>
             <text x="40" y="46" class="fig-num fig-label--soft">four-quarter real GDP growth, per cent; the forecast against the outcome</text>
 
@@ -174,7 +178,7 @@
             <circle cx="669.58" cy="293.30" r="3.2" fill="#20262A"/>
             <text x="662" y="289" text-anchor="end" class="fig-num fig-label--soft">spring 2020: &#8722;7.4%</text>
             <text x="248" y="232" class="fig-num fig-label--soft">the forecast dips below zero</text>
-            <text x="248" y="246" class="fig-num fig-label--soft">only here, in 1980&#8211;81</text>
+            <text x="248" y="249" class="fig-num fig-label--soft">only here, in 1980&#8211;81</text>
             <line x1="95" y1="300" x2="735" y2="300" stroke="#20262A" stroke-width="1.25"/>
             <g class="fig-num fig-label--soft" text-anchor="middle">
               <text x="97.84" y="316">1970</text>
@@ -188,14 +192,13 @@
             <text x="80" y="352" class="fig-num fig-label--soft">the median forecast, made four quarters earlier</text>
             <line x1="40" y1="370" x2="72" y2="370" stroke="#20262A" stroke-width="1.7"/>
             <text x="80" y="374" class="fig-num fig-label--soft">what arrived, in the latest data vintage</text>
-            <text x="40" y="393" class="fig-num fig-label--soft" fill="#7E5A12">Shaded: the eight NBER recessions. The outcome fell below zero in each; the forecast, twice.</text>
+            <text x="40" y="393" class="fig-num fig-label--soft" fill="#7E5A12">Shaded: the eight NBER recessions. The outcome fell below zero in seven; the forecast, twice.</text>
           </svg>
         </div>
         <figcaption>
           <span class="figure__number">Figure 9.1</span>
-          The gold line is what a year-ahead forecast looked like: the median panellist&rsquo;s guess at
-          how much the economy would grow over the coming four quarters, made four quarters before the
-          window closed. The dark line is what that growth turned out to be, measured in the most
+          The gold line is what a year-ahead forecast looked like: the growth in the panel&rsquo;s median
+          forecast for the coming four quarters, made four quarters before the window closed. The dark line is what that growth turned out to be, measured in the most
           recent data vintage. Read the gold line alone and it is a picture of calm, sitting in a
           positive band for more than half a century and crossing below zero only twice, by a fraction
           of a point, in <span class="num">1980</span> and <span class="num">1981</span>. Read the two
@@ -219,9 +222,9 @@
 
       <p>The <span class="num">2008</span> case is worth walking through, because it is the one people
       mean when they say nobody saw it coming. In the survey taken in August of that year, weeks before
-      the collapse of Lehman Brothers, the median panellist expected the economy to <em>grow</em> at an
-      annualized <span class="num">0.71</span> percent in the fourth quarter, and to keep growing through
-      all of <span class="num">2009</span>. The same survey put the probability of output actually
+      the collapse of Lehman Brothers, the panel&rsquo;s median forecast had the economy <em>growing</em> at an
+      annualized <span class="num">0.71</span> percent in the fourth quarter, and kept it growing through
+      the third quarter of <span class="num">2009</span>, as far ahead as the survey reached. The same survey put the probability of output actually
       falling in that quarter at <span class="num">46.57</span> percent, which is to say the panel could
       see the risk and still, on average, forecast growth. By the November survey, some eight weeks after
       Lehman, the nowcast for the quarter then underway had turned to an annualized
@@ -240,33 +243,33 @@
       blunter. &ldquo;How well do forecasters predict recessions? The simple answer is: &lsquo;Not very
       well.&rsquo;&rdquo; Of the <span class="num">60</span> recessions in his sample, only two had been
       foreseen a year in advance. A larger study in <span class="num">2018</span>, with An and Jalles,
-      extended it to <span class="num">63</span> countries and the years <span class="num">1992</span> to
-      <span class="num">2014</span>: of <span class="num">153</span> recessions, forecasters failed to
-      predict <span class="num">148</span> as the year before them drew to a close.</p>
+      ran the test again across <span class="num">63</span> countries and the years <span class="num">1992</span> to
+      <span class="num">2014</span>: of <span class="num">153</span> recessions, <span class="num">148</span>
+      were still unpredicted in the April of the year before they arrived.</p>
 
       <p>Two things keep that from being the whole story, and both belong in the account. The first is
       that &ldquo;predict&rdquo; here has a strict meaning. It counts a recession as foreseen only if the
       consensus, the average across forecasters, actually turned negative, and an average of many
       forecasts is arithmetically slow to go negative even when individual forecasters are placing real
-      weight on a downturn. Loungani found that by April of the recession year itself, forecasters had
-      usually come round to expecting a downturn, but a milder one than the country got; in
-      <span class="num">80</span> percent of cases the October forecast still understated how bad it
-      would be. The failure is specifically about seeing it early and sizing it right, and not about
-      total blindness. The second is the mirror image, and it matters more than it looks. Forecasters
+      weight on a downturn. Loungani found that forecasters did come round, but slowly: by April of the recession year
+      itself a downturn was forecast in only about a third of the cases; by October of that year a
+      recession was called in the vast majority of them, and in <span class="num">80</span> percent of
+      the cases that October forecast still understated how bad it would be. The failure is specifically about seeing it early and sizing it right, and not about
+      total blindness. The second is the mirror image. Forecasters
       are not simply pessimists who cry wolf and occasionally happen to be right. In the
-      <span class="num">2018</span> study they raised a false alarm, forecasting a recession that did not
-      come, in only <span class="num">8</span> of <span class="num">1,153</span> calm years. They do not
+      <span class="num">2018</span> study, at the same year-ahead vantage, they raised a false alarm,
+      forecasting a recession that did not come, in only <span class="num">8</span> of
+      <span class="num">1,153</span> calm years. They do not
       predict recessions that happen, and they do not invent ones that do not. What they produce, almost
       always, is a forecast of ordinary times.</p>
 
       <p>There is a reason the specific failure is recessions, rather than the economy in general, and it
-      is not that forecasters are lazy. It is that a recession is a <a href="chapter-05.html">credit
-      cycle turning over</a>, and the turn is a nonlinear event that depends on when confidence breaks,
-      which is close to the least forecastable quantity there is. The mechanism behind these crises,
-      the build-up of credit that precedes them, is one of the more studied and better-understood things
-      in the field. The date the music stops is not. The forecasters are failing at the genuinely hard
-      part while the field, elsewhere, is getting the mechanism largely right, and holding those two
-      apart is the point of this chapter.</p>
+      is not that forecasters are lazy. Part of it is visible in the chapter on boom and bust: the
+      recessions that come from a <a href="chapter-05.html">credit cycle turning over</a> hinge on when
+      confidence breaks, and that turn is a nonlinear event with no schedule. That a build-up of credit
+      runs ahead of such crises is written in more than a century of records; the date the music stops
+      is not written anywhere in advance. The forecasters are failing at the timing, the hard part, and
+      holding that apart from what the record does document is the point of this chapter.</p>
 
       <h2>The word that made the case</h2>
       <p>The charge people felt most directly is more recent than <span class="num">2008</span>, because
@@ -278,8 +281,9 @@
       November, when inflation was &ldquo;elevated, largely reflecting factors that are expected to be
       transitory.&rdquo; In August, at the Jackson Hole symposium, the Fed&rsquo;s chair Jerome Powell had
       set out the reasoning at length, judging that the high readings were &ldquo;likely to prove
-      temporary&rdquo; and that longer-term inflation expectations suggested the public also believed
-      &ldquo;current high inflation readings are likely to prove transitory.&rdquo;</p>
+      temporary&rdquo; and that longer-term inflation expectations suggested households, businesses, and market
+      participants also believed &ldquo;current high inflation readings are likely to prove
+      transitory.&rdquo;</p>
 
       <p>They were not. The consumer price index rose <span class="num">9.1</span> percent over the
       twelve months ending June <span class="num">2022</span>, which the Bureau of Labor Statistics
@@ -296,11 +300,11 @@
 
       <h2>What the same discipline is good at</h2>
       <p>If the chapter stopped here it would have earned the reader&rsquo;s distrust and misled them all
-      the same, because forecasting is not most of what economists do, and it is the part they are worst
-      at. The rest of the discipline is in the business of a different and more answerable question: not
-      what will happen, but what causes what. Did this policy have that effect? Does this price move that
-      quantity? Those questions can be settled by evidence in a way a forecast cannot, and the tools for
-      settling them are the real state of the art. Figure <span class="num">9.2</span> lays out the main
+      the same, because forecasting is not the whole of what economists do, and it is the part they are
+      worst at. The rest of the discipline is in the business of a different and more answerable
+      question: what causes what. Did this policy have that effect? Does this price move that
+      quantity? Those questions can be settled by evidence in a way a forecast cannot, and there are
+      tools built for settling them. Figure <span class="num">9.2</span> lays out the main
       ones and, next to each, the thing it cannot reach.</p>
 
       <figure class="figure figure--plate" id="fig-9-2">
@@ -354,13 +358,13 @@
         </div>
         <figcaption>
           <span class="figure__number">Figure 9.2</span>
-          The strongest knowledge in economics comes from moments when the world runs an experiment on
+          A natural experiment is a moment when the world runs an experiment on
           its own. When a minimum wage rises on one side of a state line and not the other, the two
           adjacent counties make a treatment group and a control group nobody had to assign, which is
           the design behind the <a href="../work/chapter-04.html">border-county studies of the minimum
           wage</a>. Randomised trials do deliberately what those accidents do by luck; administrative
           records show what millions of people actually did rather than what a model assumes. Each is
-          powerful and each is bounded, and none of them forecasts anything. The last row is this
+          bounded, and none of them forecasts anything. The last row is this
           site&rsquo;s own method, set there so it can be judged on the same terms as the rest: it
           states a claim, shows the evidence on both sides, and attaches a confidence. It is not a
           fourth way of gathering evidence. It is a way of reporting the first three, and it inherits
@@ -376,14 +380,16 @@
 
       <p>The reason this side of the ledger holds up better is not that its practitioners are
       cleverer or more honest than the forecasters, who are frequently the same people. It is that the
-      questions are built to be answered. A forecast is a claim about a future that has not happened and
-      cannot be checked until it is too late to matter. A causal question has an answer sitting in the
-      world already, and the job is to find a way of reading it that a critic cannot easily dismiss. When
+      questions are of a different kind. A forecast is a claim about a future that has not happened yet;
+      by the time it can be checked, the moment it was needed for has passed. A causal question is about
+      a record that already exists, and the job is to find a reading of it that a critic cannot easily
+      dismiss, knowing that the comparison the reader really wants, the same world with and without the
+      policy, is never fully on offer. When
       economists do that well, the results hold up, get replicated, and quietly become the things
       a chapter can point to: that a modest minimum-wage rise at the levels actually tried does not empty
-      the shops of jobs, and that the mechanism which turns a credit boom into a bust is legible even when
-      its timing is not. This is unglamorous knowledge. It never makes a headline the way a forecast does, because it is about what
-      is rather than what is next. It is also most of what the discipline actually knows.</p>
+      the shops of jobs, and that a build-up of credit runs ahead of the big busts even when
+      its timing is anyone&rsquo;s guess. Knowledge of this kind is about what
+      is rather than what is next, and it is the part of the discipline that holds.</p>
 
       <section class="verdict" data-verdict="oversimplified" data-confidence="moderate"
                aria-label="Verdict on the claim: economists are always wrong, so you can ignore them">
@@ -395,7 +401,7 @@
           </p>
         </header>
         <div class="verdict__body">
-          <p>The claim has a true kernel, and it is a strong one, which is what keeps this ruling off
+          <p>The claim has a true kernel, which is what keeps this ruling off
           backwards. On the thing the public most wants from economists, forecasting, the record really
           is close to a clean sheet of failure. Forecasters almost never call a recession a year out;
           in one study they missed <span class="num">148</span> of <span class="num">153</span>, and in
@@ -403,11 +409,12 @@
           &ldquo;transitory&rdquo; that reached <span class="num">9.1</span> percent before it turned.
           Anyone who insists the experts have a crystal ball is answered by the plate above. Two words
           break the claim, though. The first is &ldquo;always.&rdquo; The same discipline that cannot
-          time a recession identifies the mechanism behind it, and establishes cause and effect in a
-          hundred narrower questions, well enough that the results replicate; and forecasters are not
-          even reliably wrong in a useful direction, since they raise a false alarm about as rarely as
-          they call a real one, some <span class="num">8</span> times in
-          <span class="num">1,153</span> calm years. The second is &ldquo;ignore.&rdquo; A profession
+          time a recession has documented the build-up of credit that runs ahead of its financial
+          crises, and establishes cause and effect in narrower questions well enough that the results
+          replicate; and forecasters are not even reliably wrong in a useful direction: at the
+          <span class="num">2018</span> study&rsquo;s year-ahead vantage they raised
+          <span class="num">8</span> false alarms in <span class="num">1,153</span> calm years, against
+          <span class="num">5</span> of <span class="num">153</span> real recessions called. The second is &ldquo;ignore.&rdquo; A profession
           that is bad at forecasting and good at mechanisms is not one to ignore. It is one to use for
           the second thing and not the first, which is a more demanding instruction than dismissal. What
           the record supports is narrower than the claim: the experts are worth listening to about how
@@ -429,9 +436,10 @@
             ahead. Zidong An, Jo&atilde;o Tovar Jalles and Prakash Loungani, &ldquo;How Well Do Economists
             Forecast Recessions?&rdquo; IMF Working Paper <span class="num">18</span>/<span class="num">39</span>
             (<span class="num">2018</span>) &mdash; <span class="num">148</span> of
-            <span class="num">153</span> recessions missed a year ahead, and only
-            <span class="num">8</span> false alarms in <span class="num">1,153</span> non-recession
-            years, across <span class="num">63</span> countries, <span class="num">1992</span>&ndash;<span class="num">2014</span>.</li>
+            <span class="num">153</span> recessions missed a year ahead (the April of the year before),
+            and only <span class="num">8</span> false alarms in <span class="num">1,153</span>
+            non-recession years at that same vantage, across <span class="num">63</span> countries,
+            <span class="num">1992</span>&ndash;<span class="num">2014</span>.</li>
             <li>The <span class="num">2008</span> case: SPF surveys of August and November
             <span class="num">2008</span> (fourth-quarter forecast of <span class="num">+0.71</span>
             percent annualized in August, with a <span class="num">46.57</span> percent probability of a
@@ -451,8 +459,8 @@
             <li>What the discipline does well is a claim about method, not a single study: the
             natural-experiment and administrative-data work whose results replicate, of which the
             minimum-wage border-county evidence in the <a href="../work/chapter-04.html">work
-            volume</a> is one worked example, and the credit-cycle mechanism behind crises in the
-            <a href="chapter-05.html">chapter on boom and bust</a> is another.</li>
+            volume</a> is one worked example, and the documented build-up of credit ahead of financial
+            crises in the <a href="chapter-05.html">chapter on boom and bust</a> is another.</li>
             <li>Confidence is moderate under the rubric, which scores the weaker of evidence directness
             and construct match. Evidence directness is high: the forecasting record is a public archive
             recomputed here, and the statements are quoted from their issuers. The binding, weaker leg is
@@ -468,8 +476,8 @@
 
       <h2>How this site is built, and what that is worth</h2>
       <p>Which brings the question back to the site itself, because the whole point of stating a rule is
-      that it applies to the one stating it. This site does not forecast. Not once in fifty-two chapters
-      is there a claim about what the economy will do next quarter or next year, and that is a design
+      that it applies to the one stating it. This site does not forecast the economy: not once in fifty-two chapters
+      is there a claim about what it will do next quarter or next year, and that is a design
       choice, not an oversight. The entire apparatus is built to carry the second kind of knowledge and
       to refuse the first. Every verdict names a claim, lays out the evidence for and against it, and
       attaches a confidence that is scored on how directly the evidence bears and how well it matches the
@@ -488,7 +496,7 @@
       site can decide for you. It is the one judgment the whole design hands back.</p>
 
       <h2>Where the five volumes have arrived</h2>
-      <p>This is the last chapter of the last book, and it is a fitting place to be, because the site
+      <p>This is the last chapter of the last book, and the site
       has spent five volumes doing in the small what this chapter has described in the large. It began
       with the frameworks, the handful of ideas that recur everywhere, and asked what each one really
       claims. It turned to history, and watched money and markets and firms become the things they are
@@ -504,8 +512,8 @@
       named. Take the claim people actually make. Find the record. Say what the record supports and,
       just as plainly, what it does not, and how sure it is possible to be. The economy is not a thing
       that happens to you, and it is not a set of predictions to be trusted or mocked. It is a set of
-      arrangements, most of them built rather than given, and most of them legible if you are willing to
-      hold the strong evidence and the weak evidence in separate hands. That is the whole of the method,
+      arrangements, most of them built rather than given, and this site has read them by holding the
+      strong evidence and the weak evidence in separate hands. That is the whole of the method,
       and it is the whole of what the site has to offer. What you make of any particular question now,
       with the record in front of you, is yours to decide.</p>
 
