@@ -44,7 +44,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr));
   gap: var(--space-6) var(--space-5);
-  align-items: end;
+  /* Covers share one width and aspect ratio, so top-aligning the items
+     keeps every cover edge level regardless of caption length. */
+  align-items: start;
   border-bottom: 4px double var(--color-rule-strong);
   padding-block: var(--space-5) var(--space-6);
 }
@@ -55,13 +57,6 @@
 
 .shelf__caption {
   padding-top: var(--space-4);
-}
-
-/* Equal caption wells keep the cover bottoms level on the shelf. */
-@media (min-width: 40rem) {
-  .shelf__caption {
-    min-height: 9.75rem;
-  }
 }
 
 .shelf__status {
