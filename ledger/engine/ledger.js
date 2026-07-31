@@ -18,7 +18,10 @@
  *      turns the panel over to it with a brief count-up on change;
  *   4. audits every static no-JS cell in the document against the register and
  *      reports mismatches to the console (the D11 coordinate audit, extended
- *      to a data surface).
+ *      to a data surface): displayed value strings, basket arithmetic, the
+ *      resolution of every provenance key, the per-era texture log against
+ *      what each era actually renders, and the agreement of every static row
+ *      header's deep link with the register's line home.
  *
  * PROGRESSIVE ENHANCEMENT. With JS off the page is already a complete
  * document: every era's ledger is a static table in flow, with both the money
@@ -145,7 +148,19 @@
         var cell = cellSet[col.key];
         if (!cell) { continue; }
 
-        var dt = el("dt", "ledger-panel__label", line.label);
+        /* A line with a canonical home in the register becomes a deep link into
+           that chapter (CHARTER §PURPOSE 1). A line the wiring map gives no
+           home keeps its plain label. The VALUE cell is never touched: the
+           register audit compares displayed value text, and a label link
+           cannot move it. */
+        var dt = el("dt", "ledger-panel__label");
+        if (line.href) {
+          var a = el("a", "ledger-panel__label-link", line.label);
+          a.setAttribute("href", line.href);
+          dt.appendChild(a);
+        } else {
+          dt.textContent = line.label;
+        }
         if (line.group === "texture") { dt.classList.add("is-texture"); }
         var dd = el("dd", "ledger-panel__value");
 
@@ -367,13 +382,66 @@
       }
     }
 
+    /* The texture selection is an editorial claim, so the charter requires it
+       to be logged per era. This checks the log against what the era actually
+       renders — every texture line with a cell has a logged reason, every
+       logged reason has a cell — and holds each era to the charter's cap of
+       3 to 5 texture lines. */
+    var textureIds = {}, lineHref = {}, textureCount = 0;
+    for (var li = 0; li < reg.lines.length; li++) {
+      if (reg.lines[li].group === "texture") { textureIds[reg.lines[li].id] = true; }
+      if (reg.lines[li].href) { lineHref[reg.lines[li].id] = reg.lines[li].href; }
+    }
+    for (var ex = 0; ex < reg.eras.length; ex++) {
+      var era5 = reg.eras[ex];
+      var shown = [], logged = {};
+      for (var lid5 in era5.cells) {
+        if (era5.cells.hasOwnProperty(lid5) && textureIds[lid5]) { shown.push(lid5); }
+      }
+      for (var tx = 0; tx < (era5.texture || []).length; tx++) {
+        logged[era5.texture[tx].lineId] = true;
+        if (shown.indexOf(era5.texture[tx].lineId) < 0) {
+          problems.push("era " + era5.id + " logs a texture pick “" +
+            era5.texture[tx].lineId + "” it does not display");
+        }
+      }
+      for (var sx = 0; sx < shown.length; sx++) {
+        if (!logged[shown[sx]]) {
+          problems.push("era " + era5.id + " displays texture line “" +
+            shown[sx] + "” with no logged reason");
+        }
+      }
+      if (shown.length < 3 || shown.length > 5) {
+        problems.push("era " + era5.id + " carries " + shown.length +
+          " texture lines; the charter allows 3 to 5");
+      }
+      textureCount += shown.length;
+    }
+
+    /* Every rendered deep link must point at a line the register gives a home,
+       and every static row header carrying a link must agree with it. */
+    var heads = document.querySelectorAll("[data-ledger-line]");
+    var linkCount = 0;
+    for (var hx = 0; hx < heads.length; hx++) {
+      var lineId = heads[hx].getAttribute("data-ledger-line");
+      var anchor = heads[hx].querySelector("a");
+      var want = lineHref[lineId] || null;
+      var got = anchor ? anchor.getAttribute("href") : null;
+      if (want !== got) {
+        problems.push("row header for “" + lineId + "” links to " +
+          (got || "nothing") + ", register says " + (want || "nothing"));
+      }
+      if (got) { linkCount++; }
+    }
+
     if (window.console) {
       if (problems.length) {
         console.error("Ledger register audit: " + problems.length + " mismatch(es)");
         problems.forEach(function (m) { console.error("  " + m); });
       } else {
         console.log("Ledger register audit: clean (" + cells.length + " cells, " +
-          prices.length + " priced items, " + keyCount + " source keys resolve).");
+          prices.length + " priced items, " + keyCount + " source keys resolve, " +
+          textureCount + " texture picks logged, " + linkCount + " row-header links agree).");
       }
     }
     return problems;

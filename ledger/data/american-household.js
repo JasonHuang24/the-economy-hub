@@ -231,10 +231,26 @@
     },
     "bls-b1231": {
       issuer: "U.S. Bureau of Labor Statistics",
-      work: "Bulletin 1231, New Housing and Its Materials 1940-56 (1958), Table 1",
-      series: "average floor area of new privately owned nonfarm 1-family houses, square feet; the 1955 column reads 1,170",
-      population: "houses for which permits were issued or on which work started in the first three months of 1955, from a stratified sample survey. A MEAN of houses STARTED in one quarter: three construct axes away from the Census median-of-completions series, and never joined to it.",
-      vintage: "1958 bulletin as scanned by FRASER",
+      work: "Bulletin 1231, New Housing and Its Materials 1940-56 (1958), Tables 1 and 8",
+      series: "average floor area and median proposed selling price of new privately owned nonfarm 1-family houses; the 1955 columns read 1,170 square feet and $13,700",
+      population: "houses in projects for which building permits were issued or on which work was started during the first 3 months of 1955 in 63 areas, from a stratified three-stage sample of 6,000 projects and 37,000 dwelling units, about 13 percent of new private dwelling units. The floor area is a MEAN and the price is a MEDIAN of PROPOSED selling prices recorded when building started. Both are three construct axes away from the Census series used on the later panels — median floor area of houses COMPLETED, and median sales price of houses SOLD — and neither is ever joined to them. The 1940 and 1950 columns of Table 1 come from studies based on FHA records, a different universe again.",
+      vintage: "1958 bulletin as scanned by FRASER; read at 200-600 dpi, the table's optical character recognition being unreliable",
+      retrieved: "2026-07-31"
+    },
+    "bea-nipa21": {
+      issuer: "U.S. Bureau of Economic Analysis",
+      work: "National Income and Product Accounts, Table 2.1, Personal Income and Its Disposition, annual",
+      series: "line 35, personal saving as a percentage of disposable personal income (A072RC), 1929 to 2025",
+      population: "the personal sector of the national accounts, which is households together with the nonprofit institutions that serve them. Personal saving is what is left of disposable personal income after personal outlays: a residual in an accounting identity, not a survey of what families set aside, and not a rate any particular household lived. The series begins in 1929, so the 1900 and 1915 panels carry no reading. Its only negative annual values are 1932 and 1933.",
+      vintage: "the annual table as published July 30, 2026",
+      retrieved: "2026-07-31"
+    },
+    "nber-w2101": {
+      issuer: "Daniel M. G. Raff and Lawrence H. Summers",
+      work: "Did Henry Ford Pay Efficiency Wages? National Bureau of Economic Research Working Paper No. 2101",
+      series: "the terms announced by the Ford Motor Company on January 5, 1914 and the conditions of the profit-sharing plan that followed",
+      population: "scholarship, not a statistical series: the authors' reading of the announcement, of a 1914 company pamphlet, of the contemporary press and of the Ford Archives. The estimates of how many workers qualified are attributed in the paper to their own sources and disagree with one another.",
+      vintage: "working paper dated December 1986; a revised version appeared in the Journal of Labor Economics in 1987 and is not the text read here",
       retrieved: "2026-07-31"
     },
     "bls-ap": {
@@ -305,8 +321,8 @@
       issuer: "Federal Highway Administration",
       work: "Highway Statistics, Table MV-200 (State Motor-Vehicle Registrations, by Years, 1900-1995) and Table MV-1 (annual)",
       series: "automobile registrations and truck registrations, total, United States",
-      population: "vehicles registered with the States, not households owning one. The automobile column excludes vehicles registered as trucks, which is why the truck count is printed beside it. The figures agree exactly with the Census reprint used for the earlier panels at 1955 and 1965. The split between the two columns is the issuer's processing construct: at the 2012 data year roughly fourteen million vehicles move from the automobile column to the truck column with no announcing footnote (the 2011 table is stamped REVISED), so no single year can be named as the year trucks passed automobiles on this table.",
-      vintage: "MV-200 dated April 1997; MV-1 editions for 2015 (January 2017) and 2024 (January 2026)",
+      population: "vehicles registered with the States, not households owning one. Every figure shown is the table's TOTAL column, private and commercial plus publicly owned. The automobile column excludes vehicles registered as trucks, which is why the truck count is printed beside it. The figures agree exactly with the Census reprint used for the earlier panels at 1955 and 1965. The split between the two columns is the issuer's processing construct: at the 2012 data year roughly fourteen million vehicles move from the automobile column to the truck column with no announcing footnote (the 2011 table is stamped REVISED), so no single year can be named as the year trucks passed automobiles on this table, and that break falls between the 2005 and 2015 panels.",
+      vintage: "MV-200 dated April 1997; MV-1 editions for 2005 (October 2006), 2015 (January 2017) and 2024 (January 2026), each read for its own data year",
       retrieved: "2026-07-31"
     },
     "census-ms2": {
@@ -348,23 +364,47 @@
 
   /* ------------------------------------------------------------------ lines */
 
+  /* `href` is the line's deep link into the chapter that owns its mechanism
+     (CHARTER §PURPOSE 1 and §WIRING MAP), relative to ledger/. A line whose
+     domain the wiring map gives no canonical home carries no href: that is the
+     charter's own boundary clause, not an omission, and the `home` field below
+     records which. Every target was read for the mechanism before wiring — a
+     pointer is a promise about the target's CONTENT, not about its title. */
   var lines = [
-    { id: "occupation", label: "What the earner does", group: "core" },
-    { id: "hours", label: "Hours in the working week", group: "core" },
-    { id: "earnings", label: "A year’s earnings", group: "core" },
-    { id: "income", label: "A family’s income", group: "core" },
-    { id: "home", label: "The home", group: "core" },
-    { id: "household", label: "Who is in it, who earns", group: "core" },
-    { id: "transport", label: "Getting about", group: "core" },
-    { id: "basket", label: "The basket", group: "core", priced: true },
-    { id: "unemployment", label: "Out of work", group: "texture", domain: "Risk and security" },
-    { id: "electric", label: "Electric light", group: "texture", domain: "The home's systems" },
-    { id: "power", label: "Electricity used", group: "texture", domain: "The home's systems" },
-    { id: "service", label: "In service", group: "texture", domain: "Boarders, servants, and the household economy" },
-    { id: "farmcity", label: "Farm and city", group: "texture", domain: "Geography and the commute" },
-    { id: "homesize", label: "The new house", group: "texture", domain: "The home’s systems" },
-    { id: "elecprice", label: "Electricity, a kilowatt-hour", group: "texture", domain: "The home’s systems" },
-    { id: "trucks", label: "Trucks on the register", group: "texture", domain: "Geography and the commute" }
+    { id: "occupation", label: "What the earner does", group: "core",
+      href: "../books/work/chapter-01.html", home: "IV.1, on what jobs pay and why" },
+    { id: "hours", label: "Hours in the working week", group: "core",
+      href: "../books/work/chapter-09.html", home: "IV.9, on the length of the week" },
+    { id: "earnings", label: "A year’s earnings", group: "core",
+      href: "../books/work/chapter-02.html", home: "IV.2, on growth and paychecks" },
+    { id: "income", label: "A family’s income", group: "core",
+      href: "../books/work/chapter-02.html", home: "IV.2, on growth and paychecks" },
+    { id: "home", label: "The home", group: "core",
+      href: "../books/countries/chapter-12.html", home: "III.12, on what housing costs" },
+    { id: "household", label: "Who is in it, who earns", group: "core",
+      href: "../books/work/chapter-05.html", home: "IV.5, on who earns and the gap" },
+    { id: "transport", label: "Getting about", group: "core",
+      home: "no chapter carries the mechanism of household transport" },
+    { id: "basket", label: "The basket", group: "core", priced: true,
+      href: "../books/history/chapter-03.html", home: "II.3, on why the price level rises" },
+    { id: "unemployment", label: "Out of work", group: "texture", domain: "Risk and security",
+      href: "../books/work/chapter-03.html", home: "IV.3, on why the floor is not zero" },
+    { id: "electric", label: "Electric light", group: "texture", domain: "The home's systems",
+      home: "no chapter carries household electrification" },
+    { id: "power", label: "Electricity used", group: "texture", domain: "The home's systems",
+      home: "no chapter carries household electrification" },
+    { id: "service", label: "In service", group: "texture", domain: "Boarders, servants, and the household economy",
+      home: "the charter names this domain as having no canonical home" },
+    { id: "farmcity", label: "Farm and city", group: "texture", domain: "Geography and the commute",
+      home: "no chapter carries the farm-to-city move" },
+    { id: "saving", label: "Saved out of income", group: "texture", domain: "Credit and debt",
+      home: "no chapter carries the saving rate; II.7 and II.2 own credit, which is not this" },
+    { id: "homesize", label: "The new house", group: "texture", domain: "The home’s systems",
+      home: "III.12 owns housing cost but carries nothing on the size of a house" },
+    { id: "elecprice", label: "Electricity, a kilowatt-hour", group: "texture", domain: "The home’s systems",
+      home: "II.3 owns the price level, not the price of a utility" },
+    { id: "trucks", label: "Trucks on the register", group: "texture", domain: "Geography and the commute",
+      home: "no chapter carries the mechanism of household transport" }
   ];
 
   /* ------------------------------------------------------------------ eras */
@@ -411,8 +451,7 @@
           }
         },
         unemployment: { a: cell("5.0%", "hsus-d86", { year: 1900, note: "Percent of the civilian labor force, 14 and over on this basis." }) },
-        electric: { a: cell("8.0% of dwellings, 1907", "hsus-s109", { year: 1907, note: "The series begins at 1902 with no figure and prints 1907 next; nothing is interpolated back to 1900." }) },
-        power: { a: cell("not measured", null, { absent: true,  note: "No residential use per customer is printed for 1900 or 1907." }) },
+        electric: { a: cell("8.0% of dwellings, 1907", "hsus-s109", { year: 1907, srcs: ["hsus-s108"], note: "The series begins at 1902 with no figure and prints 1907 next; nothing is interpolated back to 1900. The companion column for use per customer (S 108) prints no figure at either 1902 or 1907; its first reading is 264 kilowatt-hours at 1912, which is why this panel shows no electricity-used line at all." }) },
         service: { a: cell("1,526 of 5,319 thousand women at work, 28.7%", "hsus-d182", { year: 1900, note: "Private household workers were the largest single occupation line among women in the experienced civilian labor force. Share computed from the table’s own two rows." }) },
         farmcity: { a: cell("Farm 64.4% owned, nonfarm 36.5%", "hsus-n243", { year: 1900, note: "The farm household owned; the city household rented." }) }
       }
@@ -428,12 +467,13 @@
       texture: [
         { lineId: "unemployment", reason: "1915 carries the highest unemployment reading between 1900 and 1920 in this series" },
         { lineId: "electric", reason: "the light arrives in the cities first, and the series' own 1912 reading dates it" },
+        { lineId: "power", reason: "the first year the use-per-customer column prints anything at all, which is what makes the 1900 panel's silence on it visible" },
         { lineId: "farmcity", reason: "the two censuses that bracket 1915 show the tenure gap holding" }
       ],
       cells: {
         occupation: { a: cell("Farm work, 11,533 of 37,291 thousand in 1910, 30.9%", "hsus-d182", { year: 1910, note: "By the January 1920 census, 11,390 of 42,206 thousand, 27.0%. Farmers and farm managers (6,163 thousand in 1910) were still the largest single major occupation group. Shares computed from the table’s own rows." }) },
         hours: { a: cell("58.2 hours", "hsus-d769", { year: 1915, note: "Average weekly hours, payroll manufacturing industries." }) },
-        earnings: { a: cell("$661 a year", "hsus-d740", { year: 1915, note: "Average annual earnings per full-time employee in manufacturing." }) },
+        earnings: { a: cell("$661 a year", "hsus-d740", { year: 1915, srcs: ["nber-w2101"], note: "Average annual earnings per full-time employee in manufacturing. The era's famous pay datum is not in this series and is not a wage: on January 5, 1914, effective January 12, the Ford Motor Company announced a working day cut from 9 hours to 8 and minimum daily pay raised, in Raff and Summers's words, “from roughly $2.34 to $5.00 a day for those workers who were judged to qualify,” with the extra “labelled as profit sharing rather than wages.” Eligibility: men over 22, save for women and younger men supporting families; certification by a Sociological Department of 150 inspectors who visited workers' homes, a 1914 company pamphlet saying a worker joined the list of profit sharers only once the company “is satisfied that he will not debauch the additional money he receives”; and a six-month service requirement which the same authors' footnote dates not to the announcement but to the following autumn, after which it stayed. On how many collected, the paper reports figures that disagree: Ford's claim of all but 1 percent, against Lee's 1916 account of 69 percent within six months, 87 percent after a year and 90 percent by mid-1916, which the authors note appear to exclude workers with less than six months' service." }) },
         income: { a: cell("not measured", null, { absent: true,  note: "No measurement of family income exists for 1915." }) },
         home: { a: cell("45.9% owned in 1910, 45.6% in 1920", "hsus-n243", { year: 1910, note: "No tenure figure exists for 1915. The rate had been falling slowly since 1890." }) },
         household: { a: cell("4.5 people in 1910, 4.3 in 1920", "hsus-n240", { year: 1910, srcs: ["hsus-d36"], note: "Persons per occupied housing unit at the two bracketing censuses. Women's labor force participation is not printed for 1910 in this series; at the January 1920 census it was 22.7% on a 14-and-over basis." }) },
@@ -453,8 +493,7 @@
         },
         unemployment: { a: cell("8.5%", "hsus-d86", { year: 1915, note: "The highest reading between 1900 and 1920 in this series." }) },
         electric: { a: cell("15.9% of dwellings, 1912", "hsus-s109", { year: 1912, note: "The series prints 1912 and then 1917 (24.3%); there is no 1915 figure." }) },
-        power: { a: cell("264 kilowatt-hours a year, 1912", "hsus-s108", { year: 1912, note: "Per residential customer." }) },
-        service: { a: cell("not measured", null, { absent: true,  note: "Occupation counts are decennial; the 1910 and 1920 columns are shown at the 1900 and 1929 panels." }) },
+        power: { a: cell("264 kilowatt-hours a year, 1912", "hsus-s108", { year: 1912, note: "Per residential customer, and the first figure this column prints: 1902 and 1907 are blank in it." }) },
         farmcity: { a: cell("Farm 62.8% owned, nonfarm 38.4% in 1910", "hsus-n243", { year: 1910 }) }
       }
     },
@@ -469,7 +508,8 @@
       texture: [
         { lineId: "unemployment", reason: "the panel exists for this line; it is the one number the two columns are read for" },
         { lineId: "electric", reason: "the light stayed on: a documented counter-current inside the collapse" },
-        { lineId: "power", reason: "consumption per customer held up through the slump, which the ownership share alone would not show" }
+        { lineId: "power", reason: "consumption per customer held up through the slump, which the ownership share alone would not show" },
+        { lineId: "saving", reason: "the national accounts begin in 1929, and this panel's bust column is one of the only two years in which the saving rate they report is negative" }
       ],
       cells: {
         occupation: {
@@ -536,8 +576,10 @@
           a: cell("502 kilowatt-hours a year", "hsus-s108", { year: 1929, srcs: ["hsus-s116"], note: "Per residential customer; the price was 6.33 cents a kilowatt-hour." }),
           b: cell("600 kilowatt-hours a year", "hsus-s108", { year: 1933, srcs: ["hsus-s116"], note: "Use per customer was higher in every year of the slump than in 1929; the price fell to 5.52 cents." })
         },
-        service: { a: cell("not measured", null, { absent: true,  note: "Not shown for this panel." }), b: cell("not measured", null, { absent: true,  note: "Not shown for this panel." }) },
-        farmcity: { a: cell("not measured", null, { absent: true,  note: "Not shown for this panel." }), b: cell("not measured", null, { absent: true,  note: "Not shown for this panel." }) }
+        saving: {
+          a: cell("4.7% of disposable income", "bea-nipa21", { year: 1929, note: "Personal saving as a percentage of disposable personal income, the first year the national accounts reach." }),
+          b: cell("−0.7% of disposable income", "bea-nipa21", { year: 1933, note: "1932 and 1933, at −0.2 and −0.7 percent, are the only years in the whole series, 1929 to 2025, in which the figure is negative: the sector spent more than its disposable income. The measure is an accounting residual for households and the nonprofits serving them, not a survey of what families set aside." })
+        }
       }
     },
 
@@ -551,7 +593,8 @@
       texture: [
         { lineId: "unemployment", reason: "1.2% is the lowest reading in the whole series and the plainest statement of what the war did to the labor market" },
         { lineId: "electric", reason: "the farm gap closes fastest in this decade, and the war years sit in the middle of it" },
-        { lineId: "power", reason: "use per customer nearly doubled between 1933 and 1944 while the price kept falling" }
+        { lineId: "power", reason: "use per customer nearly doubled between 1933 and 1944 while the price kept falling" },
+        { lineId: "saving", reason: "the highest reading the series carries, on a panel whose other lines are all wartime readings too" }
       ],
       cells: {
         occupation: { a: cell("Operatives, 9,518 of 51,742 thousand in 1940, 18.4%", "hsus-d182", { year: 1940, note: "At the April 1940 census operatives outnumbered the two farm groups together (8,995 thousand, 17.4%) for the first time. Shares computed from the table’s own rows." }) },
@@ -577,8 +620,7 @@
         unemployment: { a: cell("1.2%", "hsus-d86", { year: 1944, note: "670 thousand people. The lowest reading in the series, which runs from 1890 to 1970." }) },
         electric: { a: cell("84.0% of dwellings; farm 42.2%", "hsus-s109", { year: 1944, note: "The farm share had been 9.2% in 1929." }) },
         power: { a: cell("1,151 kilowatt-hours a year", "hsus-s108", { year: 1944, srcs: ["hsus-s116"], note: "Per residential customer; the price was 3.51 cents a kilowatt-hour." }) },
-        service: { a: cell("not measured", null, { absent: true,  note: "Not shown for this panel." }) },
-        farmcity: { a: cell("not measured", null, { absent: true,  note: "Not shown for this panel." }) }
+        saving: { a: cell("27.9% of disposable income", "bea-nipa21", { year: 1944, note: "The highest annual reading in the series, which runs from 1929 to 2025; 1943 reads 27.7 and 1942 26.2. The measure is an accounting residual for households and the nonprofits serving them, not a survey of what families set aside." }) }
       }
     },
 
@@ -592,14 +634,16 @@
       texture: [
         { lineId: "unemployment", reason: "the ordinary background rate of the anchor year, so the panel is not read against a memory of full employment" },
         { lineId: "electric", reason: "this is the decade the farm gap closes, and 1955 is where it nearly disappears" },
-        { lineId: "power", reason: "the appliances arrive as kilowatt-hours before they arrive as a list of objects" }
+        { lineId: "power", reason: "the appliances arrive as kilowatt-hours before they arrive as a list of objects" },
+        { lineId: "service", reason: "the occupation that employed more than a quarter of working women in 1900, at what it had come to by the anchor year" },
+        { lineId: "saving", reason: "the anchor year's own figure, on a line the panels either side of it also carry" }
       ],
       cells: {
         occupation: { a: cell("Operatives, 12,080 of 58,999 thousand in 1950, 20.5%", "hsus-d182", { year: 1950, note: "The largest major group at both censuses that bracket 1955; at 1960, 11,754 of 67,990 thousand, 17.3%. Farmworkers were 11.8% in 1950 and 6.0% in 1960. Shares computed from the table’s own rows." }) },
         hours: { a: cell("40.7 hours", "hsus-d803", { year: 1955 }) },
         earnings: { a: cell("$4,356 a year; $1.86 an hour", "hsus-d740", { year: 1955, srcs: ["hsus-d802", "hsus-d804"], note: "Annual earnings per full-time employee in manufacturing; weekly earnings were $75.70." }) },
         income: { a: cell("$4,418 median, $4,962 mean", "census-f5", { year: 1955, note: "Median and mean money income of the 42,890 thousand families counted that year. The mean sits above the median because income is not distributed symmetrically; both are printed here for that reason." }) },
-        home: { a: cell("55.0% owned in 1950, 61.9% in 1960", "hsus-n243", { year: 1950, note: "The largest decade-on-decade rise in the series is 1940 to 1950. A December 1956 sample survey reads 60.4%, marked by the Census as not comparable with census years." }) },
+        home: { a: cell("55.0% owned in 1950, 61.9% in 1960; houses started: 1,170 sq ft average, $13,700 median", "hsus-n243", { year: 1950, srcs: ["bls-b1231"], note: "Tenure: the largest decade-on-decade rise in the series is 1940 to 1950. A December 1956 sample survey reads 60.4%, marked by the Census as not comparable with census years. The house itself: a Bureau of Labor Statistics survey of new privately owned nonfarm 1-family houses started in the first three months of 1955 reports an average floor area of 1,170 square feet and a median proposed selling price of $13,700 — at that year's manufacturing hourly earnings, about 7,366 hours of work. That survey is not the Census series the later panels stand on: it prices houses when building starts rather than when they sell, its floor area is a mean rather than a median, and neither the Census sales-price series (which begins in 1963) nor the Census floor-area series (which begins in 1973) reaches 1955. No line on this page is drawn between the two." }) },
         household: { a: cell("3.5 people in 1950, 3.4 in 1960; 35.7% of women in the labor force", "hsus-n240", { year: 1950, srcs: ["cps-flfp", "hsus-d36", "census-ms2"], note: "Persons per occupied housing unit at the bracketing censuses. The women's figure is the 1955 annual average, 16 and over, and it is below the 36.3% of 1944 on a 14-and-over basis; the series does not pass the wartime reading again until 1956. Median age at first marriage in 1955: 22.6 for men, 20.2 for women, close to the lowest the series records." }) },
         transport: { a: cell("52,145 thousand motor cars registered", "hsus-q153", { year: 1955, note: "Twice the 1944 count." }) },
         basket: {
@@ -619,7 +663,7 @@
         electric: { a: cell("98.4% of dwellings; farm 94.4%", "hsus-s109", { year: 1955, note: "Urban and rural nonfarm dwellings were at 98.8%." }) },
         power: { a: cell("2,773 kilowatt-hours a year", "hsus-s108", { year: 1955, srcs: ["hsus-s116"], note: "Per residential customer, against 1,151 in 1944; the price was 2.65 cents a kilowatt-hour." }) },
         service: { a: cell("1,459 of 16,445 thousand women at work in 1950, 8.9%", "hsus-d182", { year: 1950, note: "Private household workers, down from 28.7% of women at work in 1900. Clerical work is the largest female line by 1950, at 4,502 thousand. Shares computed from the table’s own rows." }) },
-        farmcity: { a: cell("not measured", null, { absent: true,  note: "Not shown for this panel." }) }
+        saving: { a: cell("9.7% of disposable income", "bea-nipa21", { year: 1955, note: "Personal saving as a percentage of disposable personal income: an accounting residual for households and the nonprofits serving them, not a survey of what families set aside." }) }
       }
     },
 
@@ -633,7 +677,8 @@
       texture: [
         { lineId: "unemployment", reason: "read against 1955 it shows the ordinary rate barely moving across the decade the ledger is often asked to contrast" },
         { lineId: "power", reason: "the clearest single measure of what came into the house between 1955 and 1965" },
-        { lineId: "service", reason: "the female occupation the century moved women into, against the one it moved them out of" }
+        { lineId: "service", reason: "the female occupation the century moved women into, against the one it moved them out of" },
+        { lineId: "saving", reason: "the rate rose across the decade between this panel and 1955, which the wage and price lines on the same two panels do not show" }
       ],
       cells: {
         occupation: { a: cell("Operatives, 11,754 of 67,990 thousand in 1960, 17.3%", "hsus-d182", { year: 1960, note: "The largest major group at the 1960 census; farmworkers were 6.0%. Shares computed from the table’s own rows." }) },
@@ -657,10 +702,9 @@
           }
         },
         unemployment: { a: cell("4.5%", "hsus-d86", { year: 1965, note: "3,366 thousand people, against 4.4% and 2,852 thousand in 1955." }) },
-        electric: { a: cell("not measured", null, { absent: true,  note: "The dwelling-unit series stops at 1956, when it read 98.8%." }) },
-        power: { a: cell("4,933 kilowatt-hours a year", "hsus-s108", { year: 1965, srcs: ["hsus-s116"], note: "Per residential customer, against 2,773 in 1955; the price was 2.25 cents a kilowatt-hour." }) },
+        power: { a: cell("4,933 kilowatt-hours a year", "hsus-s108", { year: 1965, srcs: ["hsus-s116", "hsus-s109"], note: "Per residential customer, against 2,773 in 1955; the price was 2.25 cents a kilowatt-hour. This panel carries no electric-light line because the dwelling-unit column ends at 1956, where it read 98.8%: the meter is what is left to measure once nearly every dwelling has the service." }) },
         service: { a: cell("1,760 of 22,304 thousand women at work in 1960, 7.9%", "hsus-d182", { year: 1960, note: "Private household workers. Clerical workers were 6,497 thousand, 29.1% of women at work, and the largest female line by a wide margin. Shares computed from the table’s own rows." }) },
-        farmcity: { a: cell("not measured", null, { absent: true,  note: "Not shown for this panel." }) }
+        saving: { a: cell("11.5% of disposable income", "bea-nipa21", { year: 1965, note: "Against 9.7% in 1955. An accounting residual for households and the nonprofits serving them, not a survey of what families set aside." }) }
       }
     },
 
@@ -673,8 +717,9 @@
       construct: "The wage and hours lines change instrument here. From 1973 they cover production and nonsupervisory employees across ALL private industry rather than manufacturing alone, because manufacturing is a shrinking share of the payroll across these panels; the join and the years where both series exist are set out in the method note. The income line also changes universe: from here it counts HOUSEHOLDS, everyone occupying a housing unit, which is wider than the FAMILIES counted in 1955 and 1965. Both are printed for 1973 so the gap between the two constructs is visible rather than assumed.",
       texture: [
         { lineId: "unemployment", reason: "the modern survey measures directly what the earlier panels could only reconstruct" },
-        { lineId: "homesize", reason: "the floor-area series begins in 1973, so this is the first panel where the size of a new house can be stated at all" },
-        { lineId: "trucks", reason: "the vehicle a household buys is about to be reclassified out of the car column, and 1973 is the base against which that shows" }
+        { lineId: "homesize", reason: "the Census floor-area series begins in 1973, so this is the first panel whose house size sits on the series the later panels use; the 1955 panel's figure comes from a different survey and is never joined to it" },
+        { lineId: "trucks", reason: "the vehicle a household buys is about to be reclassified out of the car column, and 1973 is the base against which that shows" },
+        { lineId: "saving", reason: "the inflection panel's reading, which every later panel on this page reads below" }
       ],
       cells: {
         occupation: { a: cell("Manufacturing, 18,589 of 76,912 thousand nonfarm jobs, 24.2%", "ces-emp", { year: 1973, note: "Payroll jobs, not people. Share computed from the two series." }) },
@@ -698,7 +743,8 @@
           }
         },
         unemployment: { a: cell("4.9%", "cps-unemp", { year: 1973 }) },
-        homesize: { a: cell("1,525 square feet", "census-sqft", { year: 1973, note: "Median floor area of new single-family houses completed; the average was 1,660." }) },
+        saving: { a: cell("13.5% of disposable income", "bea-nipa21", { year: 1973, note: "An accounting residual for households and the nonprofits serving them, not a survey of what families set aside." }) },
+        homesize: { a: cell("1,525 square feet", "census-sqft", { year: 1973, note: "Median floor area of new single-family houses completed; the average was 1,660. This Census series begins here, and it is not the survey the 1955 panel's floor area comes from." }) },
         trucks: { a: cell("23,244 thousand trucks", "fhwa-mv", { year: 1973, note: "Against 101,985 thousand automobiles." }) }
       }
     },
@@ -714,7 +760,8 @@
         { lineId: "unemployment", reason: "the reading is the highest of the six panels from 1973 on" },
         { lineId: "elecprice", reason: "the household’s most invisible bill, on a series that runs from here to the present" },
         { lineId: "homesize", reason: "the new house gains 80 square feet between 1973 and 1985, against 315 in the decade after" },
-        { lineId: "trucks", reason: "the truck column grows far faster than the car column across this stretch" }
+        { lineId: "trucks", reason: "the truck column grows far faster than the car column across this stretch" },
+        { lineId: "saving", reason: "the rate has fallen by about a third since 1973, on the same table" }
       ],
       cells: {
         occupation: { a: cell("Manufacturing, 17,819 of 97,532 thousand nonfarm jobs, 18.3%", "ces-emp", { year: 1985, note: "Share computed from the two series." }) },
@@ -739,6 +786,7 @@
         },
         unemployment: { a: cell("7.2%", "cps-unemp", { year: 1985 }) },
         elecprice: { a: cell("8.5 cents", "bls-ap", { year: 1985, note: "June reading, U.S. city average." }) },
+        saving: { a: cell("9.1% of disposable income", "bea-nipa21", { year: 1985, note: "Against 13.5% in 1973. An accounting residual for households and the nonprofits serving them, not a survey of what families set aside." }) },
         homesize: { a: cell("1,605 square feet", "census-sqft", { year: 1985, note: "Median; the average was 1,785. The median had been 1,525 in 1973." }) },
         trucks: { a: cell("43,210 thousand trucks", "fhwa-mv", { year: 1985, note: "Against 23,244 thousand in 1973." }) }
       }
@@ -755,7 +803,8 @@
         { lineId: "unemployment", reason: "read against 1985 it is the plainest measure of what the decade did" },
         { lineId: "elecprice", reason: "the bill keeps rising in money while the wage rises faster" },
         { lineId: "homesize", reason: "the new house gains three hundred square feet in ten years, the largest step in the series" },
-        { lineId: "trucks", reason: "the truck column passes half the car column in this decade" }
+        { lineId: "trucks", reason: "the truck column passes half the car column in this decade" },
+        { lineId: "saving", reason: "the fall between 1985 and 1995 carries on, on the same table" }
       ],
       cells: {
         occupation: { a: cell("Manufacturing, 17,241 of 117,400 thousand nonfarm jobs, 14.7%", "ces-emp", { year: 1995, note: "The manufacturing count is almost unchanged from 1973; the denominator is half as large again. Share computed from the two series." }) },
@@ -780,6 +829,7 @@
         },
         unemployment: { a: cell("5.6%", "cps-unemp", { year: 1995 }) },
         elecprice: { a: cell("9.8 cents", "bls-ap", { year: 1995, note: "June reading." }) },
+        saving: { a: cell("6.8% of disposable income", "bea-nipa21", { year: 1995, note: "Against 9.1% in 1985. An accounting residual for households and the nonprofits serving them, not a survey of what families set aside." }) },
         homesize: { a: cell("1,920 square feet", "census-sqft", { year: 1995, note: "Median; the average was 2,095." }) },
         trucks: { a: cell("72,458 thousand trucks", "fhwa-mv", { year: 1995 }) }
       }
@@ -791,11 +841,13 @@
       label: "2005",
       title: "The housing-boom household",
       columns: [{ key: "a", label: "2005" }],
-      construct: "Milk changes unit at this panel: from here it is priced by the gallon, and no figure on this page divides one into the other. Homeownership is shown at the two years around 2005 that the annual table prints in the blocks retrieved, in the same way the earlier panels are bracketed by censuses. No vehicle registration figure for 2005 was retrieved, and the line says so rather than borrowing a neighbouring year.",
+      construct: "Milk changes unit at this panel: from here it is priced by the gallon, and no figure on this page divides one into the other. Homeownership is shown at the two years around 2005 that the annual table prints in the blocks retrieved, in the same way the earlier panels are bracketed by censuses. The vehicle counts are the 2005 edition of the Federal Highway Administration's annual table, read for its own data year as the 2015 and 2025 panels' counts are.",
       texture: [
         { lineId: "unemployment", reason: "the ordinary rate at the top of the boom, which the boom is not usually remembered for" },
         { lineId: "elecprice", reason: "the bill moves less across this decade than any other price on the panel" },
-        { lineId: "homesize", reason: "the house and its price move together here, and the panel is the one place the reader can see both" }
+        { lineId: "saving", reason: "the lowest reading the series has recorded since 1934, in the panel the housing boom names" },
+        { lineId: "homesize", reason: "the house and its price move together here, and the panel is the one place the reader can see both" },
+        { lineId: "trucks", reason: "the panel that shows the two columns still the way round they had been since the register began" }
       ],
       cells: {
         occupation: { a: cell("Manufacturing, 14,225 of 134,033 thousand nonfarm jobs, 10.6%", "ces-emp", { year: 2005, note: "Share computed from the two series." }) },
@@ -804,7 +856,7 @@
         income: { a: cell("$46,330 median household, $63,340 mean", "census-h5", { year: 2005, note: "Across 114,400 thousand households." }) },
         home: { a: cell("69.0% owned in 2004, 68.8% in 2006; a new house sold for $240,900", "census-hvs", { year: 2004, srcs: ["census-nrs"], note: "Median sales price of new single-family houses sold in 2005; the average was $297,000. At the year’s average hourly earnings that is about 14,953 hours of work." }) },
         household: { a: cell("2.57 people; 59.3% of women in the labor force", "census-hh6", { year: 2005, srcs: ["cps-flfp", "census-ms2"], note: "Median age at first marriage: 27.1 for men, 25.3 for women. Women’s participation had peaked at 60.0 per cent in 1999." }) },
-        transport: { a: cell("not measured", null, { absent: true, note: "The annual registration table for 2005 was not retrieved; the 1995 and 2015 panels carry the years either side." }) },
+        transport: { a: cell("136,568 thousand automobiles registered", "fhwa-mv", { year: 2005, note: "The total column of the 2005 edition of Table MV-1, dated October 2006: 135,192,288 private and commercial plus 1,375,795 publicly owned." }) },
         basket: {
           a: {
             items: [
@@ -820,7 +872,9 @@
         },
         unemployment: { a: cell("5.1%", "cps-unemp", { year: 2005 }) },
         elecprice: { a: cell("10.4 cents", "bls-ap", { year: 2005, note: "June reading, against 9.8 cents in 1995." }) },
-        homesize: { a: cell("2,227 square feet", "census-sqft", { year: 2005, note: "Median; the average was 2,434." }) }
+        saving: { a: cell("2.2% of disposable income", "bea-nipa21", { year: 2005, note: "The lowest annual reading in the series since 1934, which read 1.7; every year from 1935 to 2004 is above it. An accounting residual for households and the nonprofits serving them, not a survey of what families set aside." }) },
+        homesize: { a: cell("2,227 square feet", "census-sqft", { year: 2005, note: "Median; the average was 2,434." }) },
+        trucks: { a: cell("103,819 thousand trucks", "fhwa-mv", { year: 2005, note: "Against 136,568 thousand automobiles: the automobile column is the larger of the two here, as it is on every earlier panel that carries both." }) }
       }
     },
 
@@ -834,8 +888,9 @@
       texture: [
         { lineId: "unemployment", reason: "the reading is higher than 2005 and lower than 1985, which is the shape of the decade in one number" },
         { lineId: "elecprice", reason: "the bill rises faster than the wage across this decade, unlike the two before it" },
-        { lineId: "homesize", reason: "the largest new house in the series is here, and it is the number the 1955 panel has no counterpart for" },
-        { lineId: "trucks", reason: "trucks now outnumber cars on the register, which is where the household vehicle went" }
+        { lineId: "homesize", reason: "the largest median floor area this page carries, on the Census series that begins in 1973 and never reaches the 1955 panel" },
+        { lineId: "trucks", reason: "trucks now outnumber cars on the register, which is where the household vehicle went" },
+        { lineId: "saving", reason: "the rate after the crisis, against the boom year the panel before it carries" }
       ],
       cells: {
         occupation: { a: cell("Manufacturing, 12,309 of 141,825 thousand nonfarm jobs, 8.7%", "ces-emp", { year: 2015, note: "Share computed from the two series." }) },
@@ -860,8 +915,9 @@
         },
         unemployment: { a: cell("5.3%", "cps-unemp", { year: 2015 }) },
         elecprice: { a: cell("14.3 cents", "bls-ap", { year: 2015, note: "June reading." }) },
-        homesize: { a: cell("2,467 square feet", "census-sqft", { year: 2015, note: "Median; the average was 2,687." }) },
-        trucks: { a: cell("141,256 thousand trucks", "fhwa-mv", { year: 2015, note: "Against 112,864 thousand automobiles." }) }
+        saving: { a: cell("5.8% of disposable income", "bea-nipa21", { year: 2015, note: "Against 2.2% in 2005. An accounting residual for households and the nonprofits serving them, not a survey of what families set aside." }) },
+        homesize: { a: cell("2,467 square feet", "census-sqft", { year: 2015, note: "Median; the average was 2,687, and 2,467 is the largest median this page carries." }) },
+        trucks: { a: cell("141,256 thousand trucks", "fhwa-mv", { year: 2015, note: "Against 112,864 thousand automobiles. On the 2005 panel the automobile column was the larger; the two columns swap places somewhere between these two panels, and the table's own classification break at the 2012 data year sits inside that gap." }) }
       }
     },
 
@@ -876,7 +932,8 @@
         { lineId: "unemployment", reason: "the June reading of the panel's own year" },
         { lineId: "elecprice", reason: "the household's most invisible bill, and a line where the money column and the work-time column move opposite ways across the stretch" },
         { lineId: "homesize", reason: "the new house is smaller than it was in 2015, which the price does not show" },
-        { lineId: "trucks", reason: "the register now carries nearly two trucks for every car, and in 1973 it carried fewer than one for every four" }
+        { lineId: "trucks", reason: "the register now carries nearly two trucks for every car, and in 1973 it carried fewer than one for every four" },
+        { lineId: "saving", reason: "where the rate stands at the panel's own year, on the same table that opens in 1929" }
       ],
       cells: {
         occupation: { a: cell("Manufacturing, 12,707 of 160,256 thousand nonfarm jobs, 7.9%", "ces-emp", { year: 2025, note: "June 2025 for both series. Share computed from the two." }) },
@@ -901,6 +958,7 @@
         },
         unemployment: { a: cell("4.4%", "cps-unemp", { year: 2025, note: "June 2025, on the unadjusted basis this line uses throughout; seasonally adjusted, June 2025 reads 4.1 per cent, so part of the gap against the 4.0 per cent 2024 annual average is seasonal. The June 2025 readings on this panel (unemployment 4.4, participation 57.2) are the not-seasonally-adjusted figures, construct-consistent with the annual averages carried on the earlier panels." }) },
         elecprice: { a: cell("19.0 cents", "bls-ap", { year: 2025, note: "June reading, against 8.5 cents in 1985." }) },
+        saving: { a: cell("4.6% of disposable income", "bea-nipa21", { year: 2025, note: "The 2025 annual figure, published July 30, 2026; 2024 reads 5.4%. An accounting residual for households and the nonprofits serving them, not a survey of what families set aside." }) },
         homesize: { a: cell("2,142 square feet", "census-sqft", { year: 2025, note: "Median; the average was 2,378. The median had been 2,467 in 2015." }) },
         trucks: { a: cell("189,755 thousand trucks in 2024", "fhwa-mv", { year: 2024, note: "Against 97,413 thousand automobiles." }) }
       }

@@ -282,6 +282,37 @@
 
 .ledger-panel__label.is-texture { color: var(--color-brass-deep); }
 
+/* A line label that has a canonical home is a deep link into it. The link is
+   marked by an underline on the label itself, so the label's own size, weight
+   and letter-spacing are unchanged and the line cannot rewrap because of it. */
+.ledger-panel__label-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--color-rule-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+.ledger-panel__label-link:hover,
+.ledger-panel__label-link:focus-visible {
+  color: var(--color-green);
+  text-decoration-color: var(--color-brass);
+}
+
+.ledger-static .table-ledger th[data-ledger-line] a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--color-rule-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.ledger-static .table-ledger th[data-ledger-line] a:hover,
+.ledger-static .table-ledger th[data-ledger-line] a:focus-visible {
+  color: var(--color-green);
+  text-decoration-color: var(--color-brass);
+}
+
 .ledger-panel__value {
   margin: 0;
   font-size: var(--text-caption);
