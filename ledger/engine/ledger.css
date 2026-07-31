@@ -419,7 +419,7 @@
   color: var(--color-ink-soft);
 }
 
-.era__construct b {
+.era__construct > b {
   display: block;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
