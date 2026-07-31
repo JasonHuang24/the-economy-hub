@@ -80,6 +80,7 @@
       '<h2 class="site-footer__heading">Elsewhere</h2>' +
       "<ul>" +
       '<li><a href="' + root + 'index.html">The shelf</a></li>' +
+      '<li><a href="' + root + 'ledger/index.html">The Ledger</a></li>' +
       '<li><a href="' + root + 'components.html">Component library</a></li>' +
       '<li><a href="https://jasonhchronicles.com/the-love-equations/">The Love Equations</a></li>' +
       '<li><a href="https://jasonhuang24.github.io/VMSS">VMSS</a></li>' +
