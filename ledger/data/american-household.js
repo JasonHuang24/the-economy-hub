@@ -8,11 +8,15 @@
  * LAW (CHARTER-LEDGER.md):
  *   - every displayed value carries {value, unit, source edition, series/table,
  *     population, vintage, retrieval date} by way of its `src` key into
- *     `sources` below, plus a per-cell `year` where the value's year differs
- *     from the era’s;
+ *     `sources` below — and, where one display string or note draws on more
+ *     than one source, a `srcs` list naming the additional keys — plus a
+ *     per-cell `year` where the value's year differs from the era’s;
  *   - prose on the page repeats no digit this register does not hold;
  *   - the static no-JS tables in the page carry data-ledger-cell attributes and
- *     are audited against this register at run time (see engine `audit()`);
+ *     are audited against this register at run time (see engine `audit()`).
+ *     The runtime audit covers display strings, basket arithmetic and the
+ *     resolution of every src/srcs key; construct text and prose digits are
+ *     audited by the review process, not by the runtime;
  *   - hours-prices are NOT stored. They are computed by the engine as
  *     nominal price / nominal hourly earnings, both taken from this register,
  *     so no derived digit is ever hand-entered.
@@ -217,6 +221,22 @@
       vintage: "the BLS time-series file as captured 2025-10-01",
       retrieved: "2026-07-31"
     },
+    "bls-mcf-earners": {
+      issuer: "U.S. Bureau of Labor Statistics",
+      work: "Married-couple families by number and relationship of earners, 1967-2007 (Women in the Labor Force: A Databook, table 23)",
+      series: "married-couple families in which both husband and wife had earnings during the year: 54.5% in 1985 (27,787 of 50,978 thousand), against 43.6% in 1967; families with the husband as sole earner were 20.4% in 1985",
+      population: "married-couple families in the Current Population Survey annual demographic supplement; an earner is anyone with earnings at any time during the calendar year. This is NOT the share of all households with two earners, and it is a different construct from the both-spouses-EMPLOYED share the Bureau publishes today (49.1% of married-couple families in 2025), which counts a survey reference week and includes retiree couples — the two are never joined.",
+      vintage: "databook table as published on bls.gov",
+      retrieved: "2026-07-31"
+    },
+    "bls-b1231": {
+      issuer: "U.S. Bureau of Labor Statistics",
+      work: "Bulletin 1231, New Housing and Its Materials 1940-56 (1958), Table 1",
+      series: "average floor area of new privately owned nonfarm 1-family houses, square feet; the 1955 column reads 1,170",
+      population: "houses for which permits were issued or on which work started in the first three months of 1955, from a stratified sample survey. A MEAN of houses STARTED in one quarter: three construct axes away from the Census median-of-completions series, and never joined to it.",
+      vintage: "1958 bulletin as scanned by FRASER",
+      retrieved: "2026-07-31"
+    },
     "bls-ap": {
       issuer: "U.S. Bureau of Labor Statistics",
       work: "Average Price Data, U.S. city average, not seasonally adjusted",
@@ -269,8 +289,8 @@
       issuer: "U.S. Census Bureau",
       work: "New Residential Sales, median and average sales prices of new homes sold in the United States, annual",
       series: "median and average sales price of new single-family homes sold, current dollars",
-      population: "new single-family houses SOLD in the year, which is not the stock of houses people live in. The file used publishes through 2023.",
-      vintage: "annual file as published on census.gov",
+      population: "new single-family houses SOLD in the year, which is not the stock of houses people live in. The file used is the July 24, 2026 release, which publishes through 2025 and revises earlier years: 2023 reads $428,600 in it.",
+      vintage: "release of July 24, 2026",
       retrieved: "2026-07-31"
     },
     "census-sqft": {
@@ -285,8 +305,8 @@
       issuer: "Federal Highway Administration",
       work: "Highway Statistics, Table MV-200 (State Motor-Vehicle Registrations, by Years, 1900-1995) and Table MV-1 (annual)",
       series: "automobile registrations and truck registrations, total, United States",
-      population: "vehicles registered with the States, not households owning one. The automobile column excludes vehicles registered as trucks, which is why the truck count is printed beside it. The figures agree exactly with the Census reprint used for the earlier panels at 1955 and 1965.",
-      vintage: "MV-200 dated April 1997; MV-1 for 2015 and 2023",
+      population: "vehicles registered with the States, not households owning one. The automobile column excludes vehicles registered as trucks, which is why the truck count is printed beside it. The figures agree exactly with the Census reprint used for the earlier panels at 1955 and 1965. The split between the two columns is the issuer's processing construct: at the 2012 data year roughly fourteen million vehicles move from the automobile column to the truck column with no announcing footnote (the 2011 table is stamped REVISED), so no single year can be named as the year trucks passed automobiles on this table.",
+      vintage: "MV-200 dated April 1997; MV-1 editions for 2015 (January 2017) and 2024 (January 2026)",
       retrieved: "2026-07-31"
     },
     "census-ms2": {
@@ -302,7 +322,7 @@
   /* ------------------------------------------------------------- wage spine */
 
   var wage = {
-    label: "one hour of a manufacturing production worker’s pay",
+    label: "one hour of a production worker’s pay: manufacturing to 1965, all private industry from 1973",
     unitNote: "average hourly earnings, an average and never a median",
     values: {
       "1900": { v: 0.152, src: "hsus-d770" },
@@ -375,7 +395,7 @@
         earnings: { a: cell("$487 a year", "hsus-d740", { year: 1900, note: "Average annual earnings per full-time employee in manufacturing. Per worker, not per household." }) },
         income: { a: cell("not measured", null, { absent: true,  note: "No survey measured the income of American families in 1900. The first Census median is for 1947." }) },
         home: { a: cell("46.7% owned", "hsus-n243", { year: 1900, note: "Owner-occupied as a percent of occupied units reporting tenure." }) },
-        household: { a: cell("4.8 people; 20.0% of women in the labor force", "hsus-n240", { year: 1900, note: "Persons per occupied housing unit (N 240). The women's figure is the participation rate at the June 1900 census on a 14-and-over basis (D 36). Median age at first marriage: 25.9 for men, 21.9 for women (MS-2)." }) },
+        household: { a: cell("4.8 people; 20.0% of women in the labor force", "hsus-n240", { year: 1900, srcs: ["hsus-d36", "census-ms2"], note: "Persons per occupied housing unit (N 240). The women's figure is the participation rate at the June 1900 census on a 14-and-over basis (D 36). Median age at first marriage: 25.9 for men, 21.9 for women (MS-2)." }) },
         transport: { a: cell("8 thousand motor cars registered", "hsus-q153", { year: 1900, note: "In the whole country." }) },
         basket: {
           a: {
@@ -416,7 +436,7 @@
         earnings: { a: cell("$661 a year", "hsus-d740", { year: 1915, note: "Average annual earnings per full-time employee in manufacturing." }) },
         income: { a: cell("not measured", null, { absent: true,  note: "No measurement of family income exists for 1915." }) },
         home: { a: cell("45.9% owned in 1910, 45.6% in 1920", "hsus-n243", { year: 1910, note: "No tenure figure exists for 1915. The rate had been falling slowly since 1890." }) },
-        household: { a: cell("4.5 people in 1910, 4.3 in 1920", "hsus-n240", { year: 1910, note: "Persons per occupied housing unit at the two bracketing censuses. Women's labor force participation is not printed for 1910 in this series; at the January 1920 census it was 22.7% on a 14-and-over basis." }) },
+        household: { a: cell("4.5 people in 1910, 4.3 in 1920", "hsus-n240", { year: 1910, srcs: ["hsus-d36"], note: "Persons per occupied housing unit at the two bracketing censuses. Women's labor force participation is not printed for 1910 in this series; at the January 1920 census it was 22.7% on a 14-and-over basis." }) },
         transport: { a: cell("2,332 thousand motor cars registered", "hsus-q153", { year: 1915, note: "Up from 8 thousand in 1900." }) },
         basket: {
           a: {
@@ -461,8 +481,8 @@
           b: cell("38.1 hours", "hsus-d803", { year: 1933 })
         },
         earnings: {
-          a: cell("$1,543 a year; 56 cents an hour", "hsus-d740", { year: 1929, note: "Annual earnings per full-time employee in manufacturing (D 740); hourly earnings of production workers (D 802). Weekly earnings were $24.76 (D 804)." }),
-          b: cell("$1,086 a year; 44 cents an hour", "hsus-d740", { year: 1933, note: "Weekly earnings were $16.65 (D 804)." })
+          a: cell("$1,543 a year; 56 cents an hour", "hsus-d740", { year: 1929, srcs: ["hsus-d802", "hsus-d804"], note: "Annual earnings per full-time employee in manufacturing (D 740); hourly earnings of production workers (D 802). Weekly earnings were $24.76 (D 804)." }),
+          b: cell("$1,086 a year; 44 cents an hour", "hsus-d740", { year: 1933, srcs: ["hsus-d802", "hsus-d804"], note: "Weekly earnings were $16.65 (D 804)." })
         },
         income: {
           a: cell("not measured", null, { absent: true,  note: "No measurement of family income exists for either year." }),
@@ -473,8 +493,8 @@
           b: cell("43.6% owned in 1940", "hsus-n243", { year: 1940, note: "By the next census the rate had fallen below every reading back to 1890." })
         },
         household: {
-          a: cell("4.1 people in 1930; 23.6% of women in the labor force", "hsus-n240", { year: 1930, note: "Persons per occupied housing unit; women's participation at the April 1930 census, 14 and over. Median age at first marriage in 1930: 24.3 for men, 21.3 for women." }),
-          b: cell("3.8 people in 1940; 25.8% of women in the labor force", "hsus-n240", { year: 1940, note: "Both at the April 1940 census." })
+          a: cell("4.1 people in 1930; 23.6% of women in the labor force", "hsus-n240", { year: 1930, srcs: ["hsus-d36", "census-ms2"], note: "Persons per occupied housing unit; women's participation at the April 1930 census, 14 and over. Median age at first marriage in 1930: 24.3 for men, 21.3 for women." }),
+          b: cell("3.8 people in 1940; 25.8% of women in the labor force", "hsus-n240", { year: 1940, srcs: ["hsus-d36"], note: "Both at the April 1940 census." })
         },
         transport: {
           a: cell("23,121 thousand motor cars registered", "hsus-q153", { year: 1929 }),
@@ -513,8 +533,8 @@
           b: cell("66.7% of dwellings; farm 11.8%", "hsus-s109", { year: 1933, note: "The national share slipped by about a point over the slump while the farm share kept climbing." })
         },
         power: {
-          a: cell("502 kilowatt-hours a year", "hsus-s108", { year: 1929, note: "Per residential customer; the price was 6.33 cents a kilowatt-hour." }),
-          b: cell("600 kilowatt-hours a year", "hsus-s108", { year: 1933, note: "Use per customer was higher in every year of the slump than in 1929; the price fell to 5.52 cents." })
+          a: cell("502 kilowatt-hours a year", "hsus-s108", { year: 1929, srcs: ["hsus-s116"], note: "Per residential customer; the price was 6.33 cents a kilowatt-hour." }),
+          b: cell("600 kilowatt-hours a year", "hsus-s108", { year: 1933, srcs: ["hsus-s116"], note: "Use per customer was higher in every year of the slump than in 1929; the price fell to 5.52 cents." })
         },
         service: { a: cell("not measured", null, { absent: true,  note: "Not shown for this panel." }), b: cell("not measured", null, { absent: true,  note: "Not shown for this panel." }) },
         farmcity: { a: cell("not measured", null, { absent: true,  note: "Not shown for this panel." }), b: cell("not measured", null, { absent: true,  note: "Not shown for this panel." }) }
@@ -536,10 +556,10 @@
       cells: {
         occupation: { a: cell("Operatives, 9,518 of 51,742 thousand in 1940, 18.4%", "hsus-d182", { year: 1940, note: "At the April 1940 census operatives outnumbered the two farm groups together (8,995 thousand, 17.4%) for the first time. Shares computed from the table’s own rows." }) },
         hours: { a: cell("45.2 hours", "hsus-d803", { year: 1944, note: "The highest reading in this series between 1929 and 1970." }) },
-        earnings: { a: cell("$2,517 a year; $1.01 an hour", "hsus-d740", { year: 1944, note: "The annual figure is identical in 1944, 1945 and 1946 — $2,517 in each year. Weekly earnings were $45.70." }) },
+        earnings: { a: cell("$2,517 a year; $1.01 an hour", "hsus-d740", { year: 1944, srcs: ["hsus-d802", "hsus-d804"], note: "The annual figure is identical in 1944, 1945 and 1946 — $2,517 in each year. Weekly earnings were $45.70." }) },
         income: { a: cell("not measured", null, { absent: true,  note: "The first Census median family income is for 1947: $3,031." }) },
         home: { a: cell("43.6% owned in 1940; 53.2% at a November 1945 sample survey", "hsus-n243", { year: 1940, note: "The Census marks the 1945 figure as based on a sample survey and not comparable with the census years." }) },
-        household: { a: cell("3.8 people in 1940; 36.3% of women in the labor force", "hsus-n240", { year: 1940, note: "Persons per occupied housing unit at the 1940 census. The women's figure is the 1944 annual average on a 14-and-over basis, and it is the highest reading of the war." }) },
+        household: { a: cell("3.8 people in 1940; 36.3% of women in the labor force", "hsus-n240", { year: 1940, srcs: ["hsus-d36"], note: "Persons per occupied housing unit at the 1940 census. The women's figure is the 1944 annual average on a 14-and-over basis, and it is the highest reading of the war." }) },
         transport: { a: cell("25,566 thousand motor cars registered", "hsus-q153", { year: 1944, note: "Fewer than in 1941. Factory sales of passenger cars in 1944 were 600 vehicles." }) },
         basket: {
           a: {
@@ -556,7 +576,7 @@
         },
         unemployment: { a: cell("1.2%", "hsus-d86", { year: 1944, note: "670 thousand people. The lowest reading in the series, which runs from 1890 to 1970." }) },
         electric: { a: cell("84.0% of dwellings; farm 42.2%", "hsus-s109", { year: 1944, note: "The farm share had been 9.2% in 1929." }) },
-        power: { a: cell("1,151 kilowatt-hours a year", "hsus-s108", { year: 1944, note: "Per residential customer; the price was 3.51 cents a kilowatt-hour." }) },
+        power: { a: cell("1,151 kilowatt-hours a year", "hsus-s108", { year: 1944, srcs: ["hsus-s116"], note: "Per residential customer; the price was 3.51 cents a kilowatt-hour." }) },
         service: { a: cell("not measured", null, { absent: true,  note: "Not shown for this panel." }) },
         farmcity: { a: cell("not measured", null, { absent: true,  note: "Not shown for this panel." }) }
       }
@@ -577,10 +597,10 @@
       cells: {
         occupation: { a: cell("Operatives, 12,080 of 58,999 thousand in 1950, 20.5%", "hsus-d182", { year: 1950, note: "The largest major group at both censuses that bracket 1955; at 1960, 11,754 of 67,990 thousand, 17.3%. Farmworkers were 11.8% in 1950 and 6.0% in 1960. Shares computed from the table’s own rows." }) },
         hours: { a: cell("40.7 hours", "hsus-d803", { year: 1955 }) },
-        earnings: { a: cell("$4,356 a year; $1.86 an hour", "hsus-d740", { year: 1955, note: "Annual earnings per full-time employee in manufacturing; weekly earnings were $75.70." }) },
+        earnings: { a: cell("$4,356 a year; $1.86 an hour", "hsus-d740", { year: 1955, srcs: ["hsus-d802", "hsus-d804"], note: "Annual earnings per full-time employee in manufacturing; weekly earnings were $75.70." }) },
         income: { a: cell("$4,418 median, $4,962 mean", "census-f5", { year: 1955, note: "Median and mean money income of the 42,890 thousand families counted that year. The mean sits above the median because income is not distributed symmetrically; both are printed here for that reason." }) },
         home: { a: cell("55.0% owned in 1950, 61.9% in 1960", "hsus-n243", { year: 1950, note: "The largest decade-on-decade rise in the series is 1940 to 1950. A December 1956 sample survey reads 60.4%, marked by the Census as not comparable with census years." }) },
-        household: { a: cell("3.5 people in 1950, 3.4 in 1960; 35.7% of women in the labor force", "hsus-n240", { year: 1950, note: "Persons per occupied housing unit at the bracketing censuses. The women's figure is the 1955 annual average, 16 and over, and it is below the 36.3% of 1944 on a 14-and-over basis; the series does not pass the wartime reading again until 1956. Median age at first marriage in 1955: 22.6 for men, 20.2 for women, close to the lowest the series records." }) },
+        household: { a: cell("3.5 people in 1950, 3.4 in 1960; 35.7% of women in the labor force", "hsus-n240", { year: 1950, srcs: ["cps-flfp", "hsus-d36", "census-ms2"], note: "Persons per occupied housing unit at the bracketing censuses. The women's figure is the 1955 annual average, 16 and over, and it is below the 36.3% of 1944 on a 14-and-over basis; the series does not pass the wartime reading again until 1956. Median age at first marriage in 1955: 22.6 for men, 20.2 for women, close to the lowest the series records." }) },
         transport: { a: cell("52,145 thousand motor cars registered", "hsus-q153", { year: 1955, note: "Twice the 1944 count." }) },
         basket: {
           a: {
@@ -597,7 +617,7 @@
         },
         unemployment: { a: cell("4.4%", "hsus-d86", { year: 1955, note: "2,852 thousand people." }) },
         electric: { a: cell("98.4% of dwellings; farm 94.4%", "hsus-s109", { year: 1955, note: "Urban and rural nonfarm dwellings were at 98.8%." }) },
-        power: { a: cell("2,773 kilowatt-hours a year", "hsus-s108", { year: 1955, note: "Per residential customer, against 1,151 in 1944; the price was 2.65 cents a kilowatt-hour." }) },
+        power: { a: cell("2,773 kilowatt-hours a year", "hsus-s108", { year: 1955, srcs: ["hsus-s116"], note: "Per residential customer, against 1,151 in 1944; the price was 2.65 cents a kilowatt-hour." }) },
         service: { a: cell("1,459 of 16,445 thousand women at work in 1950, 8.9%", "hsus-d182", { year: 1950, note: "Private household workers, down from 28.7% of women at work in 1900. Clerical work is the largest female line by 1950, at 4,502 thousand. Shares computed from the table’s own rows." }) },
         farmcity: { a: cell("not measured", null, { absent: true,  note: "Not shown for this panel." }) }
       }
@@ -618,10 +638,10 @@
       cells: {
         occupation: { a: cell("Operatives, 11,754 of 67,990 thousand in 1960, 17.3%", "hsus-d182", { year: 1960, note: "The largest major group at the 1960 census; farmworkers were 6.0%. Shares computed from the table’s own rows." }) },
         hours: { a: cell("41.2 hours", "hsus-d803", { year: 1965 }) },
-        earnings: { a: cell("$6,389 a year; $2.61 an hour", "hsus-d740", { year: 1965, note: "Annual earnings per full-time employee in manufacturing; weekly earnings were $107.53." }) },
+        earnings: { a: cell("$6,389 a year; $2.61 an hour", "hsus-d740", { year: 1965, srcs: ["hsus-d802", "hsus-d804"], note: "Annual earnings per full-time employee in manufacturing; weekly earnings were $107.53." }) },
         income: { a: cell("$6,957 median, $7,704 mean", "census-f5", { year: 1965, note: "Money income of the 48,510 thousand families counted that year." }) },
-        home: { a: cell("61.9% owned in 1960, 62.9% in 1970; a new house sold for $20,000", "hsus-n243", { year: 1960, note: "The rise of the 1940s and 1950s does not repeat in the 1960s. The new-home sales-price series begins in 1963, at a median of $18,000; the 1965 median is $20,000 and the average $21,500. At the year’s manufacturing hourly earnings that median is about 7,663 hours of work." }) },
-        household: { a: cell("3.4 people in 1960, 3.2 in 1970; 39.3% of women in the labor force", "hsus-n240", { year: 1960, note: "Persons per occupied housing unit at the bracketing censuses. The women's figure is the 1965 annual average, 16 and over. Median age at first marriage in 1965: 22.8 for men, 20.6 for women." }) },
+        home: { a: cell("61.9% owned in 1960, 62.9% in 1970; a new house sold for $20,000", "hsus-n243", { year: 1960, srcs: ["census-nrs"], note: "The rise of the 1940s and 1950s does not repeat in the 1960s. The new-home sales-price series begins in 1963, at a median of $18,000; the 1965 median is $20,000 and the average $21,500. At the year’s manufacturing hourly earnings that median is about 7,663 hours of work." }) },
+        household: { a: cell("3.4 people in 1960, 3.2 in 1970; 39.3% of women in the labor force", "hsus-n240", { year: 1960, srcs: ["cps-flfp", "census-ms2"], note: "Persons per occupied housing unit at the bracketing censuses. The women's figure is the 1965 annual average, 16 and over. Median age at first marriage in 1965: 22.8 for men, 20.6 for women." }) },
         transport: { a: cell("75,258 thousand motor cars registered", "hsus-q153", { year: 1965 }) },
         basket: {
           a: {
@@ -638,7 +658,7 @@
         },
         unemployment: { a: cell("4.5%", "hsus-d86", { year: 1965, note: "3,366 thousand people, against 4.4% and 2,852 thousand in 1955." }) },
         electric: { a: cell("not measured", null, { absent: true,  note: "The dwelling-unit series stops at 1956, when it read 98.8%." }) },
-        power: { a: cell("4,933 kilowatt-hours a year", "hsus-s108", { year: 1965, note: "Per residential customer, against 2,773 in 1955; the price was 2.25 cents a kilowatt-hour." }) },
+        power: { a: cell("4,933 kilowatt-hours a year", "hsus-s108", { year: 1965, srcs: ["hsus-s116"], note: "Per residential customer, against 2,773 in 1955; the price was 2.25 cents a kilowatt-hour." }) },
         service: { a: cell("1,760 of 22,304 thousand women at work in 1960, 7.9%", "hsus-d182", { year: 1960, note: "Private household workers. Clerical workers were 6,497 thousand, 29.1% of women at work, and the largest female line by a wide margin. Shares computed from the table’s own rows." }) },
         farmcity: { a: cell("not measured", null, { absent: true,  note: "Not shown for this panel." }) }
       }
@@ -660,9 +680,9 @@
         occupation: { a: cell("Manufacturing, 18,589 of 76,912 thousand nonfarm jobs, 24.2%", "ces-emp", { year: 1973, note: "Payroll jobs, not people. Share computed from the two series." }) },
         hours: { a: cell("36.9 hours", "ces-awh", { year: 1973, note: "Production and nonsupervisory employees, all private industry, part-time work included." }) },
         earnings: { a: cell("$152.71 a week; $4.14 an hour", "ces-awe", { year: 1973, note: "Average weekly and hourly earnings of production and nonsupervisory employees across all private industry, as published." }) },
-        income: { a: cell("$10,510 median household, $12,050 median family", "census-h5", { year: 1973, note: "Households: median $10,510, mean $12,160, across 69,860 thousand households (Table H-5). Families: median $12,050 (Table F-5). Two universes, two tables, printed side by side." }) },
-        home: { a: cell("64.5% owned; a new house sold for $32,500", "census-hvs", { year: 1973, note: "Homeownership from the Housing Vacancy Survey, which is not the decennial series used before 1970. The new-home figure is the median sales price of new single-family houses sold; the average was $35,500. At the year’s average hourly earnings that median is about 7,850 hours of work." }) },
-        household: { a: cell("3.01 people; 44.7% of women in the labor force", "census-hh6", { year: 1973, note: "Average population per household. Women’s participation is the annual average, 16 and over. Median age at first marriage: 23.2 for men, 21.0 for women." }) },
+        income: { a: cell("$10,510 median household, $12,050 median family", "census-h5", { year: 1973, srcs: ["census-f5"], note: "Households: median $10,510, mean $12,160, across 69,860 thousand households (Table H-5). Families: median $12,050 (Table F-5). Two universes, two tables, printed side by side." }) },
+        home: { a: cell("64.5% owned; a new house sold for $32,500", "census-hvs", { year: 1973, srcs: ["census-nrs"], note: "Homeownership from the Housing Vacancy Survey, which is not the decennial series used before 1970. The new-home figure is the median sales price of new single-family houses sold; the average was $35,500. At the year’s average hourly earnings that median is about 7,850 hours of work." }) },
+        household: { a: cell("3.01 people; 44.7% of women in the labor force", "census-hh6", { year: 1973, srcs: ["cps-flfp", "census-ms2"], note: "Average population per household. Women’s participation is the annual average, 16 and over. Median age at first marriage: 23.2 for men, 21.0 for women." }) },
         transport: { a: cell("101,985 thousand automobiles registered", "fhwa-mv", { year: 1973 }) },
         basket: {
           a: {
@@ -701,8 +721,8 @@
         hours: { a: cell("34.9 hours", "ces-awh", { year: 1985 }) },
         earnings: { a: cell("$304.37 a week; $8.73 an hour", "ces-awe", { year: 1985 }) },
         income: { a: cell("$23,620 median household, $29,070 mean", "census-h5", { year: 1985, note: "Across 88,460 thousand households." }) },
-        home: { a: cell("63.9% owned; a new house sold for $84,300", "census-hvs", { year: 1985, note: "Median sales price of new single-family houses sold; the average was $100,800. At the year’s average hourly earnings that is about 9,656 hours of work." }) },
-        household: { a: cell("2.69 people; 54.5% of women in the labor force", "census-hh6", { year: 1985, note: "Median age at first marriage: 25.5 for men, 23.3 for women." }) },
+        home: { a: cell("63.9% owned; a new house sold for $84,300", "census-hvs", { year: 1985, srcs: ["census-nrs"], note: "Median sales price of new single-family houses sold; the average was $100,800. At the year’s average hourly earnings that is about 9,656 hours of work." }) },
+        household: { a: cell("2.69 people; 54.5% of women in the labor force", "census-hh6", { year: 1985, srcs: ["cps-flfp", "census-ms2", "bls-mcf-earners"], note: "Median age at first marriage: 25.5 for men, 23.3 for women. In the same year 54.5% of married-couple families had both husband and wife as earners during the year — 27,787 of 50,978 thousand, against 20.4% with the husband as sole earner and 43.6% with two earners in 1967 (bls-mcf-earners). That this equals the women's participation figure is coincidence: one construct counts families, the other counts women." }) },
         transport: { a: cell("127,885 thousand automobiles registered", "fhwa-mv", { year: 1985 }) },
         basket: {
           a: {
@@ -742,8 +762,8 @@
         hours: { a: cell("34.3 hours", "ces-awh", { year: 1995 }) },
         earnings: { a: cell("$399.93 a week; $11.65 an hour", "ces-awe", { year: 1995 }) },
         income: { a: cell("$34,080 median household, $44,940 mean", "census-h5", { year: 1995, note: "Across 99,630 thousand households." }) },
-        home: { a: cell("64.7% owned; a new house sold for $133,900", "census-hvs", { year: 1995, note: "Median sales price; the average was $158,700. At the year’s average hourly earnings that is about 11,494 hours of work." }) },
-        household: { a: cell("2.65 people; 58.9% of women in the labor force", "census-hh6", { year: 1995, note: "Median age at first marriage: 26.9 for men, 24.5 for women." }) },
+        home: { a: cell("64.7% owned; a new house sold for $133,900", "census-hvs", { year: 1995, srcs: ["census-nrs"], note: "Median sales price; the average was $158,700. At the year’s average hourly earnings that is about 11,494 hours of work." }) },
+        household: { a: cell("2.65 people; 58.9% of women in the labor force", "census-hh6", { year: 1995, srcs: ["cps-flfp", "census-ms2"], note: "Median age at first marriage: 26.9 for men, 24.5 for women." }) },
         transport: { a: cell("128,387 thousand automobiles registered", "fhwa-mv", { year: 1995 }) },
         basket: {
           a: {
@@ -782,8 +802,8 @@
         hours: { a: cell("33.8 hours", "ces-awh", { year: 2005 }) },
         earnings: { a: cell("$543.91 a week; $16.11 an hour", "ces-awe", { year: 2005 }) },
         income: { a: cell("$46,330 median household, $63,340 mean", "census-h5", { year: 2005, note: "Across 114,400 thousand households." }) },
-        home: { a: cell("69.0% owned in 2004, 68.8% in 2006; a new house sold for $240,900", "census-hvs", { year: 2004, note: "Median sales price of new single-family houses sold in 2005; the average was $297,000. At the year’s average hourly earnings that is about 14,953 hours of work." }) },
-        household: { a: cell("2.57 people; 59.3% of women in the labor force", "census-hh6", { year: 2005, note: "Median age at first marriage: 27.1 for men, 25.3 for women. Women’s participation had peaked at 60.0 per cent in 1999." }) },
+        home: { a: cell("69.0% owned in 2004, 68.8% in 2006; a new house sold for $240,900", "census-hvs", { year: 2004, srcs: ["census-nrs"], note: "Median sales price of new single-family houses sold in 2005; the average was $297,000. At the year’s average hourly earnings that is about 14,953 hours of work." }) },
+        household: { a: cell("2.57 people; 59.3% of women in the labor force", "census-hh6", { year: 2005, srcs: ["cps-flfp", "census-ms2"], note: "Median age at first marriage: 27.1 for men, 25.3 for women. Women’s participation had peaked at 60.0 per cent in 1999." }) },
         transport: { a: cell("not measured", null, { absent: true, note: "The annual registration table for 2005 was not retrieved; the 1995 and 2015 panels carry the years either side." }) },
         basket: {
           a: {
@@ -822,8 +842,8 @@
         hours: { a: cell("33.7 hours", "ces-awh", { year: 2015 }) },
         earnings: { a: cell("$708.73 a week; $21.03 an hour", "ces-awe", { year: 2015 }) },
         income: { a: cell("$56,520 median household, $79,260 mean", "census-h5", { year: 2015, note: "Across 125,800 thousand households. The 2013 redesign sits between this figure and the 2005 one." }) },
-        home: { a: cell("63.7% owned; a new house sold for $294,200", "census-hvs", { year: 2015, note: "Median sales price; the average was $352,700. At the year’s average hourly earnings that is about 13,990 hours of work." }) },
-        household: { a: cell("2.54 people; 56.7% of women in the labor force", "census-hh6", { year: 2015, note: "Median age at first marriage: 29.2 for men, 27.1 for women. Women’s participation is below its 1999 reading of 60.0 per cent." }) },
+        home: { a: cell("63.7% owned; a new house sold for $294,200", "census-hvs", { year: 2015, srcs: ["census-nrs"], note: "Median sales price; the average was $352,700. At the year’s average hourly earnings that is about 13,990 hours of work." }) },
+        household: { a: cell("2.54 people; 56.7% of women in the labor force", "census-hh6", { year: 2015, srcs: ["cps-flfp", "census-ms2"], note: "Median age at first marriage: 29.2 for men, 27.1 for women. Women’s participation is below its 1999 reading of 60.0 per cent." }) },
         transport: { a: cell("112,864 thousand automobiles registered", "fhwa-mv", { year: 2015 }) },
         basket: {
           a: {
@@ -851,10 +871,10 @@
       label: "2025",
       title: "The ledger today",
       columns: [{ key: "a", label: "2025" }],
-      construct: "Every value on this panel is the most recent reading its own series had published when the page was built, and every one of them is dated on the line: the wage and hours are 2025 annual averages, the prices and the labor-force rates are June 2025, the income figures are for 2024, the sales price of a new house is for 2023, and the registration counts are for 2023. Nothing here is projected forward, and no figure on this page forecasts anything.",
+      construct: "Every value on this panel is dated on the line. The panel's year is 2025, so the wage and hours are 2025 annual averages and the prices and labor-force rates are June 2025 readings; the series that publish on a longer lag carry their most recent year instead — income and home ownership 2024, vehicle registrations 2024. Nothing here is projected forward, and no figure on this page forecasts anything.",
       texture: [
-        { lineId: "unemployment", reason: "the June reading, the last the series had published" },
-        { lineId: "elecprice", reason: "the one household price in this basket that has risen faster than the wage across the whole modern stretch" },
+        { lineId: "unemployment", reason: "the June reading of the panel's own year" },
+        { lineId: "elecprice", reason: "the household's most invisible bill, and a line where the money column and the work-time column move opposite ways across the stretch" },
         { lineId: "homesize", reason: "the new house is smaller than it was in 2015, which the price does not show" },
         { lineId: "trucks", reason: "the register now carries nearly two trucks for every car, and in 1973 it carried fewer than one for every four" }
       ],
@@ -863,9 +883,9 @@
         hours: { a: cell("33.7 hours", "ces-awh", { year: 2025, note: "Unchanged from 2015 to one decimal place." }) },
         earnings: { a: cell("$1,055.51 a week; $31.35 an hour", "ces-awe", { year: 2025 }) },
         income: { a: cell("$83,730 median household in 2024, $121,000 mean", "census-h5", { year: 2024, note: "Across 134,800 thousand households. The 2025 figure is not yet published." }) },
-        home: { a: cell("65.6% owned in 2024; a new house sold for $427,400 in 2023", "census-hvs", { year: 2024, note: "The sales-price file used publishes through 2023, where the average was $511,100. At 2023’s average hourly earnings of $28.93 that median is about 14,774 hours of work." }) },
-        household: { a: cell("2.50 people; 57.2% of women in the labor force", "census-hh6", { year: 2025, note: "The women’s figure is the June 2025 reading. Median age at first marriage: 30.8 for men, 28.4 for women." }) },
-        transport: { a: cell("96,902 thousand automobiles registered in 2023", "fhwa-mv", { year: 2023 }) },
+        home: { a: cell("65.6% owned in 2024; a new house sold for $417,400 in 2025", "census-hvs", { year: 2024, srcs: ["census-nrs"], note: "The median sales price of new single-family houses sold in 2025, from the July 2026 release; the average was $523,800. The revised 2023 median in the same release is $428,600. At 2025’s average hourly earnings that median is about 13,314 hours of work." }) },
+        household: { a: cell("2.50 people; 57.2% of women in the labor force", "census-hh6", { year: 2025, srcs: ["cps-flfp", "census-ms2"], note: "The women’s figure is the June 2025 reading. Median age at first marriage: 30.8 for men, 28.4 for women." }) },
+        transport: { a: cell("97,413 thousand automobiles registered in 2024", "fhwa-mv", { year: 2024 }) },
         basket: {
           a: {
             items: [
@@ -879,10 +899,10 @@
             ]
           }
         },
-        unemployment: { a: cell("4.4%", "cps-unemp", { year: 2025, note: "June 2025; the 2024 annual average was 4.0 per cent." }) },
+        unemployment: { a: cell("4.4%", "cps-unemp", { year: 2025, note: "June 2025, on the unadjusted basis this line uses throughout; seasonally adjusted, June 2025 reads 4.1 per cent, so part of the gap against the 4.0 per cent 2024 annual average is seasonal. The June 2025 readings on this panel (unemployment 4.4, participation 57.2) are the not-seasonally-adjusted figures, construct-consistent with the annual averages carried on the earlier panels." }) },
         elecprice: { a: cell("19.0 cents", "bls-ap", { year: 2025, note: "June reading, against 8.5 cents in 1985." }) },
         homesize: { a: cell("2,142 square feet", "census-sqft", { year: 2025, note: "Median; the average was 2,378. The median had been 2,467 in 2015." }) },
-        trucks: { a: cell("177,228 thousand trucks in 2023", "fhwa-mv", { year: 2023, note: "Against 96,902 thousand automobiles." }) }
+        trucks: { a: cell("189,755 thousand trucks in 2024", "fhwa-mv", { year: 2024, note: "Against 97,413 thousand automobiles." }) }
       }
     }
   ];
@@ -897,6 +917,13 @@
       stratum: "the household in the middle of the record, as each era's own survey defines it",
       built: "Twelve panels: 1900, 1915, 1929 with 1933 beside it, 1944, 1955, 1965, 1973, 1985, 1995, 2005, 2015 and 2025.",
       selectionRule: "Eras are decadal where the century is quiet and anchored at documented breaks where it is not. The panels are 1900, 1915, 1929 with 1933 beside it, 1944, 1955, 1965, 1973, 1985, 1995, 2005, 2015 and 2025."
+    },
+    format: {
+      symbol: "$",
+      minorWord: "cents",
+      moneyLabel: "dollars",
+      timeLabel: "hours of work",
+      hourLead: "An hour of work"
     },
     sources: sources,
     wage: wage,

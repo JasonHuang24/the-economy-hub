@@ -1,11 +1,15 @@
 /* THE LEDGER — shared scrollytelling engine, schema v1.
  *
- * EDITION-AGNOSTIC BY CONSTRUCTION. This file holds no data and no edition
- * assumptions. Era count, era labels, line set, currency labels, the wage
- * spine, the construct strips and the texture picks all come from the
- * edition's register (ledger/data/<slug>.js), which the page names on
- * <body data-ledger-edition="<slug>">. Adding an edition means adding a page
- * and a conforming register; this file does not change.
+ * EDITION-AGNOSTIC IN DATA. This file holds no data values. Era count, era
+ * labels, line set, the wage spine, the construct strips, the texture picks
+ * and the currency/axis labels all come from the edition's register
+ * (ledger/data/<slug>.js), which the page names on
+ * <body data-ledger-edition="<slug>"> — labels via the register's `format`
+ * block, with this file's fallbacks being the v1 dollar-wage defaults. One
+ * v1 assumption IS built in: the second axis is time priced by a wage
+ * (price divided by hourly earnings). An edition whose second axis is not a
+ * wage needs a schema bump, not just a register. Adding a wage-axis edition
+ * means adding a page and a conforming register; this file does not change.
  *
  * What it does, in order:
  *   1. reads the register and checks its declared schema version;
@@ -43,6 +47,12 @@
   var reduceMotion = window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* Currency and axis labels come from the register's format block; the
+     fallbacks below are the v1 dollar-wage defaults. */
+  var fmt = reg.format || {};
+  var CUR_SYMBOL = fmt.symbol || "$";
+  var CUR_MINOR = fmt.minorWord || "cents";
+
   /* ------------------------------------------------------------- helpers - */
 
   function el(tag, cls, text) {
@@ -54,8 +64,8 @@
 
   function money(amount) {
     if (amount == null) { return null; }
-    if (amount < 1) { return Math.round(amount * 1000) / 10 + " cents"; }
-    return "$" + amount.toFixed(2);
+    if (amount < 1) { return Math.round(amount * 1000) / 10 + " " + CUR_MINOR; }
+    return CUR_SYMBOL + amount.toFixed(2);
   }
 
   /* Work-time is COMPUTED here, never stored: nominal price divided by the
@@ -168,7 +178,7 @@
       p.textContent = "No wage is pinned for this column.";
       return p;
     }
-    p.textContent = "An hour of work: " + money(wage) + ". Work-time is the price divided by that hour.";
+    p.textContent = (fmt.hourLead || "An hour of work") + ": " + money(wage) + ". Work-time is the price divided by that hour.";
     return p;
   }
 
@@ -200,7 +210,8 @@
     group.setAttribute("role", "group");
     group.setAttribute("aria-label", "Emphasise money or work-time. Both are always shown.");
 
-    [["money", "dollars"], ["hours", "hours of work"]].forEach(function (pair) {
+    [["money", fmt.moneyLabel || "dollars"],
+     ["hours", fmt.timeLabel || "hours of work"]].forEach(function (pair) {
       var b = el("button", "ledger-toggle__btn", pair[1]);
       b.type = "button";
       b.setAttribute("data-mode", pair[0]);
@@ -292,11 +303,18 @@
       }
     }
 
+    /* The priced line's id comes from the register, not from a constant. */
+    var pricedLineId = null;
+    for (var pl = 0; pl < reg.lines.length; pl++) {
+      if (reg.lines[pl].priced) { pricedLineId = reg.lines[pl].id; }
+    }
+
     var prices = document.querySelectorAll("[data-ledger-price]");
     for (var j = 0; j < prices.length; j++) {
       var p = prices[j].getAttribute("data-ledger-price").split(":");
       var e2 = eraById(p[0]);
-      var basket = e2 && e2.cells.basket && e2.cells.basket[p[2]];
+      var basket = e2 && pricedLineId && e2.cells[pricedLineId] &&
+        e2.cells[pricedLineId][p[2]];
       var item = basket && basket.items[Number(p[1])];
       if (!item) { problems.push("no register basket item for " + p.join(":")); continue; }
       var txt = prices[j].textContent.replace(/\s+/g, " ").trim();
@@ -310,13 +328,52 @@
       }
     }
 
+    /* Provenance: every src/srcs key on every cell, basket item and wage
+       value must resolve to an entry in the register's sources block. */
+    var keyCount = 0;
+    function checkKey(key, where) {
+      if (!key) { return; }
+      keyCount++;
+      if (!reg.sources[key]) {
+        problems.push("unresolved source key “" + key + "” at " + where);
+      }
+    }
+    for (var ei = 0; ei < reg.eras.length; ei++) {
+      var era4 = reg.eras[ei];
+      for (var lid in era4.cells) {
+        if (!era4.cells.hasOwnProperty(lid)) { continue; }
+        var colSet = era4.cells[lid];
+        for (var ck in colSet) {
+          if (!colSet.hasOwnProperty(ck)) { continue; }
+          var c4 = colSet[ck];
+          if (!c4) { continue; }
+          var at = era4.id + ":" + lid + ":" + ck;
+          if (c4.items) {
+            for (var bi = 0; bi < c4.items.length; bi++) {
+              checkKey(c4.items[bi].src, at + " item " + bi);
+            }
+          } else {
+            checkKey(c4.src, at);
+          }
+          if (c4.srcs) {
+            for (var si = 0; si < c4.srcs.length; si++) { checkKey(c4.srcs[si], at); }
+          }
+        }
+      }
+    }
+    for (var wy in reg.wage.values) {
+      if (reg.wage.values.hasOwnProperty(wy)) {
+        checkKey(reg.wage.values[wy].src, "wage:" + wy);
+      }
+    }
+
     if (window.console) {
       if (problems.length) {
         console.error("Ledger register audit: " + problems.length + " mismatch(es)");
         problems.forEach(function (m) { console.error("  " + m); });
       } else {
         console.log("Ledger register audit: clean (" + cells.length + " cells, " +
-          prices.length + " priced items).");
+          prices.length + " priced items, " + keyCount + " source keys resolve).");
       }
     }
     return problems;
