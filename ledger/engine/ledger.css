@@ -299,7 +299,8 @@
   text-decoration-color: var(--color-brass);
 }
 
-.ledger-static .table-ledger th[data-ledger-line] a {
+.ledger-static .table-ledger th[data-ledger-line] a,
+.ledger-static .table-ledger caption[data-ledger-line] a {
   color: inherit;
   text-decoration: underline;
   text-decoration-color: var(--color-rule-strong);
@@ -308,7 +309,9 @@
 }
 
 .ledger-static .table-ledger th[data-ledger-line] a:hover,
-.ledger-static .table-ledger th[data-ledger-line] a:focus-visible {
+.ledger-static .table-ledger th[data-ledger-line] a:focus-visible,
+.ledger-static .table-ledger caption[data-ledger-line] a:hover,
+.ledger-static .table-ledger caption[data-ledger-line] a:focus-visible {
   color: var(--color-green);
   text-decoration-color: var(--color-brass);
 }

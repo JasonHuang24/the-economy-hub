@@ -19,9 +19,12 @@
  *   4. audits every static no-JS cell in the document against the register and
  *      reports mismatches to the console (the D11 coordinate audit, extended
  *      to a data surface): displayed value strings, basket arithmetic, the
- *      resolution of every provenance key, the per-era texture log against
- *      what each era actually renders, and the agreement of every static row
- *      header's deep link with the register's line home.
+ *      completeness of the document against the register in both directions
+ *      (a register cell with no static element is drift too), the resolution
+ *      of every provenance key, the per-era texture log — presence AND a
+ *      non-empty reason — against what each era actually renders, and the
+ *      agreement of every static row header's deep link with the register's
+ *      line home.
  *
  * PROGRESSIVE ENHANCEMENT. With JS off the page is already a complete
  * document: every era's ledger is a static table in flow, with both the money
@@ -300,12 +303,19 @@
      data-ledger-cell="<eraId>:<lineId>:<columnKey>" (or, for a basket item,
      data-ledger-price="<eraId>:<index>:<columnKey>"). This walks them and
      compares the rendered text against the register, so the document and the
-     register cannot drift apart unnoticed. Findings go to the console. */
+     register cannot drift apart unnoticed — in either direction: a document
+     cell the register does not hold is flagged, and a register cell or basket
+     item with no static element in the document is flagged too, because a
+     whole row silently omitted is drift as much as a wrong digit is.
+     Findings go to the console. */
   function audit() {
     var problems = [];
 
+    var foundCells = {}, foundPrices = {};
+
     var cells = document.querySelectorAll("[data-ledger-cell]");
     for (var i = 0; i < cells.length; i++) {
+      foundCells[cells[i].getAttribute("data-ledger-cell")] = true;
       var parts = cells[i].getAttribute("data-ledger-cell").split(":");
       var era = eraById(parts[0]);
       var want = era && era.cells[parts[1]] && era.cells[parts[1]][parts[2]];
@@ -326,6 +336,7 @@
 
     var prices = document.querySelectorAll("[data-ledger-price]");
     for (var j = 0; j < prices.length; j++) {
+      foundPrices[prices[j].getAttribute("data-ledger-price")] = true;
       var p = prices[j].getAttribute("data-ledger-price").split(":");
       var e2 = eraById(p[0]);
       var basket = e2 && pricedLineId && e2.cells[pricedLineId] &&
@@ -340,6 +351,33 @@
       if (txt !== expected) {
         problems.push(p.join(":") + " — document has “" + txt +
           "”, register computes “" + expected + "”");
+      }
+    }
+
+    /* Completeness: every register cell and basket item must have a static
+       element in the document. The loops above walk what the document has;
+       this walks what the register expects, so a silently omitted row cannot
+       return a clean audit. */
+    for (var ce = 0; ce < reg.eras.length; ce++) {
+      var era6 = reg.eras[ce];
+      for (var lid6 in era6.cells) {
+        if (!era6.cells.hasOwnProperty(lid6)) { continue; }
+        var set6 = era6.cells[lid6];
+        for (var ck6 in set6) {
+          if (!set6.hasOwnProperty(ck6) || !set6[ck6]) { continue; }
+          if (lid6 === pricedLineId) {
+            var items6 = set6[ck6].items || [];
+            for (var bi6 = 0; bi6 < items6.length; bi6++) {
+              if (!foundPrices[era6.id + ":" + bi6 + ":" + ck6]) {
+                problems.push("register basket item " + era6.id + ":" + bi6 +
+                  ":" + ck6 + " has no static element in the document");
+              }
+            }
+          } else if (!foundCells[era6.id + ":" + lid6 + ":" + ck6]) {
+            problems.push("register cell " + era6.id + ":" + lid6 + ":" + ck6 +
+              " has no static element in the document");
+          }
+        }
       }
     }
 
@@ -400,6 +438,11 @@
       }
       for (var tx = 0; tx < (era5.texture || []).length; tx++) {
         logged[era5.texture[tx].lineId] = true;
+        if (!era5.texture[tx].reason ||
+            !String(era5.texture[tx].reason).replace(/\s+/g, "")) {
+          problems.push("era " + era5.id + " logs texture pick “" +
+            era5.texture[tx].lineId + "” without a reason");
+        }
         if (shown.indexOf(era5.texture[tx].lineId) < 0) {
           problems.push("era " + era5.id + " logs a texture pick “" +
             era5.texture[tx].lineId + "” it does not display");

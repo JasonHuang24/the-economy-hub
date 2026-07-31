@@ -221,6 +221,30 @@
       vintage: "the BLS time-series file as captured 2025-10-01",
       retrieved: "2026-07-31"
     },
+    "hsus-g106": {
+      issuer: "U.S. Bureau of the Census",
+      work: "Historical Statistics of the United States, Colonial Times to 1957 (1960 edition), Chapter G, series G 99-130 (printed pp. 160-166)",
+      series: "average (mean) family personal income per consumer unit, current dollars: 1929 = $2,335 (G 106, identically G 120)",
+      population: "families AND unattached individuals together — 36.1 million consumer units in 1929; the per-family series (G 126) is blank for 1929, so no 1929 mean for families alone exists. Family personal income includes nonmoney items (wages in kind, farm food and fuel consumed on farms, imputed rent of owner-occupied homes) and is NOT the Census money-income construct of the later panels; the chapter itself rules the two families of series not directly comparable. The 1929 figures are Selma Goldsmith's adjustment of the Brookings study (Studies in Income and Wealth, vol. 23, 1958, p. 93), and the Census prints: 'Because of inadequacies in the basic source data, the estimates for 1929 are less reliable than for other years in the series.' No median exists for 1929 in this construct, and the prewar points are 1929, 1935-36 and 1941 only — there is no 1933 estimate.",
+      vintage: "1960 edition as scanned by census.gov; digits read visually at 220 dpi and arithmetic-verified (this scan fills 3/8 and 0/6 loops)",
+      retrieved: "2026-07-31"
+    },
+    "bls-col1901": {
+      issuer: "U.S. Department of Labor, Commissioner of Labor",
+      work: "Eighteenth Annual Report of the Commissioner of Labor, 1903: Cost of Living and Retail Prices of Food (printed pp. 15, 20, 75)",
+      series: "average annual income of the 25,440 families canvassed in 1901: $749.50",
+      population: "families of wage workers and of salaried persons earning not more than $1,200 a year, in the principal industrial centers of 33 states including the District of Columbia; 25,440 families, 124,108 persons; families of persons in business on their own account excluded. An AVERAGE, never a median, of that population only — not a national figure, and never joined to the Census median series that begins in 1947. The report's 2,567-family detail subsample prints a higher average ($827.19); the report itself says those families were selected only on their ability to report in detail and were larger than the average family canvassed — the survey's figure is the 25,440-family one.",
+      vintage: "1903 report as scanned by FRASER; digits read visually at 220 dpi",
+      retrieved: "2026-07-31"
+    },
+    "bls-mlr1946": {
+      issuer: "U.S. Bureau of Labor Statistics",
+      work: "Expenditures and Savings of City Families in 1944, Monthly Labor Review, January 1946, pp. 1-5 (prepared by Dorothy S. Brady, chief, Cost of Living Division)",
+      series: "median net income after payment of personal taxes, families and single persons combined, calendar year 1944: $2,700 (1941: $1,900)",
+      population: "a cross section of city consumers — families and single persons living as civilians: some 1,700 consumers in 102 urban communities, cities from 2,500 population up, all regions. A MEDIAN of income AFTER personal taxes with single persons in the denominator: not the Census pre-tax money-income construct for families, and the two are never joined. The article's tables are marked preliminary, subject to slight revision.",
+      vintage: "Monthly Labor Review, January 1946, as scanned by FRASER; digits read visually at 220 dpi",
+      retrieved: "2026-07-31"
+    },
     "bls-mcf-earners": {
       issuer: "U.S. Bureau of Labor Statistics",
       work: "Married-couple families by number and relationship of earners, 1967-2007 (Women in the Labor Force: A Databook, table 23)",
@@ -433,7 +457,7 @@
         occupation: { a: cell("Farm work, 10,888 of 29,030 thousand, 37.5%", "hsus-d182", { year: 1900, note: "The census counts farmers and farm managers (5,763 thousand) apart from farm laborers and foremen (5,125); farmers and farm managers were the largest single major occupation group. Operatives, the largest group outside farming, numbered 3,720 thousand. Share computed from the table’s own rows." }) },
         hours: { a: cell("62.1 hours", "hsus-d769", { year: 1900, note: "Average weekly hours, payroll manufacturing industries. The widely quoted 59 hours is the same table's all-manufacturing total (D 765), which weights union scales in." }) },
         earnings: { a: cell("$487 a year", "hsus-d740", { year: 1900, note: "Average annual earnings per full-time employee in manufacturing. Per worker, not per household." }) },
-        income: { a: cell("not measured", null, { absent: true,  note: "No survey measured the income of American families in 1900. The first Census median is for 1947." }) },
+        income: { a: cell("$749.50 average, urban wage-earner families, 1901", "bls-col1901", { year: 1901, note: "The Bureau of Labor's 1901 cost-of-living survey: 25,440 families of wage workers and salaried persons earning not more than $1,200, in the principal industrial centers of 33 states. An average, not a median, of that population only — farm families and business owners are outside it entirely, no survey measured the income of American families at large, and the Census median series begins in 1947." }) },
         home: { a: cell("46.7% owned", "hsus-n243", { year: 1900, note: "Owner-occupied as a percent of occupied units reporting tenure." }) },
         household: { a: cell("4.8 people; 20.0% of women in the labor force", "hsus-n240", { year: 1900, srcs: ["hsus-d36", "census-ms2"], note: "Persons per occupied housing unit (N 240). The women's figure is the participation rate at the June 1900 census on a 14-and-over basis (D 36). Median age at first marriage: 25.9 for men, 21.9 for women (MS-2)." }) },
         transport: { a: cell("8 thousand motor cars registered", "hsus-q153", { year: 1900, note: "In the whole country." }) },
@@ -525,8 +549,8 @@
           b: cell("$1,086 a year; 44 cents an hour", "hsus-d740", { year: 1933, srcs: ["hsus-d802", "hsus-d804"], note: "Weekly earnings were $16.65 (D 804)." })
         },
         income: {
-          a: cell("not measured", null, { absent: true,  note: "No measurement of family income exists for either year." }),
-          b: cell("not measured", null, { absent: true,  note: "No measurement of family income exists for either year." })
+          a: cell("$2,335 average per consumer unit, Goldsmith’s estimate", "hsus-g106", { year: 1929, note: "Family personal income per consumer unit — families and unattached individuals together, 36.1 million units — as estimated for 1929 by Selma Goldsmith adjusting the Brookings study, and reprinted by the Census. A mean, never a median; the construct includes nonmoney items such as imputed rent and farm food consumed, and it is not the money-income construct of the later panels. The Census prints that the 1929 estimates 'are less reliable than for other years in the series.'" }),
+          b: cell("not estimated", null, { absent: true,  note: "No survey measured family income in either year, and the estimate series' prewar points are 1929, 1935-36 and 1941: there is no 1933 figure in it." })
         },
         home: {
           a: cell("47.8% owned in 1930", "hsus-n243", { year: 1930, note: "The highest reading since 1890." }),
@@ -594,13 +618,13 @@
         { lineId: "unemployment", reason: "1.2% is the lowest reading in the whole series and the plainest statement of what the war did to the labor market" },
         { lineId: "electric", reason: "the farm gap closes fastest in this decade, and the war years sit in the middle of it" },
         { lineId: "power", reason: "use per customer nearly doubled between 1933 and 1944 while the price kept falling" },
-        { lineId: "saving", reason: "the highest reading the series carries, on a panel whose other lines are all wartime readings too" }
+        { lineId: "saving", reason: "the highest reading the series carries" }
       ],
       cells: {
         occupation: { a: cell("Operatives, 9,518 of 51,742 thousand in 1940, 18.4%", "hsus-d182", { year: 1940, note: "At the April 1940 census operatives outnumbered the two farm groups together (8,995 thousand, 17.4%) for the first time. Shares computed from the table’s own rows." }) },
         hours: { a: cell("45.2 hours", "hsus-d803", { year: 1944, note: "The highest reading in this series between 1929 and 1970." }) },
         earnings: { a: cell("$2,517 a year; $1.01 an hour", "hsus-d740", { year: 1944, srcs: ["hsus-d802", "hsus-d804"], note: "The annual figure is identical in 1944, 1945 and 1946 — $2,517 in each year. Weekly earnings were $45.70." }) },
-        income: { a: cell("not measured", null, { absent: true,  note: "The first Census median family income is for 1947: $3,031." }) },
+        income: { a: cell("city families and single persons: $2,700 median, after taxes", "bls-mlr1946", { year: 1944, note: "A Bureau of Labor Statistics survey of some 1,700 city consumers in 102 urban communities measured 1944 incomes: half of families and single persons had net incomes after personal taxes below $2,700, against $1,900 in 1941. After-tax, urban only, and with single persons counted — not the Census pre-tax family construct, whose median series begins in 1947 at $3,031." }) },
         home: { a: cell("43.6% owned in 1940; 53.2% at a November 1945 sample survey", "hsus-n243", { year: 1940, note: "The Census marks the 1945 figure as based on a sample survey and not comparable with the census years." }) },
         household: { a: cell("3.8 people in 1940; 36.3% of women in the labor force", "hsus-n240", { year: 1940, srcs: ["hsus-d36"], note: "Persons per occupied housing unit at the 1940 census. The women's figure is the 1944 annual average on a 14-and-over basis, and it is the highest reading of the war." }) },
         transport: { a: cell("25,566 thousand motor cars registered", "hsus-q153", { year: 1944, note: "Fewer than in 1941. Factory sales of passenger cars in 1944 were 600 vehicles." }) },
@@ -643,7 +667,7 @@
         hours: { a: cell("40.7 hours", "hsus-d803", { year: 1955 }) },
         earnings: { a: cell("$4,356 a year; $1.86 an hour", "hsus-d740", { year: 1955, srcs: ["hsus-d802", "hsus-d804"], note: "Annual earnings per full-time employee in manufacturing; weekly earnings were $75.70." }) },
         income: { a: cell("$4,418 median, $4,962 mean", "census-f5", { year: 1955, note: "Median and mean money income of the 42,890 thousand families counted that year. The mean sits above the median because income is not distributed symmetrically; both are printed here for that reason." }) },
-        home: { a: cell("55.0% owned in 1950, 61.9% in 1960; houses started: 1,170 sq ft average, $13,700 median", "hsus-n243", { year: 1950, srcs: ["bls-b1231"], note: "Tenure: the largest decade-on-decade rise in the series is 1940 to 1950. A December 1956 sample survey reads 60.4%, marked by the Census as not comparable with census years. The house itself: a Bureau of Labor Statistics survey of new privately owned nonfarm 1-family houses started in the first three months of 1955 reports an average floor area of 1,170 square feet and a median proposed selling price of $13,700 — at that year's manufacturing hourly earnings, about 7,366 hours of work. That survey is not the Census series the later panels stand on: it prices houses when building starts rather than when they sell, its floor area is a mean rather than a median, and neither the Census sales-price series (which begins in 1963) nor the Census floor-area series (which begins in 1973) reaches 1955. No line on this page is drawn between the two." }) },
+        home: { a: cell("55.0% owned in 1950, 61.9% in 1960; houses started: 1,170 sq ft average, $13,700 median proposed price", "hsus-n243", { year: 1950, srcs: ["bls-b1231"], note: "Tenure: the largest decade-on-decade rise in the series is 1940 to 1950. A December 1956 sample survey reads 60.4%, marked by the Census as not comparable with census years. The house itself: a Bureau of Labor Statistics survey of new privately owned nonfarm 1-family houses started in the first three months of 1955 reports an average floor area of 1,170 square feet and a median proposed selling price of $13,700 — at that year's manufacturing hourly earnings, about 7,366 hours of work. That survey is not the Census series the later panels stand on: it prices houses when building starts rather than when they sell, its floor area is a mean rather than a median, and neither the Census sales-price series (which begins in 1963) nor the Census floor-area series (which begins in 1973) reaches 1955. No line on this page is drawn between the two." }) },
         household: { a: cell("3.5 people in 1950, 3.4 in 1960; 35.7% of women in the labor force", "hsus-n240", { year: 1950, srcs: ["cps-flfp", "hsus-d36", "census-ms2"], note: "Persons per occupied housing unit at the bracketing censuses. The women's figure is the 1955 annual average, 16 and over, and it is below the 36.3% of 1944 on a 14-and-over basis; the series does not pass the wartime reading again until 1956. Median age at first marriage in 1955: 22.6 for men, 20.2 for women, close to the lowest the series records." }) },
         transport: { a: cell("52,145 thousand motor cars registered", "hsus-q153", { year: 1955, note: "Twice the 1944 count." }) },
         basket: {
@@ -678,7 +702,7 @@
         { lineId: "unemployment", reason: "read against 1955 it shows the ordinary rate barely moving across the decade the ledger is often asked to contrast" },
         { lineId: "power", reason: "the clearest single measure of what came into the house between 1955 and 1965" },
         { lineId: "service", reason: "the female occupation the century moved women into, against the one it moved them out of" },
-        { lineId: "saving", reason: "the rate rose across the decade between this panel and 1955, which the wage and price lines on the same two panels do not show" }
+        { lineId: "saving", reason: "the rate rose across the decade between this panel and 1955" }
       ],
       cells: {
         occupation: { a: cell("Operatives, 11,754 of 67,990 thousand in 1960, 17.3%", "hsus-d182", { year: 1960, note: "The largest major group at the 1960 census; farmworkers were 6.0%. Shares computed from the table’s own rows." }) },
@@ -847,7 +871,7 @@
         { lineId: "elecprice", reason: "the bill moves less across this decade than any other price on the panel" },
         { lineId: "saving", reason: "the lowest reading the series has recorded since 1934, in the panel the housing boom names" },
         { lineId: "homesize", reason: "the house and its price move together here, and the panel is the one place the reader can see both" },
-        { lineId: "trucks", reason: "the panel that shows the two columns still the way round they had been since the register began" }
+        { lineId: "trucks", reason: "the panel that shows the two columns still the way round they are on every earlier panel that carries both" }
       ],
       cells: {
         occupation: { a: cell("Manufacturing, 14,225 of 134,033 thousand nonfarm jobs, 10.6%", "ces-emp", { year: 2005, note: "Share computed from the two series." }) },
