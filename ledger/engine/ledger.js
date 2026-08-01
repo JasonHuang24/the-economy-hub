@@ -424,7 +424,7 @@
        to be logged per era. This checks the log against what the era actually
        renders — every texture line with a cell has a logged reason, every
        logged reason has a cell — and holds each era to the charter's cap of
-       3 to 5 texture lines. */
+       3 to 6 texture lines (raised from 5 at the expenses amendment). */
     var textureIds = {}, lineHref = {}, textureCount = 0;
     for (var li = 0; li < reg.lines.length; li++) {
       if (reg.lines[li].group === "texture") { textureIds[reg.lines[li].id] = true; }
@@ -454,9 +454,9 @@
             shown[sx] + "” with no logged reason");
         }
       }
-      if (shown.length < 3 || shown.length > 5) {
+      if (shown.length < 3 || shown.length > 6) {
         problems.push("era " + era5.id + " carries " + shown.length +
-          " texture lines; the charter allows 3 to 5");
+          " texture lines; the charter allows 3 to 6");
       }
       textureCount += shown.length;
     }
