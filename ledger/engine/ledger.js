@@ -143,40 +143,60 @@
         colBox.appendChild(el("p", "ledger-panel__col-head", col.label));
       }
 
-      var dl = el("dl", "ledger-panel__lines");
-      for (var i = 0; i < reg.lines.length; i++) {
-        var line = reg.lines[i];
-        var cellSet = era.cells[line.id];
-        if (!cellSet) { continue; }
-        var cell = cellSet[col.key];
-        if (!cell) { continue; }
+      /* Since the standardisation amendment every line prints on every panel,
+         so the panel is grouped: one band per section, in the register's own
+         band order, and the SAME order on the static tables and the century
+         matrix. A heading is not valid inside a <dl>, so each band gets its
+         own section with its own list. */
+      var bands = reg.groups || [{ id: null, label: "" }];
+      for (var b = 0; b < bands.length; b++) {
+        var band = bands[b];
+        var dl = el("dl", "ledger-panel__lines");
+        var printed = 0;
 
-        /* A line with a canonical home in the register becomes a deep link into
-           that chapter (CHARTER §PURPOSE 1). A line the wiring map gives no
-           home keeps its plain label. The VALUE cell is never touched: the
-           register audit compares displayed value text, and a label link
-           cannot move it. */
-        var dt = el("dt", "ledger-panel__label");
-        if (line.href) {
-          var a = el("a", "ledger-panel__label-link", line.label);
-          a.setAttribute("href", line.href);
-          dt.appendChild(a);
-        } else {
-          dt.textContent = line.label;
-        }
-        if (line.group === "texture") { dt.classList.add("is-texture"); }
-        var dd = el("dd", "ledger-panel__value");
+        for (var i = 0; i < reg.lines.length; i++) {
+          var line = reg.lines[i];
+          if (band.id && line.band !== band.id) { continue; }
+          var cellSet = era.cells[line.id];
+          if (!cellSet) { continue; }
+          var cell = cellSet[col.key];
+          if (!cell) { continue; }
 
-        if (line.priced && cell.items) {
-          dd.appendChild(renderBasket(cell, wage));
-        } else {
-          dd.textContent = cell.display;
-          if (cell.absent) { dd.classList.add("is-absent"); }
+          /* A line with a canonical home in the register becomes a deep link into
+             that chapter (CHARTER §PURPOSE 1). A line the wiring map gives no
+             home keeps its plain label. The VALUE cell is never touched: the
+             register audit compares displayed value text, and a label link
+             cannot move it. */
+          var dt = el("dt", "ledger-panel__label");
+          if (line.href) {
+            var a = el("a", "ledger-panel__label-link", line.label);
+            a.setAttribute("href", line.href);
+            dt.appendChild(a);
+          } else {
+            dt.textContent = line.label;
+          }
+          if (line.group === "texture") { dt.classList.add("is-texture"); }
+          var dd = el("dd", "ledger-panel__value");
+
+          if (line.priced && cell.items) {
+            dd.appendChild(renderBasket(cell, wage));
+          } else {
+            dd.textContent = cell.display;
+            if (cell.absent) { dd.classList.add("is-absent"); }
+          }
+          dl.appendChild(dt);
+          dl.appendChild(dd);
+          printed++;
         }
-        dl.appendChild(dt);
-        dl.appendChild(dd);
+
+        if (!printed) { continue; }
+        var bandBox = el("section", "ledger-panel__band");
+        if (band.label) {
+          bandBox.appendChild(el("h3", "ledger-panel__band-head", band.label));
+        }
+        bandBox.appendChild(dl);
+        colBox.appendChild(bandBox);
       }
-      colBox.appendChild(dl);
       colBox.appendChild(wageNote(wage));
       panelBody.appendChild(colBox);
     }
@@ -381,6 +401,38 @@
       }
     }
 
+    /* The century matrix is a data surface like any other: every cell in it
+       must carry the register's own short form for that line and era, and no
+       line-era slot may be missing from it. */
+    var matrixNodes = document.querySelectorAll("[data-ledger-short]");
+    var foundShorts = {}, matrixCount = 0;
+    for (var mx = 0; mx < matrixNodes.length; mx++) {
+      matrixCount++;
+      var mkey = matrixNodes[mx].getAttribute("data-ledger-short");
+      foundShorts[mkey] = true;
+      var mp = mkey.split(":");
+      var mera = null;
+      for (var mi = 0; mi < reg.eras.length; mi++) {
+        if (reg.eras[mi].id === mp[0]) { mera = reg.eras[mi]; }
+      }
+      var mwant = mera && mera.cells[mp[1]] && mera.cells[mp[1]][mp[2]];
+      if (!mwant) { problems.push("no register cell for matrix " + mkey); continue; }
+      var mgot = matrixNodes[mx].textContent.replace(/\s+/g, " ").trim();
+      var mexp = String(mwant.short).replace(/\s+/g, " ").trim();
+      if (mgot !== mexp) {
+        problems.push("matrix " + mkey + " — document “" + mgot + "” vs register “" + mexp + "”");
+      }
+    }
+    for (var em = 0; em < reg.eras.length; em++) {
+      for (var lm = 0; lm < reg.lines.length; lm++) {
+        if (reg.lines[lm].priced) { continue; }
+        for (var cm = 0; cm < reg.eras[em].columns.length; cm++) {
+          var mk = reg.eras[em].id + ":" + reg.lines[lm].id + ":" + reg.eras[em].columns[cm].key;
+          if (!foundShorts[mk]) { problems.push("matrix has no cell for " + mk); }
+        }
+      }
+    }
+
     /* Provenance: every src/srcs key on every cell, basket item and wage
        value must resolve to an entry in the register's sources block. */
     var keyCount = 0;
@@ -420,11 +472,13 @@
       }
     }
 
-    /* The texture selection is an editorial claim, so the charter requires it
-       to be logged per era. This checks the log against what the era actually
-       renders — every texture line with a cell has a logged reason, every
-       logged reason has a cell — and holds each era to the charter's cap of
-       3 to 6 texture lines (raised from 5 at the expenses amendment). */
+    /* THE STANDARDISATION AMENDMENT (2026-08-02) moved this check. Every line
+       now carries a cell on every panel, so displaying a texture line is no
+       longer an editorial choice and the cap no longer bounds what is shown.
+       What the writer still chooses is which lines are DRAWN OUT into a prose
+       block, and that is what the charter's 3-to-6 now bounds. So: every
+       logged pick must be a texture line that has a cell, every pick must
+       carry its reason, and each era must log between 3 and 6 of them. */
     var textureIds = {}, lineHref = {}, textureCount = 0;
     for (var li = 0; li < reg.lines.length; li++) {
       if (reg.lines[li].group === "texture") { textureIds[reg.lines[li].id] = true; }
@@ -432,33 +486,62 @@
     }
     for (var ex = 0; ex < reg.eras.length; ex++) {
       var era5 = reg.eras[ex];
-      var shown = [], logged = {};
-      for (var lid5 in era5.cells) {
-        if (era5.cells.hasOwnProperty(lid5) && textureIds[lid5]) { shown.push(lid5); }
-      }
-      for (var tx = 0; tx < (era5.texture || []).length; tx++) {
-        logged[era5.texture[tx].lineId] = true;
-        if (!era5.texture[tx].reason ||
-            !String(era5.texture[tx].reason).replace(/\s+/g, "")) {
+      var picks = era5.texture || [];
+      for (var tx = 0; tx < picks.length; tx++) {
+        if (!picks[tx].reason || !String(picks[tx].reason).replace(/\s+/g, "")) {
           problems.push("era " + era5.id + " logs texture pick “" +
-            era5.texture[tx].lineId + "” without a reason");
+            picks[tx].lineId + "” without a reason");
         }
-        if (shown.indexOf(era5.texture[tx].lineId) < 0) {
-          problems.push("era " + era5.id + " logs a texture pick “" +
-            era5.texture[tx].lineId + "” it does not display");
-        }
-      }
-      for (var sx = 0; sx < shown.length; sx++) {
-        if (!logged[shown[sx]]) {
-          problems.push("era " + era5.id + " displays texture line “" +
-            shown[sx] + "” with no logged reason");
+        if (!textureIds[picks[tx].lineId]) {
+          problems.push("era " + era5.id + " draws out “" + picks[tx].lineId +
+            "”, which is not a texture line");
+        } else if (!era5.cells[picks[tx].lineId]) {
+          problems.push("era " + era5.id + " draws out “" + picks[tx].lineId +
+            "”, for which it has no cell");
         }
       }
-      if (shown.length < 3 || shown.length > 6) {
-        problems.push("era " + era5.id + " carries " + shown.length +
+      if (picks.length < 3 || picks.length > 6) {
+        problems.push("era " + era5.id + " draws out " + picks.length +
           " texture lines; the charter allows 3 to 6");
       }
-      textureCount += shown.length;
+      textureCount += picks.length;
+    }
+
+    /* No line may be omitted from any panel any more: a gap is printed, never
+       left blank. Every line needs a cell in every column of every era, and
+       every non-priced cell needs a short form for the century matrix whose
+       every numeral appears in the display string it abbreviates — so the
+       matrix cannot introduce a digit the panel does not carry. */
+    var shortCount = 0;
+    for (var ez = 0; ez < reg.eras.length; ez++) {
+      var era6 = reg.eras[ez];
+      for (var lz = 0; lz < reg.lines.length; lz++) {
+        var line6 = reg.lines[lz];
+        for (var cz = 0; cz < era6.columns.length; cz++) {
+          var key6 = era6.columns[cz].key;
+          var cell6 = era6.cells[line6.id] && era6.cells[line6.id][key6];
+          if (!cell6) {
+            problems.push("era " + era6.id + " omits line “" + line6.id +
+              "” in column " + key6);
+            continue;
+          }
+          if (line6.priced) { continue; }
+          if (!cell6.short) {
+            problems.push("era " + era6.id + ":" + line6.id + ":" + key6 +
+              " has no short form for the matrix");
+            continue;
+          }
+          shortCount++;
+          var nums = String(cell6.short).match(/[\d][\d,.\-]*/g) || [];
+          for (var nz = 0; nz < nums.length; nz++) {
+            var tok = nums[nz].replace(/[.,]$/, "");
+            if (String(cell6.display).indexOf(tok) < 0) {
+              problems.push("era " + era6.id + ":" + line6.id + ":" + key6 +
+                " short form carries “" + tok + "”, which its display does not");
+            }
+          }
+        }
+      }
     }
 
     /* Every rendered deep link must point at a line the register gives a home,
@@ -483,8 +566,10 @@
         problems.forEach(function (m) { console.error("  " + m); });
       } else {
         console.log("Ledger register audit: clean (" + cells.length + " cells, " +
-          prices.length + " priced items, " + keyCount + " source keys resolve, " +
-          textureCount + " texture picks logged, " + linkCount + " row-header links agree).");
+          prices.length + " priced items, " + matrixCount + " matrix cells, " +
+          keyCount + " source keys resolve, " +
+          textureCount + " texture picks logged, " + shortCount + " short forms hold, " +
+          linkCount + " row-header links agree).");
       }
     }
     return problems;
