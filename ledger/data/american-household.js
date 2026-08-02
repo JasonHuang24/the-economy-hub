@@ -391,6 +391,24 @@
       vintage: "the compilation as published on census.gov",
       retrieved: "2026-08-01"
     },
+    "census-1930-families": {
+      issuer: "U.S. Bureau of the Census",
+      work: "Fifteenth Census of the United States: 1930, Population, Volume VI, Families, Table 26",
+      series: "median value of owned nonfarm homes, United States, current dollars",
+      population: "owned nonfarm homes occupied by private families. The population schedule asked each nonfarm family returned as owning its home for the home's approximate current market value; Table 26 classifies the result by color and nativity of the head of family and prints $4,779 for Total, All classes.",
+      caveat: "This is a 1930 population-census family instrument, not the later Census of Housing series. Farm homes were collected on the farm schedule, and this national median is for owned NONFARM homes only. It is never joined to the 1940-2000 housing-census series.",
+      vintage: "1933 publication",
+      retrieved: "2026-08-02"
+    },
+    "census-pre1940-value-gap": {
+      issuer: "U.S. Bureau of the Census",
+      work: "Thirteenth Census of the United States: 1910, Volume I, Chapter XVI, Ownership of Homes; and Fourteenth Census Monographs, II, Farm and Home Proprietorship and Indebtedness",
+      series: "documented limits of the pre-1930 home inquiries",
+      population: "the 1910 volume says the inquiries in 1900 and 1910 did not go beyond proprietorship and encumbrance, because Congress did not provide for supplemental data on value and amount of encumbrance. The 1920 monograph's value tables cover owned MORTGAGED nonfarm homes, not all owned homes and not a national median of their values.",
+      caveat: "The 1890 special investigation likewise reports the value of encumbered owner-occupied farms and homes, a restricted mortgage universe. None of these tables supplies the all-owned-home national median required by this line.",
+      vintage: "1913 and 1923 publications",
+      retrieved: "2026-08-02"
+    },
     "acs-value": {
       issuer: "U.S. Census Bureau",
       work: "American Community Survey, 1-year estimates, table B25077",
@@ -553,7 +571,7 @@
       label: "1900",
       title: "The century's gate",
       columns: [{ key: "a", label: "1900" }],
-      construct: "Occupations and households: decennial census, persons 14 and over (occupations) and occupied housing units (the home). Wages and hours: Douglas’s payroll-manufacturing series, an average, and before 1914 an extrapolation backward. Food: BLS retail prices in industrial localities, estimated from price relatives before 1915. What a house was worth is blank on this panel, on 1915 and in the 1929 column of the panel after that: the census counted who owned from 1890, and no national median home value exists before the first housing census in 1940. Nothing is estimated backward into the gap. Eras are chosen at documented breaks in the record, and every value is dated to the year the source prints, never to the year of the panel.",
+      construct: "Occupations and households: decennial census, persons 14 and over (occupations) and occupied housing units (the home). Wages and hours: Douglas’s payroll-manufacturing series, an average, and before 1914 an extrapolation backward. Food: BLS retail prices in industrial localities, estimated from price relatives before 1915. What a house was worth is blank here and on 1915 because the 1900, 1910 and 1920 general schedules stopped at tenure and encumbrance; their special mortgage studies did not publish an all-owned-home national median. The 1930 population census did publish a median for owned nonfarm homes, on a third instrument and universe, and it appears only in the 1929 column. Nothing is estimated backward into either gap. Eras are chosen at documented breaks in the record, and every value is dated to the year the source prints, never to the year of the panel.",
       texture: [
         { lineId: "unemployment", reason: "the era’s own record of insecurity, from the same table that carries the 1933 figure, so the two can be read against each other" },
         { lineId: "service", reason: "the household as an employer of other households: this is the construct strip made flesh" },
@@ -568,7 +586,7 @@
         earnings: { a: cell("$487 a year", "hsus-d740", { year: 1900, note: "Average annual earnings per full-time employee in manufacturing. Per worker, not per household." }) },
         income: { a: cell("$749.50 average, urban wage-earner families, 1901", "bls-col1901", { year: 1901, note: "The Bureau of Labor's 1901 cost-of-living survey: 25,440 families of wage workers and salaried persons earning not more than $1,200, in the principal industrial centers of 33 states. An average, not a median, of that population only — farm families and business owners are outside it entirely, no survey measured the income of American families at large, and the Census median series begins in 1947." }) },
         home: { a: cell("46.7% owned", "hsus-n243", { year: 1900, note: "Owner-occupied as a percent of occupied units reporting tenure." }) },
-        value: { a: cell("not measured", null, { absent: true, note: "The Bureau’s home-value series begins at the 1940 census, the first housing census. There is no national median home value for this panel, and none is estimated backward onto it. The tenure line above is measured here; what a home was worth is not." }) },
+        value: { a: cell("not measured", "census-pre1940-value-gap", { absent: true, note: "The 1900 general census inquiry stopped at whether the home was owned or rented and, if owned, whether it was mortgaged. The Census later wrote that the 1900 and 1910 inquiries ‘did not go beyond’ proprietorship and encumbrance because Congress did not provide for supplemental value data. The 1890 special study valued only encumbered owner-occupied farms and homes, not all owned homes. No national all-owned-home median pins to this panel, and none is reconstructed." }) },
         roof: { a: cell("$179 a year on housing, 1901", "bls-r991", { year: 1901, note: "The 1901 expenditure survey's housing category for the families it covered — urban wage workers and salaried people — averaging $179 of $769 spent, or 23.3 per cent. It is a spending average and NOT a rent: the Census median-gross-rent series does not begin until 1940, and no rent figure exists for this panel. The same report prints a home-ownership share for its own families that is far below the Census tenure figure shown above; the two count different populations and neither is a correction of the other." }) },
         household: { a: cell("4.8 people; 20.0% of women in the labor force", "hsus-n240", { year: 1900, srcs: ["hsus-d36", "census-ms2"], note: "Persons per occupied housing unit (N 240). The women's figure is the participation rate at the June 1900 census on a 14-and-over basis (D 36). Median age at first marriage: 25.9 for men, 21.9 for women (MS-2)." }) },
         transport: { a: cell("8 thousand motor cars registered", "hsus-q153", { year: 1900, note: "In the whole country." }) },
@@ -614,7 +632,7 @@
         earnings: { a: cell("$661 a year", "hsus-d740", { year: 1915, srcs: ["nber-w2101"], note: "Average annual earnings per full-time employee in manufacturing. The era's famous pay datum is not in this series and is not a wage: on January 5, 1914, effective January 12, the Ford Motor Company announced a working day cut from 9 hours to 8 and minimum daily pay raised, in Raff and Summers's words, “from roughly $2.34 to $5.00 a day for those workers who were judged to qualify,” with the extra “labelled as profit sharing rather than wages.” Eligibility: men over 22, save for women and younger men supporting families; certification by a Sociological Department of 150 inspectors who visited workers' homes, a 1914 company pamphlet saying a worker joined the list of profit sharers only once the company “is satisfied that he will not debauch the additional money he receives”; and a six-month service requirement which the same authors' footnote dates not to the announcement but to the following autumn, after which it stayed. On how many collected, the paper reports figures that disagree: Ford's claim of all but 1 percent, against Lee's 1916 account of 69 percent within six months, 87 percent after a year and 90 percent by mid-1916, which the authors note appear to exclude workers with less than six months' service." }) },
         income: { a: cell("not measured", null, { absent: true,  note: "No measurement of family income exists for 1915." }) },
         home: { a: cell("45.9% owned in 1910, 45.6% in 1920", "hsus-n243", { year: 1910, note: "No tenure figure exists for 1915. The rate had been falling slowly since 1890." }) },
-        value: { a: cell("not measured", null, { absent: true, note: "Still nothing: the Bureau’s home-value series begins at the 1940 census. Tenure was counted at every census from 1890, and what the home was worth was not — the record says who owned decades before it says what owning was worth." }) },
+        value: { a: cell("not measured", "census-pre1940-value-gap", { absent: true, note: "The 1910 general census inquiry stopped at proprietorship and encumbrance, and the 1920 general population schedule likewise asked only whether the home was owned or rented and, if owned, whether it was free or mortgaged. The 1920 mortgage monograph published values only for owned MORTGAGED nonfarm homes, not a national median for all owned homes. No qualifying figure pins to this panel, and none is reconstructed." }) },
         roof: { a: cell("$334 a year on housing, 1918-19", "bls-r991", { year: 1918, note: "The housing category of the 1918-19 expenditure wave, $334 of $1,434 spent — 23.3 per cent, the same share as 1901 though the money had nearly doubled. A spending average, not a rent: the Census gross-rent series still does not reach this panel." }) },
         household: { a: cell("4.5 people in 1910, 4.3 in 1920", "hsus-n240", { year: 1910, srcs: ["hsus-d36"], note: "Persons per occupied housing unit at the two bracketing censuses. Women's labor force participation is not printed for 1910 in this series; at the January 1920 census it was 22.7% on a 14-and-over basis." }) },
         transport: { a: cell("2,332 thousand motor cars registered", "hsus-q153", { year: 1915, note: "Up from 8 thousand in 1900." }) },
@@ -675,7 +693,7 @@
           b: cell("43.6% owned in 1940", "hsus-n243", { year: 1940, note: "By the next census the rate had fallen below every reading back to 1890." })
         },
         value: {
-          a: cell("not measured", null, { absent: true, note: "The home-value series begins at the 1940 census; its first reading sits in the next column, seven years after this one. Nothing measured what an American home was worth in the year of the crash." }),
+          a: cell("$4,779 at the 1930 census", "census-1930-families", { year: 1930, note: "Table 26 of the 1930 population census Families volume prints the median value of owned NONFARM homes, Total, All classes. The population schedule asked each nonfarm family returned as owning its home for the home's approximate current market value. This is a family-based population-census instrument and excludes farm homes; it is not the 1940-2000 housing-census series and the two are never joined. No work-time is shown because the value is a 1930 figure and this column’s wage is 1929’s." }),
           b: cell("$2,938 at the 1940 census", "census-coh-values", { year: 1940, note: "The first reading the series has, taken seven years after this column’s year — there is no 1933 figure and none is interpolated. The Bureau’s universe: owner-occupied single-family housing units on less than 10 acres without a business or medical office on the property. It is a value and not a sale. No work-time is shown for it: the value is a 1940 figure and the wage on this column is 1933’s, and this page never divides a price by another year’s wage." })
         },
         roof: {
